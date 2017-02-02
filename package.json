@@ -1,0 +1,36 @@
+{
+    "name": "ufoco",
+    "version": "0.0.1",
+    "description": "Stay focused with Ufoco and boosts writer productivity  by creating perfect productive environment and editor tools",
+    "main": "index.js",
+    "scripts": {
+        "test": "standard",
+        "start": "electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Tasarinan/ufoco.git"
+    },
+    "keywords": [
+        "electron",
+        "productivity",
+        "focus",
+        "markdown"
+    ],
+    "author": "Nethead Group",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Tasarinan/ufoco/issues"
+    },
+    "homepage": "https://github.com/Tasarinan/ufoco#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "devtron": "^1.4.0",
+        "del": "^2.2.2",
+        "electron": "^1.4.5",
+        "electron-builder": "^6.7.7",
+        "gulp": "^3.9.1",
+        "gulp-concat": "^2.6.0",
+        "gulp-replace": "^0.5.4"
+    }
+}

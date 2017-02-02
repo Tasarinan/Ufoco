@@ -1,0 +1,63 @@
+#minor-info-bar.protected-id {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: calc(100% - 12px);
+  max-height: 30%;
+  font-size: 12px;
+  line-height: 15px;
+  word-wrap: break-word;
+  padding: 4px 6px;
+  opacity: 0;
+  overflow-y: hidden;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.2s; }
+  #minor-info-bar.protected-id.active {
+    opacity: 1; }
+
+
+.menu-list {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s; }
+  .menu-list.active {
+    opacity: 1;
+    pointer-events: auto; }
+  .menu-list .options {
+    display: none; }
+  .menu-list .label {
+    text-align: center;
+    padding: 4px 0; }
+  .menu-list .menu-list-item {
+    padding: 2px 8px; }
+    .menu-list a.menu-list-item {
+      display: block;
+      text-decoration: none;
+      cursor: default; }
+
+/* top & left via JS */
+#context-menu.protected-id {
+  z-index: 5; }
+    #context-menu.protected-id[data-target="tab"] .tab-view,
+    #context-menu.protected-id[data-target="text"] .text-view,
+    #context-menu.protected-id[data-target="a"] .a-view,
+    #context-menu.protected-id[data-target="anchor-link"] .anchor-link-view,
+    #context-menu.protected-id[data-target="anchor"] .anchor-view,
+    #context-menu.protected-id[data-target="img"] .img-view,
+    #context-menu.protected-id[data-target="emoji"] .emoji-view {
+      display: block; }
+
+
+/* top & left via JS */
+#preview-large.protected-id {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.2s; }
+  #preview-large.protected-id.active {
+    opacity: 1; }
+  #preview-large.protected-id .label {
+    padding: 4px 6px; }
