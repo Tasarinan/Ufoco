@@ -1,10 +1,10 @@
 Ufoco.Functions.Remote = {};
 
 
-Ufoco.Functions.Remote.funcGetUpdateInfo = (Parameters) => {
+Ufoco.Functions.Remote.funcGetUpdateInfo = (parameters) => {
     reqwest({
         // url: `${Ufoco.strAppPath}/../CHANGELOG.md`,
-        url: 'https://raw.githubusercontent.com/n457/Uncolored/master/CHANGELOG.md',
+        url: 'https://raw.githubusercontent.com/Tasarinan/Ufoco/master/CHANGELOG.md',
         success: (strResponse) => {
             let boolUpdateAvailable = false;
 
@@ -18,7 +18,7 @@ Ufoco.Functions.Remote.funcGetUpdateInfo = (Parameters) => {
                     boolUpdateAvailable = true;
                 }
 
-                Parameters.funcOnSuccess.call(null, {
+                parameters.funcOnSuccess.call(null, {
                     boolUpdateAvailable: boolUpdateAvailable,
                     strRemoteLastestVersion: strRemoteLastestVersion,
                     strRemoteReleaseNotesHTML: strRemoteContent
@@ -27,29 +27,29 @@ Ufoco.Functions.Remote.funcGetUpdateInfo = (Parameters) => {
         },
         error: (Error) => {
             console.error(Error);
-            Parameters.funcOnError.call(null, Error);
+            parameters.funcOnError.call(null, Error);
         }
     });
 };
 
 
-Ufoco.Functions.Remote.funcGetPriorityInfo = (Parameters) => {
+Ufoco.Functions.Remote.funcGetPriorityInfo = (parameters) => {
     reqwest({
         // url: `${Ufoco.strAppPath}/../project/docs/priority-info.md`,
-        url: 'https://raw.githubusercontent.com/n457/Uncolored/master/project/docs/priority-info.md',
+        url: 'https://raw.githubusercontent.com/Tasarinan/Ufoco/master/LICENSE.md',
         success: (strResponse) => {
             // Remotly, strResponse.response doesn't work, use strResponse instead
             let strRemoteContent = Ufoco.Functions.Utils.funcMarkdownToHTML({ strContent: strResponse });
 
             if (strRemoteContent) {
-                Parameters.funcOnSuccess.call(null, {
+                parameters.funcOnSuccess.call(null, {
                     strRemotePriorityInfoHTML: strRemoteContent
                 });
             }
         },
         error: (Error) => {
             console.error(Error);
-            Parameters.funcOnError.call(null, Error);
+            parameters.funcOnError.call(null, Error);
         }
     });
 };

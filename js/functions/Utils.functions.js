@@ -8,10 +8,10 @@ Ufoco.Functions.Utils.funcSetDOMAppName = () => {
 };
 
 
-// Parameter :
+// parameter :
 // - strPath
-Ufoco.Functions.Utils.funcGetFilePathInfo = (Parameter) => {
-    const strExtensionLowerCase = Ufoco.ElectronFramework.Path.extname(Parameter.strPath).toLowerCase();
+Ufoco.Functions.Utils.funcGetFilePathInfo = (parameter) => {
+    const strExtensionLowerCase = Ufoco.ElectronFramework.Path.extname(parameter.strPath).toLowerCase();
 
     let strFormat = '';
     if (['.html', '.htm'].indexOf(strExtensionLowerCase) !== -1) {
@@ -21,27 +21,27 @@ Ufoco.Functions.Utils.funcGetFilePathInfo = (Parameter) => {
     }
 
     return {
-        strName: Ufoco.ElectronFramework.Path.basename(Parameter.strPath),
-        strDirPath: Ufoco.ElectronFramework.Path.dirname(Parameter.strPath),
+        strName: Ufoco.ElectronFramework.Path.basename(parameter.strPath),
+        strDirPath: Ufoco.ElectronFramework.Path.dirname(parameter.strPath),
         strFormat: strFormat
     };
 };
 
 
-// Parameters :
+// parameters :
 // - strEvent
 // - $Element
-Ufoco.Functions.Utils.funcTriggerEvent = (Parameters) => {
-    Parameters.$Element.dispatchEvent(new Event(Parameters.strEvent));
+Ufoco.Functions.Utils.funcTriggerEvent = (parameters) => {
+    parameters.$Element.dispatchEvent(new Event(parameters.strEvent));
 };
 
 
 // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
 // https://github.com/sindresorhus/escape-string-regexp
-// Parameter :
+// parameter :
 // - strRegExp
-Ufoco.Functions.Utils.funcEscapeStringRegexp = (Parameter) => {
-    return Parameter.strRegExp.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+Ufoco.Functions.Utils.funcEscapeStringRegexp = (parameter) => {
+    return parameter.strRegExp.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 };
 
 
@@ -51,9 +51,9 @@ Ufoco.Functions.Utils.funcNoCacheSuffix = () => {
 };
 
 
-Ufoco.Functions.Utils.funcMarkdownToHTML = (Parameter) => {
+Ufoco.Functions.Utils.funcMarkdownToHTML = (parameter) => {
     try {
-        return marked(Parameter.strContent);
+        return marked(parameter.strContent);
     } catch (Error) {
         console.error(Error);
         // Error during the convertion.
@@ -61,9 +61,9 @@ Ufoco.Functions.Utils.funcMarkdownToHTML = (Parameter) => {
     }
 };
 
-Ufoco.Functions.Utils.funcHTMLToMarkdown = (Parameter) => {
+Ufoco.Functions.Utils.funcHTMLToMarkdown = (parameter) => {
     try {
-        return toMarkdown(Parameter.strContent);
+        return toMarkdown(parameter.strContent);
     } catch (Error) {
         console.error(Error);
         // Error during the convertion.

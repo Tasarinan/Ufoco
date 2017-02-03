@@ -82,7 +82,7 @@
         if (strDocThemeHTML) {
             // Getting the document theme name inside the file content
             $DocThemeItemClone.getElementsByClassName('mdl-list__item-primary-content')[0].textContent = strDocThemeHTML.match('- __themename: (.*) -')[1];
-            $DocThemeItemClone.getElementsByTagName('img')[0].src = `../themes/doc-themes/themes-dir/${strFolderName}/preview.png`;
+            $DocThemeItemClone.getElementsByTagName('img')[0].src = `./themes/doc-themes/themes-dir/${strFolderName}/preview.png`;
 
             // Set document theme on item click
             $DocThemeItemClone.addEventListener('click', () => {
