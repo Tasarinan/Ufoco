@@ -1,6 +1,6 @@
 # Ufoco
 
-![Ufoco](img/ufoco.png) Ufoco is the your focus coordinatation.Focus on what matters now! It will help you master more, it is not a simple note or writting tool.
+![Ufoco](img/ufoco.png) Ufoco is not a simple word processor or note writer. It is built with web technologies but it is focused  on what you really matters now! It is so versatile that you'll have not problem using it for any scenario,but bascially I would like to recommand you use it as a memory flash card or problem domain score card.
 
 ##  Project purpose
 
