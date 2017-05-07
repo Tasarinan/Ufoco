@@ -1,11 +1,11 @@
 {
   "name": "Ufoco",
   "version": "0.0.1",
-  "description": "Focus on what you really matters and boost productivity  by creating perfect productive environment",
+  "description": "Focus on what you  matters and boost productivity  by creating perfect productive environment",
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register test/**/*test.js",
-    "start": "electron . --enable-logging --remote-debugging-port=9222",
+    "start": "electron ./app --enable-logging --remote-debugging-port=9222",
     "dev": "NODE_ENV='developement' npm run start",
     "postinstall": "install-app-deps",
     "lint": "eslint",
@@ -19,7 +19,7 @@
     "electron",
     "productivity",
     "focus",
-    "markdown"
+    "anki"
   ],
   "author": "Nethead Group",
   "license": "MIT",
@@ -28,7 +28,9 @@
     "url": "https://github.com/Tasarinan/ufoco/issues"
   },
   "homepage": "https://github.com/Tasarinan/ufoco#readme",
-  "dependencies": {},
+  "dependencies": {
+    "electron": "^1.4.5"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-power-assert": "^1.0.0",
@@ -37,13 +39,14 @@
     "chai-as-promised": "^6.0.0",
     "del": "^2.2.2",
     "devtron": "^1.4.0",
-    "electron": "^1.4.5",
     "electron-builder": "^6.7.7",
     "eslint": "^3.15.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-replace": "^0.5.4",
+    "gulp-sass": "^3.1.0",
     "mocha": "^3.2.0",
     "spectron": "^3.6.0"
-  }
+  },
+  "engines": {}
 }

@@ -6,6 +6,6 @@
         "request": "launch",
         "cwd": "${workspaceRoot}",
         "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd",
-        "program": "${workspaceRoot}/index.js"
+        "program": "${workspaceRoot}/app/index.js"
     }]
 }

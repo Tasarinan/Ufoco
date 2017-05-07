@@ -3,6 +3,12 @@ var del = require('del');
 var concat = require('gulp-concat');
 var replace = require('gulp-replace');
 
+gulp.task('styles', () => {
+    gulp.src('app/styles/scss/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('app/css/'))
+})
+
 gulp.task('testConcat', function() {
     gulp.src(['F:/英语听力入门1/*.txt',
             'F:/英语听力入门2/*.txt',

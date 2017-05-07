@@ -54,13 +54,10 @@ Ufoco.$docInfoParagraphsElt = Ufoco.$docInfoDialogElt.getElementsByClassName('pa
 Ufoco.$docInfoSentencesElt = Ufoco.$docInfoDialogElt.getElementsByClassName('sentences-number')[0];
 Ufoco.$docInfoWordsElt = Ufoco.$docInfoDialogElt.getElementsByClassName('words-number')[0];
 Ufoco.$docInfoCharactersElt = Ufoco.$docInfoDialogElt.getElementsByClassName('characters-number')[0];
-Ufoco.$docInfoCharactersSpacesElt = Ufoco.$docInfoDialogElt.getElementsByClassName('characters-spaces-number')[0];
+Ufoco.$docInfoCharactersSpacesElt = Ufoco.$docInfoDialogElt.getElementsByClassName('characters-spaces- number')[0];
 
 Ufoco.$aboutDialogElt = document.getElementById('about-dialog');
-
 Ufoco.$unsavedDocsDialogElt = document.getElementById('unsaved-docs-dialog');
-
-
 Ufoco.arrDocs = [];
 Ufoco.activeDoc;
 

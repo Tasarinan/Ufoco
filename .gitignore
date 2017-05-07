@@ -1,4 +1,7 @@
 .DS_Store
+.vscode
 node_modules
-build
-debug.log
+dist
+*.log
+npm-debug.log*
+examples

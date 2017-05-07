@@ -1,19 +1,25 @@
-# Ufoco
 
-![Ufoco](img/ufoco.png) Ufoco is not a simple word processor or note writer. It is built with web technologies but it is focused  on what you really matters now! It is so versatile that you'll have not problem using it for any scenario,but bascially I would like to recommand you use it as a memory flash card or problem domain score card.
+# [Ufoco](img/ufoco.png)
+
+## What is it?
+ Ufoco is not a simple word processor or note writer. It is built with web technologies but it is focused  on what you really matters now! It is so versatile that you'll have not problem using it for any scenario,but bascially I would like to recommand you use it as a memory flash card or problem domain score card.
 
 ##  Project purpose
 
-During the past ten years, to help my work productivity and efficiency.  I have used many tools, like Evernote, typora, and Anki. but I still failed to help my life and work. The most important reason is because I only collected them and did not memory them. Most of time I did not understand them and did not master them so I have to repeat to study and find them from the old trash box. After reading [this blog](https://www.jackkinsella.ie/articles/janki-method),I start to review why I have gone this wrong way. Maybe what I have pursued was not clear for me. Do I really need a text  or markdown editor? or Do I really need master all kinds of editor tool? or Do I really collect the different blog files ? No, We should only get what we wanted the best? "断舍理" is the good point. We need remove many features from our minds. With this product, the user focuses on the what he wants to be memorized content. we    
+During the past ten years, to help my work productivity and efficiency.  I have used many tools, like **Evernote**, typora, and Anki. but I still failed to improve my life and work. The most important reason is because I only collected them and did not take into account in my life. For sure some thime I did not understand these tools's spirit  and did not master them so I had to repeat to study and find them from the old trash box. After reading [this blog](https://www.jackkinsella.ie/articles/janki-method),I start to review why I have gone this wrong way. Maybe what I have pursued was not clear for me. Do I really need a text  or markdown editor? or Do I really need master all kinds of editor tool? or Do I really collect the different blog files ? No, We should only get what we wanted the best? "断舍理" is the good point. We need remove many features from our minds. 
+With this product, the user could make a flash card to help him improve memeory efficency,this improvement is not to be forced memory activity. it will be scheduled when you want to and when you like to.
+With this product, the user could make an list what he gonna do the next day or the next hour but dont care when he will done that and forget them. eveything will be scheduled by the program.
+This background alogrithm will have a behavior study from your previous behavior. 
+
+The product philosophy of Piece is LESS equals MORE. It doesn’t matter where we put ours thoughts, ideas and to-dos down. What really counts is that we actually do that eventually - go back to my thoughts and work out some problems; continue my new idea and make it big; or just simply get everything listed done. The way how we put the jobs down should be as simple as possible. And this simple way, with your job is the LESS, which might bring your something MORE than you have imagined.
+
 
 ## Wishlist
-1.  quickly make reading digist and save to library
-2.  can get info from library
-3.  list based data structure and formula supporting with Markdown/AsciiDoc
-4.  living preview not 
-5.  flash card
-6.  mobile display
-7.  hash list function
+1.  **Floats** on your windows, Reachable anythime
+2.  **Dnymic** schedule the next task, not to let you annoyed.
+3.  **Nested list** and **FlashCard** support 
+4.  **Evernote** backed-up for content provider and storage. 
+
 
 ## Features(for now)
 
