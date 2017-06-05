@@ -1,0 +1,2 @@
+https://github.com/hovancik/stretchly.git
+https://github.com/mykter/TagTime-desktop.git

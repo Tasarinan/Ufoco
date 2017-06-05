@@ -21,9 +21,6 @@ const nativeImage = electron.nativeImage;
 const shell = electron.shell
 const dialog = electron.dialog
 
-
-const arrMenu = require('./js/menu');
-
 // "fs" for "File System" : used to read and write files on disks.
 // Load node native modules
 const fs = require('fs');
@@ -33,17 +30,18 @@ const url = require('url');
 
 const IdeasLoader = require('./js/classes/IdeasLoader.class.js');
 const BreaksPlanner = require('./js/classes/BreaksPlanner.class.js');
-const AppSettings = require('./js/classes/Settings.class.js');
-const defaultSettings = require('./js/defaultSettings.js');
+const AppSettings = require('./js/settings/Settings.class.js');
+const defaultSettings = require('./js/settings/Settings.default.js');
+const TrayMenu = require('./js/menu/TrayMenu.class.js');
 
 let appIcon = null;
-let ankiWin = null;
+
 let microbreakWin = null;
 let breakWin = null;
-let aboutWin = null;
+
 let splashScreenWin = null;
 let evernoteWin = null;
-let settingsWin = null;
+
 let finishMicrobreakTimer = null;
 let finishBreakTimer = null;
 let resumeBreaksTimer = null;
@@ -52,86 +50,14 @@ let microbreakIdeas;
 let breakIdeas;
 let breakPlanner;
 
-
-const markdownExt = /\.(md|mdm|mkdn|mark.*|txt)$/
-
+global.shared = {
+    isNewVersion: false
+}
 var screenWidth = null;
 var screenHeight = null;
 let settings;
+let trayMenu;
 
-//Parse command line arguments
-function getArguments() {
-    let argv = [];
-    let tmp_args = [];
-    let tmp_opts = [];
-
-    if (/^electron/.test(path.basename(process.argv[0]))) {
-        argv = process.argv.slice(2);
-
-    } else {
-        argv = process.argv.slice(1);
-    }
-    argv.forEach((element) => {
-        if (/^-/.test(element) === true) {
-            tmp_opts.push(element);
-        } else {
-            tmp_args.push(element);
-        }
-    });
-    return { opts: tmp_opts, args: tmp_args };
-
-}
-
-
-// If this is the first instance, continue the execution of this script.
-// create window
-function showNotesWindow() {
-    let mainWindow = null;
-
-    //   menu.setApplicationMenu(menu.buildFromTemplate(arrMenuTemplate));
-    menu.setApplicationMenu(arrMenu.createMenu());
-
-    //create a instance of BrowserWindow
-    mainWindow = new BrowserWindow({
-        width: 960,
-        height: 660,
-        x: winList.length * 20 % (screenWidth - 960),
-        y: winList.length * 20 % (screenHeight - 660),
-        frame: boolWindowFrame,
-        icon: path.join(__dirname, '../img/ufoco.png')
-
-    });
-
-    // and load the index.html of the app.
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
-
-    // http://stackoverflow.com/questions/31670803/prevent-electron-app-from-redirecting-when-dragdropping-items-in-window
-    mainWindow.webContents.on('will-navigate', (Event) => {
-        Event.preventDefault();
-        return false;
-    });
-
-    // From http://stackoverflow.com/questions/32402327/how-can-i-force-external-links-from-browser-window-to-open-in-a-default-browser
-    mainWindow.webContents.on('new-window', (Event, strURL) => {
-        Event.preventDefault();
-        shell.openExternal(strURL);
-    });
-
-    //Destroy when window is closed
-
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    })
-
-    if (process.env.DEBUG) {
-        mainWindow.toggleDevTools();
-    }
-    return mainWindow;
-}
 
 function displaysX(width = 800) {
 
@@ -152,11 +78,8 @@ function getScreenSize() {
 }
 
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
-    if (appIcon && ankiWin) {
-        if (ankiWin.isMinized()) {
-            ankiWin.restore();
-            // ankiWin.focus();
-        }
+    if (appIcon) {
+        console.log("");
     }
 });
 
@@ -166,8 +89,9 @@ if (shouldQuit) {
 }
 
 // Show window when app is ready
-app.on('ready', createSplashScreenWin);
+//app.on('ready', createSplashScreenWin);
 app.on('ready', loadSettings);
+app.on('ready', installDevtools);
 app.on('ready', planBreak);
 app.on('ready', createTrayIcon);
 
@@ -175,149 +99,17 @@ function createTrayIcon() {
     if (process.platform === 'darwin') {
         app.dock.hide()
     }
-    const iconPath = path.join(__dirname, 'sandglass.png');
-    appIcon = new Tray(iconPath);
-    appIcon.setToolTip(require('./package.json').description);
-    appIcon.setContextMenu(getTrayMenu())
-}
-
-function getTrayMenu(hasNewVersion) {
-
-    let trayMenu = [];
-    if (hasNewVersion) {
-        trayMenu.push({
-            label: 'Download latest version',
-            click: function() {
-                shell.openExternal('https://github.com/hovancik/stretchly/releases')
-            }
-        })
-    }
-    trayMenu.push({
-        label: 'About',
-        click: function() {
-            showAboutWindow();
-        }
-    }, {
-        type: 'separator'
-    });
-
-    if (!settings.get('isPaused')) {
-        let submenu = [];
-
-        if (settings.get('microbreak')) {
-            submenu = submenu.concat([{
-                label: 'microbreak',
-                click: function() {
-                    breakPlanner.skipToMicrobreak().plan();
-                }
-            }])
-        }
-        if (settings.get('break')) {
-            submenu = submenu.concat([{
-                label: 'break',
-                click: function() {
-                    breakPlanner.skipToBreak().plan();
-                }
-            }])
-        }
-
-        if (settings.get('break') || settings.get('microbreak')) {
-            trayMenu.push({
-                label: 'Skip to the next',
-                submenu: submenu
-            })
-        }
-
-    }
-
-    if (settings.get('isPaused')) {
-        trayMenu.push({
-            label: 'Resume',
-            click: function() {
-                resumeBreaks();
-            }
-        })
-    } else {
-        trayMenu.push({
-            label: 'Pause',
-            submenu: [{
-                label: 'for an hour',
-                click: function() {
-                    pauseBreaks(3600 * 1000);
-                }
-            }, {
-                label: 'for 2 hours',
-                click: function() {
-                    pauseBreaks(3600 * 2 * 1000);
-                }
-            }, {
-                label: 'for 5 hours',
-                click: function() {
-                    pauseBreaks(3600 * 5 * 1000);
-                }
-            }, {
-                label: 'indefinitely',
-                click: function() {
-                    pauseBreaks(1)
-                }
-            }]
-        }, {
-            label: 'Reset breaks',
-            click: function() {
-                breakPlanner.reset();
-            }
-        })
-    }
-    trayMenu.push({
-        label: 'Pomodoro',
-        click: function() {
-            showPomodoroWindow();
-        }
-    });
-    trayMenu.push({
-        label: 'Anki',
-        click: function() {
-            showAnkiWindow();
-        }
-    });
-    trayMenu.push({
-        label: 'Notes',
-        click: function() {
-            showNotesWindow();
-        }
-    });
-    trayMenu.push({
-        label: 'Settings',
-        click: function() {
-            showSettingsWindow();
-        }
-    });
-
-    if (process.platform === 'darwin' || process.platform === 'win32') {
-        let loginItemSettings = app.getLoginItemSettings();
-        let openAtLogin = loginItemSettings.openAtLogin;
-        trayMenu.push({
-            label: 'Start at login',
-            type: 'checkbox',
-            checked: openAtLogin,
-            click: function() {
-                app.setLoginItemSettings({
-                    openAtLogin: !openAtLogin
-                })
-            }
-        })
-
-    }
-    trayMenu.push({
-        type: 'separator'
-    }, {
-        label: 'Quit',
-        click: function() {
-            app.quit();
-        }
-    })
-    return Menu.buildFromTemplate(trayMenu);
-
+    const iconPath = path.join(__dirname, './img/tagtime.png');
+    const icon = nativeImage.createFromPath(iconPath)
+    icon.setTemplateImage(true)
+        // appIcon = new Tray(iconPath);
+    appIcon = new Tray(icon);
+    appIcon.setToolTip(require('../package.json').description);
+    trayMenu = new TrayMenu(displaysX(), displaysY(), appIcon, settings);
+    // appIcon.setContextMenu(getTrayMenu());
+    /* appIcon.on('right-click', () => {
+         show();
+     })*/
 }
 
 function createSplashScreenWin() {
@@ -325,6 +117,7 @@ function createSplashScreenWin() {
         show: false,
         width: 640,
         height: 480,
+        backgroundColor: '#ececec',
         frame: false
     })
     splashScreenWin.loadURL(url.format({
@@ -338,26 +131,7 @@ function createSplashScreenWin() {
     })
 }
 
-function showEvernoteWin() {
-    // Create the browser window and disable node.js (it is needed to work with pre-compiled js of external url)
-    evernoteWin = new BrowserWindow({
-        width: 900,
-        height: 600,
-        webPreferences: { nodeIntegration: false },
-        show: true
-    })
 
-    //load the url
-    evernoteWin.loadURL('https://www.evernote.com/Home.action')
-
-    //hide the default menu
-    evernoteWin.setMenu(null)
-
-    //prevent window title changing
-    evernoteWin.on('page-title-updated', event => {
-        event.preventDefault()
-    })
-}
 
 function planVersionCheck(seconds = 1) {
     setTimeout(checkVersion, seconds * 1000)
@@ -381,6 +155,13 @@ function loadSettings() {
     const settingsFile = `${strAppUserData}/settings.json`;
     settings = new AppSettings(settingsFile);
     breakPlanner = new BreaksPlanner(settings, startMicrobreak, startBreak);
+}
+
+function installDevtools() {
+    const devtoolsInstaller = require('electron-devtools-installer')
+    devtoolsInstaller.default(devtoolsInstaller.REACT_DEVELOPER_TOOLS)
+        .then((name) => console.log(`Added Extension: ${name}`))
+        .catch((err) => console.log('An error occurred: ', err))
 }
 
 function startMicrobreak() {
@@ -504,45 +285,6 @@ function resumeBreaks() {
     }
 }
 
-function showAboutWindow() {
-    if (aboutWin) {
-        aboutWin.show()
-        return
-    }
-    const modalPath = path.join('file://', __dirname, './views/about.html')
-    aboutWin = new BrowserWindow({
-        x: displaysX(),
-        y: displaysY(),
-        resizable: false,
-        backgroundColor: settings.get('mainColor'),
-        title: `About stretchly v${app.getVersion()}`
-    })
-    aboutWin.loadURL(modalPath)
-}
-
-function showPomodoroWindow() {
-    showEvernoteWin();
-}
-
-function showSettingsWindow() {
-    if (settingsWin) {
-        settingsWin.show()
-        return
-    }
-    const modalPath = path.join('file://', __dirname, 'settings.html')
-    settingsWin = new BrowserWindow({
-        x: displaysX(),
-        y: displaysY(),
-        resizable: false,
-        backgroundColor: settings.get('mainColor'),
-        title: 'Settings'
-    })
-    settingsWin.loadURL(modalPath)
-        // settingsWin.webContents.openDevTools()
-    settingsWin.webContents.on('did-finish-load', () => {
-        settingsWin.webContents.send('renderSettings', settings.data)
-    })
-}
 
 function saveDefaultsFor(array, next) {
     for (let index in array) {
@@ -564,12 +306,12 @@ ipcMain.on('finish-break', function(event, shouldPlaySound) {
 
 ipcMain.on('save-setting', function(event, key, value) {
     settings.set(key, value)
-    settingsWin.webContents.send('renderSettings', settings.data)
+    prefsWindow.webContents.send('renderSettings', settings.data)
     appIcon.setContextMenu(getTrayMenu())
 })
 
-ipcMain.on('update-tray', function(event, hasNewVersion) {
-    appIcon.setContextMenu(getTrayMenu(hasNewVersion))
+ipcMain.on('update-tray', function(event) {
+    appIcon.setContextMenu(getTrayMenu())
     if (splashScreenWin) {
         splashScreenWin.hide();
     }
@@ -585,7 +327,7 @@ ipcMain.on('set-default-settings', function(event, data) {
     dialog.showMessageBox(options, function(index) {
         if (index === 0) {
             saveDefaultsFor(data)
-            settingsWin.webContents.send('renderSettings', settings.data)
+            prefsWindow.webContents.send('renderSettings', settings.data)
         }
     })
 })

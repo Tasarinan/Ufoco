@@ -10,6 +10,9 @@ module.exports = {
     mainColor: '#478484',
     audio: 'crystal-glass',
     fullscreen: false,
+    shortcutShow: 'Shift+Alt+S',
+    alwaysOnTop: true,
+    autoLaunch: true,
     isPaused: false,
     useIdeasFromSettings: false,
     breakIdeas: [

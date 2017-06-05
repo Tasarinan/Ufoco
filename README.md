@@ -11,7 +11,8 @@ With this product, the user could make a flash card to help him improve memeory 
 With this product, the user could make an list what he gonna do the next day or the next hour but dont care when he will done that and forget them. eveything will be scheduled by the program.
 This background alogrithm will have a behavior study from your previous behavior. 
 
-The product philosophy of Piece is LESS equals MORE. It doesn’t matter where we put ours thoughts, ideas and to-dos down. What really counts is that we actually do that eventually - go back to my thoughts and work out some problems; continue my new idea and make it big; or just simply get everything listed done. The way how we put the jobs down should be as simple as possible. And this simple way, with your job is the LESS, which might bring your something MORE than you have imagined.
+##  Motivation
+The product philosophy of Ufoco is LESS equals MORE. It doesn’t matter where we put ours thoughts, ideas and to-dos down. What really counts is that we actually do that eventually - go back to my thoughts and work out some problems; continue my new idea and make it big; or just simply get everything listed done. The way how we put the jobs down should be as simple as possible. And this simple way, with your job is the LESS, which might bring your something MORE than you have imagined.
 
 
 ## Wishlist

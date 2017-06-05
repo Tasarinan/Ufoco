@@ -1,5 +1,5 @@
 const fs = require('fs');
-const defaultSettings = require('../defaultSettings');
+const defaultSettings = require('./Settings.default.js');
 
 class Settings {
     constructor(configLocation) {
