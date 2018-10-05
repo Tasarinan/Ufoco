@@ -1,0 +1,56 @@
+// Background colors
+.bg-none {
+  background-color: transparent;
+}
+
+.bg-black {
+  background-color: #10161a !important;
+}
+
+.bg-white {
+  background-color: #fff !important;
+}
+
+.bg-dark-theme {
+  background-color: #293742;
+}
+
+.bg-dark-gray-3 {
+  background-color: $darkGray3;
+}
+
+.bg-dark-gray-5 {
+  background-color: #394b59;
+}
+
+.bg-gray-4 {
+  background-color: #bfccd6;
+}
+
+.bg-light-gray-2 {
+  background-color: #d8e1e8;
+}
+
+.bg-light-gray-3 {
+  background-color: #e1e8ed;
+}
+
+.bg-yellow {
+  background-color: #ffc940 !important;
+}
+
+.bg-focus-phase {
+  background-color: $focusPhase !important;
+}
+
+.bg-short-break-phase {
+  background-color: $shortBreakPhase !important;
+}
+
+.bg-long-break-phase {
+  background-color: $longBreakPhase !important;
+}
+
+.zen-red {
+  color: #F45757;
+}

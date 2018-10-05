@@ -1,0 +1,92 @@
+import { connect } from 'react-redux';
+
+import {
+  minimizeToTray,
+  notificationType,
+  showTimerByTray,
+  showTrayIcon,
+  theme as getTheme,
+} from '../../selectors/app.selectors';
+import {
+  audioPhaseDisabled,
+  audioTickDisabled
+} from '../../selectors/sounds.selectors';
+import {
+  currentPhase,
+  focusLength,
+  longBreakInterval,
+  longBreakLength,
+  shortBreakLength,
+  totalRounds,
+} from '../../selectors/rounds.selectors';
+import {
+  isPlaying,
+} from '../../selectors/mediaControls.selectors';
+
+import {
+  setAppSettings,
+  setElectronSettings,
+  setNotificationType,
+  setContinuousMode,
+  setTheme,
+  toggleMinimizeToTray,
+  toggleShowTimerByTray,
+  toggleShowTrayIcon,
+} from '../App/actions';
+import { openGeneralAlert } from '../common/GeneralAlerts/actions';
+import {
+  setFocusLength,
+  setLongBreakInterval,
+  setLongBreakLength,
+  setShortBreakLength,
+  setTotalRounds,
+  setTimer,
+} from '../common/Rounds/actions';
+import {
+  toggleAudioPhase,
+  toggleAudioTick,
+} from '../common/Sounds/actions';
+
+
+import Settings from './settings';
+
+const mapStateToProps = state => ({
+  audioPhaseDisabled: audioPhaseDisabled(state),
+  audioTickDisabled: audioTickDisabled(state),
+  currentPhase: currentPhase(state),
+  focusLength: focusLength(state),
+  isPlaying: isPlaying(state),
+  longBreakInterval: longBreakInterval(state),
+  longBreakLength: longBreakLength(state),
+  minimizeToTray: minimizeToTray(state),
+  notificationType: notificationType(state),
+  continuousMode: state.app.continuousMode,
+  shortBreakLength: shortBreakLength(state),
+  showTimerByTray: showTimerByTray(state),
+  showTrayIcon: showTrayIcon(state),
+  theme: getTheme(state),
+  totalRounds: totalRounds(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  openGeneralAlert: msg => dispatch(openGeneralAlert(msg)),
+  setAppSettings: data => dispatch(setAppSettings(data)),
+  setElectronSettings: (keyPath, val, opts) =>
+    dispatch(setElectronSettings(keyPath, val, opts)),
+  setFocusLength: len => dispatch(setFocusLength(len)),
+  setLongBreakInterval: interval => dispatch(setLongBreakInterval(interval)),
+  setLongBreakLength: len => dispatch(setLongBreakLength(len)),
+  setNotificationType: notType => dispatch(setNotificationType(notType)),
+  setContinuousMode: bool => dispatch(setContinuousMode(bool)),
+  setShortBreakLength: len => dispatch(setShortBreakLength(len)),
+  setTheme: theme => dispatch(setTheme(theme)),
+  setTimer: ms => dispatch(setTimer(ms)),
+  setTotalRounds: rounds => dispatch(setTotalRounds(rounds)),
+  toggleAudioPhase: () => dispatch(toggleAudioPhase()),
+  toggleAudioTick: () => dispatch(toggleAudioTick()),
+  toggleMinimizeToTray: () => dispatch(toggleMinimizeToTray()),
+  toggleShowTimerByTray: () => dispatch(toggleShowTimerByTray()),
+  toggleShowTrayIcon: () => dispatch(toggleShowTrayIcon()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

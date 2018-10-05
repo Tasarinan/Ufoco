@@ -1,0 +1,81 @@
+.vh-100 {
+  height: 100vh !important;
+}
+
+.vh-90 {
+  height: 90vh !important;
+}
+
+.vw-100 {
+  width: 100vw !important;
+}
+
+.vh-100-offset-15 {
+  height: calc(100vh - 15px) !important;
+}
+
+.vh-100-offset-30 {
+  height: calc(100vh - 30px) !important;
+}
+
+.vh-100-offset-60 {
+  height: calc(100vh - 60px) !important;
+}
+
+.vw-90 {
+  width: 90vw;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
+
+$heights: 100;
+
+@while $heights >= 0 {
+  .h-#{$heights} {
+    height: #{$heights}% !important;
+  }
+  $heights: $heights - 5;
+}
+
+.h-100-75 {
+  height: 100% !important;
+  margin-top: -45px;
+}
+
+$widths: 100;
+
+@while $widths >= 0 {
+  .w-#{$widths} {
+    width: #{$widths}% !important;
+  }
+  $widths: $widths - 5;
+}
+
+.w-exact-70 {
+  width: 70px;
+}
+
+$widths-exact: 900;
+
+@while $widths-exact >= 0 {
+  .w-exact-#{$widths-exact} {
+    width: #{$widths-exact}px !important;
+    min-width: #{$widths-exact}px !important;
+  }
+  $widths-exact: $widths-exact - 25;
+}
+
+$heights-exact: 900;
+
+@while $heights-exact >= 0 {
+  .h-exact-#{$heights-exact} {
+    min-height: #{$heights-exact}px !important;
+  }
+  $heights-exact: $heights-exact - 25;
+}
+
+.h-exact-380 {
+  height: 380px !important;
+}

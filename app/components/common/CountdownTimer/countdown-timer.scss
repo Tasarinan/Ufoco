@@ -1,0 +1,36 @@
+.count-down {
+  .zf-timer {
+    font-size: 4.75em;
+  }
+
+  .pt-spinner:not(.pt-svg-spinner) {
+    width: 375px;
+  }
+
+  .pt-button {
+    &.pt-icon-play::before,
+    &.pt-icon-pause::before {
+      font-size: 44px;
+    }
+
+    &.pt-icon-step-forward::before {
+      font-size: 24px;
+    }
+
+    &.pt-icon-redo::before {
+      font-size: 20px;
+    }
+  }
+
+  .intent-focus .pt-spinner-head {
+    stroke: $focusPhase;
+  }
+
+  .intent-short-break .pt-spinner-head {
+    stroke: $shortBreakPhase;
+  }
+
+  .intent-long-break .pt-spinner-head {
+    stroke: $longBreakPhase;
+  }
+}

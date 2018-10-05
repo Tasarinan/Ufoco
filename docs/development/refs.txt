@@ -1,0 +1,4 @@
+https://github.com/hovancik/stretchly.git
+https://github.com/mykter/TagTime-desktop.git
+http://rockiger.com/en/akiee
+https://github.com/desktop-assistant/desktop-assistant
