@@ -31,7 +31,7 @@ export default {
   debug(args) {
     const fs = require('fs'),
       txt = this._cnc(args)
-    fs.writeFileSync('debug.log', txt + '\n', { flag: 'a' })
+    fs.writeFileSync('npm-debug.log', txt + '\n', { flag: 'a' })
   }
 };
 
