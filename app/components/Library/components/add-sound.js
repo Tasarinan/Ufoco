@@ -40,7 +40,7 @@ class AddSound extends PureComponent {
       <div className={className}>
         <Button
           className="pt-minimal btn-no-hover btn-no-bg"
-          iconName="upload"
+          icon="upload"
           onClick={() => this.setState({ isOpen: true })}
         />
 
@@ -91,7 +91,7 @@ class AddSound extends PureComponent {
             </div>
             <Button
               className="float-right"
-              iconName="add"
+              icon="add"
               text="Add sound"
               intent={Intent.SUCCESS}
               onClick={() => {

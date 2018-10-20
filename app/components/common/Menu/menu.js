@@ -103,41 +103,41 @@ export default class CustomMenu extends PureComponent {
       <Menu className="non-draggable">
         <MenuItem
           onClick={this.goToCharts}
-          iconName="timeline-line-chart"
+          icon="timeline-line-chart"
           text="Charts"
         />
         <MenuDivider />
         <MenuItem
           onClick={this.resetSession}
-          iconName="refresh"
+          icon="refresh"
           text="New Session"
         />
         <MenuDivider />
         <MenuItem
           onClick={this.toggleCompact}
-          iconName="minimize"
+          icon="minimize"
           text="Compact Mode"
         />
         <MenuDivider />
         <MenuItem
           onClick={this.welcome}
-          iconName="chat"
+          icon="chat"
           text="Welcome"
         />
         <MenuItem
           onClick={this.report}
-          iconName="error"
+          icon="error"
           text="Report Issue"
         />
         <MenuDivider />
         <MenuItem
           onClick={this.update}
-          iconName="automatic-updates"
+          icon="automatic-updates"
           text="Check for updates"
         />
         <MenuItem
           onClick={this.goToSettings}
-          iconName="cog"
+          icon="cog"
           text="Settings"
         />
       </Menu>
@@ -151,7 +151,7 @@ export default class CustomMenu extends PureComponent {
         portalClassName={portalContainer}
         className={menuContainer}
       >
-        <Button iconName="menu" className={menuStyle} />
+        <Button icon="menu" className={menuStyle} />
       </Popover>
     );
   }

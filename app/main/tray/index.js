@@ -89,8 +89,8 @@ class FocoTray {
 
   setIcon() {
     this.icon = isLinux() || isMacOS()
-      ? base('/assets/images/icon-mac@2x.png')
-      : base('/assets/images/icon-windows@2x.png');
+      ? base('/assets/images/icon-mac.png')
+      : base('/assets/images/icon-windows.png');
   }
 
   setTrayTitle = (e, time) => {
@@ -124,7 +124,7 @@ class FocoTray {
       }
 
       default: {
-        this.tray.setImage(base('/assets/images/icon-mac@2x.png'));
+        this.tray.setImage(base('/assets/images/icon-windows.png'));
         return null;
       }
     }

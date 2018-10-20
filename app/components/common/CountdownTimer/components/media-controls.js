@@ -73,19 +73,19 @@ export default class MediaControls extends PureComponent {
     return (
       <section className="z-1">
         <Button
-          iconName="redo"
+          icon="redo"
           onClick={this.openAlert}
           className={buttonStyles}
         />
         <Button
           ref={p => { this.playBtn = p; }}
           active={isPlaying}
-          iconName={isPlaying ? 'pause' : 'play'}
+          icon={isPlaying ? 'pause' : 'play'}
           onClick={this.onMediaControlClick}
           className={classNames(buttonStyles, 'mx-3')}
         />
         <Button
-          iconName="step-forward"
+          icon="step-forward"
           disabled={hasReachedLastRound(
             currentPhase,
             currentRound,

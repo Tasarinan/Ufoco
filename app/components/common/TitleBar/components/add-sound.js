@@ -143,7 +143,7 @@ class AddSound extends PureComponent {
       <div className={className}>
         <Button
           className={buttonStyles}
-          iconName="music"
+          icon="music"
           onClick={() => this.setState({ isOpen: true })}
         />
         <Dialog
@@ -174,7 +174,7 @@ class AddSound extends PureComponent {
                 >
                   <Button
                     className="remove-button pt-minimal btn-no-bg ml-1"
-                    iconName="cross"
+                    icon="cross"
                     onClick={() => this.onRemoveSound(sound)}
                   />
                 </Radio>

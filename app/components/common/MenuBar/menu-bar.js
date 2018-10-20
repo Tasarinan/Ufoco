@@ -54,12 +54,12 @@ export default class MenuBar extends PureComponent {
         {Menu && <Menu className={menuStyles} />}
         <div className="position-absolute absolute-top-right">
           <Button
-            iconName="minus"
+            icon="minus"
             onClick={this.minimize}
             className={buttonStyles}
           />
           <Button
-            iconName="small-cross"
+            icon="small-cross"
             onClick={this.quit}
             className={buttonStyles}
           />

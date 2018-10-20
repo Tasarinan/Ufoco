@@ -61,7 +61,7 @@ export default class MiniView extends PureComponent {
       <div className={containerStyles}>
         <div className="position-absolute absolute-top-right">
           <Button
-            iconName="maximize"
+            icon="maximize"
             onClick={toggleCompactMode}
             className={fullscreenBtnStyles}
           />

@@ -149,7 +149,7 @@ export default class LibraryPanel extends PureComponent<void, Props, State> {
           <AddSound className="d-inline" addSound={addSound} />
           <Button
             className="pt-minimal btn-no-hover btn-no-bg"
-            iconName="trash"
+            icon="trash"
             intent={Intent.DANGER}
             disabled={!selectedId}
             onClick={this.onRemove}
@@ -170,7 +170,7 @@ export default class LibraryPanel extends PureComponent<void, Props, State> {
                   {sound.title}
                   {sound.id === selectedId && (
                     <Popover className="ml-2" content={this.menu()}>
-                      <Icon iconName="more" />
+                      <Icon icon="more" />
                     </Popover>
                   )}
                 </td>
