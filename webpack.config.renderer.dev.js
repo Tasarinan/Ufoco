@@ -50,13 +50,12 @@ export default merge.smart(baseConfig, {
       'react-hot-loader/patch',
       `webpack-dev-server/client?http://localhost:${port}/`,
       'webpack/hot/only-dev-server',
-      path.join(__dirname, 'app/index.js'),
+      path.join(__dirname, 'app/index.js')
     ],
-    'renderer.dev.welcome': [
+    welcome: [
       path.join(__dirname, 'app/pages/welcome/index.js')
     ]
   },
-
   output: {
     publicPath: `http://localhost:${port}/dist/`
   },

@@ -3,7 +3,7 @@ import settings from 'electron-settings';
 
 import { SEND_TOGGLE_COMPACT } from '../constants/AppConstants';
 
-import repo from '../package.json';
+import repo from '../../package.json';
 
 export const openNewWindow = (link) => shell.openExternal(link);
 

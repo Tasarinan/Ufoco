@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog } from '@blueprintjs/core';
-
-const URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc498W0BqVHGhhb_A9WyxrHGfbMeynnuEXa5NYpjMD9nDQpng/viewform?embedded=true';
+/** TBD */
+const URL = '#';
 
 const IssueReporter = ({ showIssueReportingModal, closeFeedback }) => (
   <Dialog

@@ -32,8 +32,8 @@
         const port = process.env.PORT || 1212;
         scripts.push(
           (process.env.HOT)
-            ? 'http://localhost:' + port + '/dist/renderer.dev.welcome.js'
-            : './dist/renderer.prod.welcome.js'
+            ? 'http://localhost:' + port + '/dist/welcome.js'
+            : './dist/welcome.js'
         );
 
         document.write(

@@ -13,7 +13,7 @@ import {
 import { openReleaseNotes } from '../../utils/release-notes.util';
 import { setFullAppMode } from '../../utils/windows.util';
 
-import repo from '../../package.json';
+import repo from '../../../package.json';
 
 export default function buildWindowsMenu(win) {
   return [

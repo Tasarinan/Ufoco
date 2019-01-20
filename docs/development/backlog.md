@@ -1,22 +1,27 @@
-# Ufoco
+# UFOCO
 
-## As a user I want to quickly create items(tasks, ideas, outlines etc) and orgnizated them as nested list
+## Use story
 
-## As a user I want to quickly define each item specific attribute(for example, remind date(start, end date))
+1.As a user I want to quickly tell foco my intent but expect foco understand my hinding meaning
 
-## As a user I want to generate a Todo list for every day before 8:00 morning
+- acceptance criteria:
+  - []
+  - ~~[ ] `right`/`left`/`space`/`shift`+`space` cycle through states~~
+  - []] Shortcuts are added to `shortcuts.md`
 
-## As a user I want to export content to text/pdf file
+2.As a user I want to quickly get daily candidate tasks for next 8 hours
 
-## As a user I want to display all items as dashboard style
+3.As a user I want to get reminder for next task
 
-## As a user I want to get notificaton for next task
+4.As a user I want to quickly make a note
 
-## TODO As a (kanban) user I want to have the DONE state ordered by time in reverse, that I can see what I finished last
+5.As a user I want to make me focus one task without disturb
 
-## TODO As A User I want the the details of a task when I klick on it, that I can see notes I did to finish it.
+6.As a user I want to search all my intents before
 
-- [ ] Two possibilities 1. New Window,Tab with Deteils. 2. Preview like in Geary, tbd.
+7.As a user I want to have status charts to review what I finished last
+
+8.As a User I want add/edit/delete the details of a intent what I wrote before.
 
 ## TODO As a User I want to syncronize my tasks via dropbox and similar services, that I can add tasks from every computer I have access to.
 

@@ -26,7 +26,7 @@ class FocoMain {
   welcomeWindow = null;
 
   windowConfiguration = {
-    frame: false,
+    frame: true,
     titleBarStyle: 'hidden-inset',
     icon: isMacOS() || isLinux()
       ? path.join(__dirname, '../../resources/icons/mac/64x64.png')

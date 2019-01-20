@@ -16,7 +16,6 @@ import settings from './utils/electron-settings.util';
 import { isDebugProd, isDev, isProd } from './utils/env.util';
 import { installExtensions } from './utils/install-extensions.util';
 import { CREATE_WELCOME_WINDOW_ON_MAIN } from './constants/AppConstants';
-import log from './utils/log.util';
 
 import FocoMain from './main';
 

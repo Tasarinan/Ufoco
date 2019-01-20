@@ -62,12 +62,3 @@ export const MediaControlTypes = {
   STOP:'STOP'
 }
 
-export const APP_GLOBALS = {
-  name: 'Ufoco'
-}
-
-export const APP_INFO = {
-  NOT_AVAILABLE: 'N/A',
-  NO_NOTIFICATIONS: 'No notifications',
-  CONFIRMATION: 'Would you like to $action $name@version?'
-}
