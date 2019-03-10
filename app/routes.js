@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from 'react-router';
-import PrivateRoute from './components/common/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 import App from './components/App';
 import Home from './components/Home';
 import Charts from './components/Charts';

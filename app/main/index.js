@@ -28,6 +28,8 @@ class FocoMain {
   windowConfiguration = {
     frame: true,
     titleBarStyle: 'hidden-inset',
+    fullscreenable: true,
+    backgroundColor: '#403F4D',
     icon: isMacOS() || isLinux()
       ? path.join(__dirname, '../../resources/icons/mac/64x64.png')
       : path.join(__dirname, '../../resources/icons/windows/64x64.png'),

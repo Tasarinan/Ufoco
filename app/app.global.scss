@@ -1,15 +1,11 @@
-// Downloaded modules
+
 @import "~normalize.css/normalize.css";
 @import "~@blueprintjs/core/lib/css/blueprint.css";
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
-@import '~material-design-icons/iconfont/material-icons.css';
-@import '~typeface-roboto';
 
 
-// Custom modules
+
+
 @import "./styles/variables";
 @import "./styles/utils";
 @import "./styles/global";
@@ -17,7 +13,7 @@
 @import "./styles/colors";
 @import "./styles/typography";
 
-// Components
+
 @import "./components/common/CountdownTimer/countdown-timer";
 @import "./components/Charts/charts";
 @import "./components/Library/library";

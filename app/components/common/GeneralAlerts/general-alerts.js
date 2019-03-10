@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Alert } from '@blueprintjs/core';
+import { Alert } from 'antd';
 
 export default class GenAlert extends PureComponent {
   static propTypes = {
@@ -8,7 +8,7 @@ export default class GenAlert extends PureComponent {
     className: PropTypes.string,
     closeGeneralAlert: PropTypes.func.isRequired,
     confirmText: PropTypes.string.isRequired,
-    intent: PropTypes.number.isRequired,
+    alertType: PropTypes.string.isRequired,
     isOpen: PropTypes.bool.isRequired,
     message: PropTypes.oneOfType([
       PropTypes.string,
@@ -29,23 +29,18 @@ export default class GenAlert extends PureComponent {
       className,
       closeGeneralAlert,
       confirmText,
-      intent,
+      alertType,
       isOpen,
       message,
     } = this.props;
 
-    return isOpen && (
+    return isOpen?(
       <Alert
-        cancelButtonText={cancelText}
-        className={className}
-        confirmButtonText={confirmText}
-        intent={intent}
-        isOpen={isOpen}
-        onCancel={closeGeneralAlert}
-        onConfirm={this.whenConfirm}
-      >
-        {message}
-      </Alert>
-    );
-  }
+        message={message}
+        closeText={cancelText}
+        type={alertType}
+        showIcon
+        onClose={closeGeneralAlert}
+      />):null
+    }
 }

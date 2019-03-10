@@ -1,6 +1,6 @@
 # Build
 
-We only support the stable version of Node.js. Current stable version is `v6.*.*`.
+We only support the stable version of Node.js. Current stable version is `v10.*.*`.
 
 ## Development
 
@@ -13,7 +13,7 @@ npm install
 Run `webpack-dev-server`
 
 ```sh
-npm run webpack
+npm run dev
 ```
 
 Open another terminal session and start the app

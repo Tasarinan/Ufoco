@@ -51,10 +51,11 @@ export default merge.smart(baseConfig, {
       `webpack-dev-server/client?http://localhost:${port}/`,
       'webpack/hot/only-dev-server',
       path.join(__dirname, 'app/index.js')
-    ],
+     ]//,
+    /**
     welcome: [
       path.join(__dirname, 'app/pages/welcome/index.js')
-    ]
+    ]*/
   },
   output: {
     publicPath: `http://localhost:${port}/dist/`
@@ -111,6 +112,27 @@ export default merge.smart(baseConfig, {
           }
         ]
       },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true //This is important!
+            }
+          }
+        ]
+      },
+
       // SASS support - compile all .global.scss files and pipe it to style.css
       {
         test: /\.global\.(scss|sass)$/,

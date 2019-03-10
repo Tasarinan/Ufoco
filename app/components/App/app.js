@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { ipcRenderer } from 'electron';
 import classNames from 'classnames';
 import settings from 'electron-settings';
-import { Intent } from '@blueprintjs/core';
+import {LocaleProvider, Button,message} from 'antd';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
 
 import { isMacOS } from '../../utils/platform.util';
 import { showIssuesWindow } from '../../utils/windows.util';
@@ -150,9 +151,10 @@ export default class App extends PureComponent {
     openGeneralAlert(msg, onConfirm, {
       cancelText,
       confirmText,
-      intent: Intent.SUCCESS
+      alertType: 'sucess'
     });
   };
+
 
   renderView = () => {
     const {
@@ -165,6 +167,8 @@ export default class App extends PureComponent {
     const mainClass = classNames({
       'pt-dark': theme === Themes.DARK
     });
+
+
 
     return (
       <main className={mainClass}>
@@ -179,17 +183,21 @@ export default class App extends PureComponent {
     const { checkingForUpdates, isDownloading } = this.state;
 
     return (
-      <div>
-        {/* General Alert */}
-        {<GenAlert className="h-60 w-80" />}
+      <LocaleProvider locale={zhCN}>
 
-        {/* Updating */}
-        <OverlaySpinner isOpen={checkingForUpdates || isDownloading}>
-          {checkingForUpdates ? 'Checking for updates...' : 'Downloading update...'}
-        </OverlaySpinner>
+        <div>
 
-        {this.renderView()}
-      </div>
+          {/* General Alert */}
+          {<GenAlert className="h-60 w-80" />}
+
+          {/* Updating */}
+          <OverlaySpinner isOpen={checkingForUpdates || isDownloading}>
+            {checkingForUpdates ? 'Checking for updates...' : 'Downloading update...'}
+          </OverlaySpinner>
+
+          {this.renderView()}
+        </div>
+      </LocaleProvider>
     );
   }
 }

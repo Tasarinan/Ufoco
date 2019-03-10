@@ -10,7 +10,17 @@
     "stage-0",
     "react"
   ],
-  "plugins": ["add-module-exports"],
+  "plugins": [
+    "add-module-exports",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ] // `style: true` for less
+  ],
   "env": {
     "production": {
       "presets": ["react-optimize"],
