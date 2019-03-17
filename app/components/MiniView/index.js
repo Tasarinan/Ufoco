@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { toggleCompactMode } from '../App/actions';
+
 
 import { currentPhase, timer } from '../../selectors/rounds.selectors';
 
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleCompactMode: () => dispatch(toggleCompactMode())
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MiniView);

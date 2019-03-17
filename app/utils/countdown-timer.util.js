@@ -1,5 +1,3 @@
-import { Intent } from '@blueprintjs/core';
-
 import { Phases } from '../constants/AppSettings';
 
 export const getPhaseTime = (fl, lbl, sbl, cp) => {
@@ -18,12 +16,6 @@ export const hasReachedEnd = (currentPhase, currentRound, timer, totalRounds) =>
 export const hasReachedLastRound = (currentPhase, currentRound, totalRounds) => (
   currentRound >= totalRounds && currentPhase >= 0
 );
-
-export const spinnerIntent = (currentPhase) => {
-  if (currentPhase === Phases.FOCUS) return Intent.DANGER;
-  else if (currentPhase === Phases.SHORT_BREAK) return Intent.PRIMARY;
-  else if (currentPhase === Phases.LONG_BREAK) return Intent.NONE;
-};
 
 export const twoDigits = (n) => {
   if (n < 10) return `0${n}`;

@@ -7,12 +7,10 @@ import {
   LOAD_SETTINGS,
   OPEN_WELCOME_WINDOW,
   SEND_NEW_SESSION,
-  SEND_NEW_CONFETTI,
-  SEND_TOGGLE_COMPACT,
+  SEND_NEW_CONFETTI
 } from '../../constants/AppConstants';
 
 import { openReleaseNotes } from '../../utils/release-notes.util';
-import { setFullAppMode } from '../../utils/windows.util';
 
 import repo from '../../../package.json';
 
@@ -25,7 +23,6 @@ export default function buildDarwinMenu(win) {
       {
         label: 'Check for Updates...',
         click() {
-          setFullAppMode(win);
           autoUpdater.checkForUpdates();
         }
       },
@@ -36,7 +33,6 @@ export default function buildDarwinMenu(win) {
             label: '&Settings',
             accelerator: 'Command+,',
             click() {
-              setFullAppMode(win);
               win.webContents.send(LOAD_SETTINGS);
             }
           }
@@ -106,7 +102,6 @@ export default function buildDarwinMenu(win) {
       accelerator: 'Ctrl+Command+M',
       click() {
         if (win.isFullScreen()) win.setFullScreen(false);
-        win.webContents.send(SEND_TOGGLE_COMPACT);
       }
     }
   ];

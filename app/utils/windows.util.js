@@ -1,16 +1,11 @@
 import { remote, shell } from 'electron';
 import settings from 'electron-settings';
 
-import { SEND_TOGGLE_COMPACT } from '../constants/AppConstants';
 
 import repo from '../../package.json';
 
 export const openNewWindow = (link) => shell.openExternal(link);
 
-export const setFullAppMode = (win) => {
-  const isCompact = settings.get('system.compact');
-  if (isCompact) win.webContents.send(SEND_TOGGLE_COMPACT);
-};
 
 export const setWindowSize = (win, compact) => {
   const WIDTH = 400;

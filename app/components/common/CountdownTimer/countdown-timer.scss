@@ -23,7 +23,7 @@
   }
 
   .intent-focus .pt-spinner-head {
-    stroke: $focusPhase;
+    stroke: @doNotDisturbPhase;
   }
 
   .intent-short-break .pt-spinner-head {

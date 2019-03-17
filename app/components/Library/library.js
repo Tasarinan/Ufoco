@@ -4,7 +4,6 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Button, Icon, Intent, Menu, MenuItem, Popover } from '@blueprintjs/core';
 
-import Header from '../common/Header';
 import AddSound from './components/add-sound';
 import Token from './components/token';
 
@@ -144,7 +143,6 @@ export default class LibraryPanel extends PureComponent<void, Props, State> {
 
     return (
       <div className={containerStyles}>
-        <Header title="Library" />
         <div className="text-right mr-3">
           <AddSound className="d-inline" addSound={addSound} />
           <Button

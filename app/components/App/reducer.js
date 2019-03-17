@@ -8,14 +8,12 @@ import {
   SET_NOTIFICATIONS_TYPE,
   SET_CONTINUOUS_MODE,
   SET_THEME,
-  TOGGLE_COMPACT_MODE,
   TOGGLE_MINIMIZE_TO_TRAY,
   TOGGLE_SHOW_TIMER_BY_TRAY,
   TOGGLE_SHOW_TRAY_ICON,
 } from './types';
 
 const {
-  COMPACT,
   CONTINUOUS_MODE,
   MINIMIZE_TO_TRAY,
   NOTIFICATION_TYPE,
@@ -25,7 +23,6 @@ const {
 } = ElectronSettingsPaths;
 
 const initialState = {
-  compact: settings.get(COMPACT, false),
   continuousMode: settings.get(CONTINUOUS_MODE, false),
   minimizeToTray: settings.get(MINIMIZE_TO_TRAY, false),
   notificationType: settings.get(NOTIFICATION_TYPE, NotificationTypes.PHASE_CHANGES_NO_WINDOW),
@@ -60,11 +57,6 @@ export default (state = initialState, action) => {
     case SET_THEME: {
       const { theme } = action;
       return { ...state, theme };
-    }
-
-    case TOGGLE_COMPACT_MODE: {
-      const { compact } = state;
-      return { ...state, compact: !compact };
     }
 
     case TOGGLE_MINIMIZE_TO_TRAY: {

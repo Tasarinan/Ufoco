@@ -1,6 +1,6 @@
 .rounds {
   .intent-focus > .pt-progress-meter {
-    background-color: $focusPhase;
+    background-color: @doNotDisturbPhase;
   }
 
   .intent-short-break > .pt-progress-meter {

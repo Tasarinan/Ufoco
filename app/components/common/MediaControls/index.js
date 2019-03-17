@@ -7,7 +7,7 @@ import {
 } from '../../../selectors/rounds.selectors';
 
 import { pause, resume, skip } from './actions';
-import { openGeneralAlert } from '../GeneralAlerts/actions';
+import { openGeneralAlert } from '../../GeneralAlerts/actions';
 import { resetTimer } from '../Rounds/actions';
 
 import MediaControls from './media-controls';

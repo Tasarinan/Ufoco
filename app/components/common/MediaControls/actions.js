@@ -36,7 +36,7 @@ import {
   resetSession,
   setTimer,
 } from '../Rounds/actions';
-import { openGeneralAlert } from '../GeneralAlerts/actions';
+import { openGeneralAlert } from '../../GeneralAlerts/actions';
 
 let ticker = null;
 

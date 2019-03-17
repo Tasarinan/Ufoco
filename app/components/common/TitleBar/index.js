@@ -20,7 +20,7 @@ import {
   removeSound,
   setAudio,
 } from '../Sounds/actions';
-import { openGeneralAlert } from '../GeneralAlerts/actions';
+import { openGeneralAlert } from '../../GeneralAlerts/actions';
 
 import TitleBar from './title-bar';
 

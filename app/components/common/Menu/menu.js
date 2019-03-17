@@ -15,8 +15,7 @@ import {
   CHECK_FOR_UPDATES,
   LOAD_CHARTS,
   LOAD_SETTINGS,
-  OPEN_WELCOME_WINDOW,
-  SEND_TOGGLE_COMPACT,
+  OPEN_WELCOME_WINDOW
 } from '../../../constants/AppConstants';
 
 import { Themes } from '../../../constants/AppSettings';
@@ -47,15 +46,6 @@ export default class CustomMenu extends PureComponent {
 
   toggleFullscreen = () => {
     this.win.setFullScreen(!this.win.isFullScreen());
-  };
-
-  toggleCompact = () => {
-    if (this.win.isFullScreen()) this.toggleFullscreen();
-    this.win.webContents.send(SEND_TOGGLE_COMPACT);
-  };
-
-  welcome = () => {
-    this.win.webContents.send(OPEN_WELCOME_WINDOW);
   };
 
   report = () => {
@@ -119,11 +109,6 @@ export default class CustomMenu extends PureComponent {
           text="Compact Mode"
         />
         <MenuDivider />
-        <MenuItem
-          onClick={this.welcome}
-          icon="chat"
-          text="Welcome"
-        />
         <MenuItem
           onClick={this.report}
           icon="error"

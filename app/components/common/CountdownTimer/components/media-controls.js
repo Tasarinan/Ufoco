@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Button } from '@blueprintjs/core';
+import { Button } from 'antd';
 
 import { hasReachedLastRound } from '../../../../utils/countdown-timer.util';
 

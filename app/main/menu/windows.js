@@ -6,12 +6,11 @@ import {
   LOAD_SETTINGS,
   SEND_NEW_SESSION,
   SEND_NEW_CONFETTI,
-  SEND_TOGGLE_COMPACT,
   OPEN_WELCOME_WINDOW
 } from '../../constants/AppConstants';
 
 import { openReleaseNotes } from '../../utils/release-notes.util';
-import { setFullAppMode } from '../../utils/windows.util';
+
 
 import repo from '../../../package.json';
 
@@ -40,7 +39,6 @@ export default function buildWindowsMenu(win) {
         {
           label: '&Settings',
           click() {
-            setFullAppMode(win);
             win.webContents.send(LOAD_SETTINGS);
           }
         },
@@ -99,14 +97,6 @@ export default function buildWindowsMenu(win) {
         },
         { label: 'Close', accelerator: 'Ctrl+W', selector: 'performClose:' },
         { type: 'separator' },
-        {
-          label: 'Toggle Compact Mode',
-          accelerator: 'Shift+Ctrl+M',
-          click() {
-            win.webContents.send(SEND_TOGGLE_COMPACT);
-          }
-        },
-        { type: 'separator' },
         { label: 'Bring All to Front', selector: 'arrangeInFront:' }
       ]
     },
@@ -163,7 +153,6 @@ export default function buildWindowsMenu(win) {
         {
           label: 'Check for Updates...',
           click() {
-            setFullAppMode(win);
             autoUpdater.checkForUpdates();
           }
         }

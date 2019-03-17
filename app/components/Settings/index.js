@@ -33,7 +33,7 @@ import {
   toggleShowTimerByTray,
   toggleShowTrayIcon,
 } from '../App/actions';
-import { openGeneralAlert } from '../common/GeneralAlerts/actions';
+import { openGeneralAlert } from '../GeneralAlerts/actions';
 import {
   setFocusLength,
   setLongBreakInterval,

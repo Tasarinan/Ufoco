@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@blueprintjs/core';
+import { Button } from 'antd';
 import classNames from 'classnames';
 
 import { Phases } from '../../constants/AppSettings';
@@ -14,11 +14,10 @@ export default class MiniView extends PureComponent {
   static propTypes = {
     currentPhase: PropTypes.number.isRequired,
     timer: PropTypes.number.isRequired,
-    toggleCompactMode: PropTypes.func.isRequired
   };
 
   render() {
-    const { currentPhase, timer, toggleCompactMode } = this.props;
+    const { currentPhase, time } = this.props;
     const { seconds, minutes, hours } = getClockTime(timer);
 
     const containerStyles = classNames(
@@ -62,7 +61,7 @@ export default class MiniView extends PureComponent {
         <div className="position-absolute absolute-top-right">
           <Button
             icon="maximize"
-            onClick={toggleCompactMode}
+            onClick={}
             className={fullscreenBtnStyles}
           />
         </div>

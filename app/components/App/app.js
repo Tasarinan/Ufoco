@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ipcRenderer } from 'electron';
 import classNames from 'classnames';
 import settings from 'electron-settings';
-import {LocaleProvider, Button,message} from 'antd';
+import {LocaleProvider} from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 
 import { isMacOS } from '../../utils/platform.util';
@@ -20,14 +20,13 @@ import {
   SEND_ERROR,
   SEND_GENERAL_ALERT,
   SEND_NEEDS_UPDATE,
-  SEND_NEW_SESSION,
-  SEND_TOGGLE_COMPACT,
+  SEND_NEW_SESSION
 } from '../../constants/AppConstants';
 
 import { PAUSE, RESUME } from '../common/MediaControls/types';
 
 import MiniView from '../MiniView';
-import GenAlert from '../common/GeneralAlerts';
+import GenAlert from '../GeneralAlerts';
 import TitleBar from '../common/TitleBar';
 import OverlaySpinner from '../common/OverlaySpinner';
 import MenuBar from '../common/MenuBar';
@@ -35,20 +34,17 @@ import Menu from '../common/Menu';
 
 export default class App extends PureComponent {
   static propTypes = {
-    compact: PropTypes.bool.isRequired,
     theme: PropTypes.string.isRequired,
     goToHome: PropTypes.func.isRequired,
     goToCharts: PropTypes.func.isRequired,
     goToSettings: PropTypes.func.isRequired,
     loadRoundsData: PropTypes.func.isRequired,
     openGeneralAlert: PropTypes.func.isRequired,
-    openWelcomeSlides: PropTypes.func.isRequired,
     pause: PropTypes.func.isRequired,
     resetSession: PropTypes.func.isRequired,
     resume: PropTypes.func.isRequired,
     setAppSettings: PropTypes.func.isRequired,
     setTheme: PropTypes.func.isRequired,
-    toggleCompactMode: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired
   };
 
@@ -64,9 +60,7 @@ export default class App extends PureComponent {
       goToSettings,
       pause,
       resetSession,
-      resume,
-      toggleCompactMode,
-      openWelcomeSlides,
+      resume
     } = this.props;
 
     // NOTE: Fix for not loading correct path in production
@@ -83,7 +77,6 @@ export default class App extends PureComponent {
     ipcRenderer.on(SEND_GENERAL_ALERT, this.showGeneralAlert);
     ipcRenderer.on(SEND_NEEDS_UPDATE, this.showUpdateMessage);
     ipcRenderer.on(SEND_NEW_SESSION, resetSession);
-    ipcRenderer.on(SEND_TOGGLE_COMPACT, toggleCompactMode);
 
     this.loadSavedData();
   }

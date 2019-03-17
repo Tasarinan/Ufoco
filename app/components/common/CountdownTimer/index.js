@@ -18,7 +18,7 @@ import {
 import {
   resetTimer,
 } from '../Rounds/actions';
-import { openGeneralAlert } from '../GeneralAlerts/actions';
+import { openGeneralAlert } from '../../GeneralAlerts/actions';
 
 import CountdownTimer from './countdown-timer';
 

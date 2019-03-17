@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Tab2, Tabs2 } from '@blueprintjs/core';
 
-import Header from '../common/Header';
 import {
   ColorsPanel,
   NotificationsPanel,
@@ -32,7 +31,6 @@ export default class Settings extends PureComponent {
 
     return (
       <div className={containerStyles}>
-        <Header title="Preferences" />
         <Tabs2 id="PreferencesMenus" animate={false} vertical className="ml-2">
           <Tab2
             id="timer"

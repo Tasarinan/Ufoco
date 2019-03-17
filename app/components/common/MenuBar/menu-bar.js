@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { remote } from 'electron';
 import classNames from 'classnames';
-import { Button } from '@blueprintjs/core';
+import { Button } from 'antd';
 
 export default class MenuBar extends PureComponent {
   static propTypes = {
@@ -59,7 +59,7 @@ export default class MenuBar extends PureComponent {
             className={buttonStyles}
           />
           <Button
-            icon="small-cross"
+            icon="close"
             onClick={this.quit}
             className={buttonStyles}
           />

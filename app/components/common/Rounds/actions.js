@@ -44,7 +44,7 @@ import {
 import { isPlaying as getIsPlaying } from '../../../selectors/mediaControls.selectors';
 
 import { setElectronSettings } from '../../App/actions';
-import { openGeneralAlert } from '../GeneralAlerts/actions';
+import { openGeneralAlert } from '../../GeneralAlerts/actions';
 import { clearTicker, pause, resume } from '../MediaControls/actions';
 
 export const goToNextPhase = () => (dispatch, getState) => {

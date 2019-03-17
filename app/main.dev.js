@@ -54,6 +54,3 @@ app.on('ready', async () => {
   Main = FocoMain.init(`file://${__dirname}/app.html`).window;
 });
 
-ipcMain.on(CREATE_WELCOME_WINDOW_ON_MAIN, (win) => {
-  win.loadURL(`file://${__dirname}/welcome.html`);
-});

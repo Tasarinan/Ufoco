@@ -24,10 +24,7 @@ export default merge.smart(baseConfig, {
   entry: {
     'renderer.prod': [
       './app/index',
-    ]//,
-   /** welcome: [
-      './app/pages/welcome/index',
-    ],*/
+    ]
   },
 
   output: {

@@ -5,8 +5,7 @@ import classNames from 'classnames';
 import { getDate } from '../../utils/date.util';
 
 import Summary from './components/summary';
-import LineGraph from '../common/LineGraph';
-import Header from '../common/Header';
+import LineGraph from './line-graph';
 
 export default class Charts extends PureComponent {
   static propTypes = {
@@ -50,7 +49,6 @@ export default class Charts extends PureComponent {
     );
     return (
       <div className={containerStyles}>
-        <Header title="Progress Chart" />
         <LineGraph data={data.length < 1 ? defaultData : data} theme={theme} />
         <Summary className="mt-3" data={data.length < 1 ? defaultData : data} />
       </div>

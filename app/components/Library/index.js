@@ -14,7 +14,7 @@ import {
   removeSound,
   setAudio
 } from '../common/Sounds/actions';
-import { openGeneralAlert } from '../common/GeneralAlerts/actions';
+import { openGeneralAlert } from '../GeneralAlerts/actions';
 
 import Library from './library';
 
