@@ -1,0 +1,20 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 100%;
+  width: 40px;
+  border-radius: 3px 0 0 0;
+}
+
+.menu,
+.controls div {
+  -webkit-app-region: no-drag;
+}
+.menu:hover,
+.controls div:hover {
+  background: var(--sidebar-hover);
+  cursor: pointer;
+}
+

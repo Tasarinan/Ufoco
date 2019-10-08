@@ -1,43 +1,36 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "targets": { "node": 10 },
-        "useBuiltIns": true
-      }
-    ],
-    "stage-0",
-    "react"
-  ],
+  "presets": ["@babel/env", "@babel/react"],
   "plugins": [
-    "add-module-exports",
     [
       "import",
       {
         "libraryName": "antd",
-        "libraryDirectory": "es",
         "style": true
+      },
+      "ant"
+    ],
+    "add-module-exports",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/transform-runtime",
+    "react-hot-loader/babel",
+    [
+      "babel-plugin-root-import",
+
+      {
+        "rootPathPrefix": "@",
+        "rootPathSuffix": "./src"
       }
-    ] // `style: true` for less
+    ]
   ],
   "env": {
-    "production": {
-      "presets": ["react-optimize"],
-      "plugins": ["dev-expression"]
-    },
     "development": {
-      "plugins": [
-        "transform-class-properties",
-        "transform-es2015-classes",
-        [
-          "flow-runtime",
-          {
-            "assert": true,
-            "annotate": true
-          }
-        ]
-      ]
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    },
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    },
+    "production": {
+      "plugins": ["transform-react-remove-prop-types"]
     }
   }
 }

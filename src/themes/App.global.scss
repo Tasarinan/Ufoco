@@ -1,0 +1,36 @@
+// Variables
+@import "./Ant.vars.scss";
+
+// Example import .css
+//@import '~name_in_node_modules/dist/style.css';
+
+// Global styles
+body {
+  position: relative;
+  height: 100vh;
+  overflow-y: hidden;
+  margin:0;
+  padding:0;
+  background-color: #f0f2f5;
+}
+
+
+.draggable {
+  -webkit-app-region: drag;
+}
+
+.non-draggable {
+  -webkit-app-region: no-drag;
+}
+
+.no-select {
+  -webkit-user-select: none;
+}
+
+.remove-focus:focus {
+  outline: none !important;
+}
+
+.cursor-default {
+  cursor: default;
+}

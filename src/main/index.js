@@ -1,0 +1,98 @@
+import path from 'path';
+import { app, BrowserWindow  } from 'electron';
+
+import { ElectronSettingsPaths } from '../constants/ElectronSettings';
+
+import settings from '../utils/electron-settings.util';
+import { isMacOS, isLinux } from '../utils/platform.util';
+import { setWindowSize } from '../utils/windows.util';
+
+import BiguMenu from './menu';
+import BiguTray from './tray';
+// import BiguUpdater from './updater';
+
+class BiguMain {
+
+  constructor(){
+  this.menu = null;
+  this.path = null;
+  this.tray = null;
+  this.updater = null;
+  this.window = null;
+  }
+
+  windowConfiguration = {
+    frame: true,
+    titleBarStyle: 'hidden-inset',
+    fullscreenable: true,
+    backgroundColor: '#403F4D',
+    icon: isMacOS() || isLinux()
+      ? path.join(__dirname, '../assets/icons/mac/64x64.png')
+      : path.join(__dirname, '../assets/icons/windows/64x64.png'),
+  };
+
+  init(appPath) {
+    this.path = appPath;
+    this.createMainWindow();
+    this.createMenu();
+    this.createTray();
+    this.createUpdater();
+    this.setListeners();
+    this.load();
+    return this;
+  }
+
+  createMenu() {
+    this.menu = BiguMenu.init(this.window);
+  }
+
+  createTray() {
+    this.tray = BiguTray.init(this.window);
+  }
+
+  createUpdater() {
+   // this.updater = BiguUpdater.init(this.window);
+  }
+
+  createMainWindow() {
+    const { COMPACT } = ElectronSettingsPaths;
+    this.window = new BrowserWindow({
+      ...this.windowConfiguration,
+      show: false,
+    });
+    setWindowSize(this.window, settings.get(COMPACT));
+  }
+
+
+
+  load() {
+    this.window.loadURL(this.path);
+  }
+
+
+  setWindowListeners() {
+    const { MINIMIZE_TO_TRAY } = ElectronSettingsPaths;
+
+    this.window.on('ready-to-show', () => {
+      if (!this.window) throw new Error('"Main Window" is not defined');
+      this.window.show();
+      this.window.focus();
+    });
+
+    this.window.on('minimize', e => {
+      const minimizeToTray = settings.get(MINIMIZE_TO_TRAY);
+      e.preventDefault();
+      if (minimizeToTray) this.window.hide();
+    });
+
+    this.window.on('closed', () => {
+      app.quit();
+    });
+  }
+
+  setListeners() {
+    this.setWindowListeners();
+  }
+}
+
+export default new BiguMain();

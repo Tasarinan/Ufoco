@@ -214,7 +214,7 @@ acceptance criteria:
 
 ## DONE Search- and Entry-Box can both be open at the same time.
 
-## DONE As a new Akiee user, I want a some help what to do next, that I don't to guess what features could be usefull to me.
+## TODO As a new Akiee user, I want a some help what to do next, that I don't to guess what features could be usefull to me.
 
 acceptance criteria:
 
