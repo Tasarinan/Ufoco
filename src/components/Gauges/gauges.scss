@@ -1,54 +1,77 @@
 .container {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.progressbar {
+  position: fixed;
+  z-index: -1;
+}
+
+.overlay {
   display: flex;
+  flex-direction: row;
+  position: fixed;
+  z-index: 2;
   height: 120px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  background: var(--content-background);
-  box-shadow: 0 3px 5px 1px var(--shadow);
+  width: 300px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 60px;
+  background: white;
 }
 
-.section {
-  font-size: 27px;
-  padding-bottom: 10px;
-  color: var(--darktext);
-  letter-spacing: 2px;
+.mask {
+  width: 40px;
+  height: 80px;
+  z-index: 2;
+  margin-top: 20px;
+  margin-left: 20px;
+  border: 0px solid black;
+  background-color: black;
+  border-radius: 100% 0 0 100%/50%;
+  border-right: none;
 }
-
-/* Specificity hack to overwrite width of progress circle */
-.right > .progress {
-  width: 33%;
-  height: 70px;
-}
-
-.left {
+.dateContainer {
   display: flex;
+  z-index: 2;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  width: 30%;
-  border-right: 1px solid var(--border);
-}
-
-.right {
-  box-sizing: border-box;
-  padding: 0 10px 0 0;
-  width: 70%;
-  display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  width: 90px;
+  height: 80px;
+  margin-top: 20px;
+  margin-left: 0px;
+  background-color: black;
 }
 
 .date {
-  width: 33%;
-  height: 50%;
+  width: 90px;
+  height: 60px;
+  margin-left: 0px;
 }
 
-.average {
-  font-size: 20px;
+.expandButton {
+  height: 10px;
+  width: 60px;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.04);
+}
+.expandButton:hover {
+  background: rgb(21, 255, 0);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.right {
+  width: 30%;
+  height: 60%;
+  margin-top: 20px;
+  margin-left: 40px;
   box-sizing: border-box;
-  padding-right: 15px;
-  width: 33%;
+  padding: 0 10px 0 0;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
 }

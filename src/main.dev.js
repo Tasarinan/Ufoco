@@ -4,16 +4,14 @@
  * through IPC.
  *
  */
-import path from 'path';
-import url from 'url';
-import { app } from 'electron';
-import settings from './utils/electron-settings.util';
-import {  isDev, isProd } from './utils/env.util';
-//import { installExtensions }  from './utils/install-extensions.util';
+import path from "path";
+import url from "url";
+import { app } from "electron";
+import settings from "./utils/electron-settings.util";
+import { isDev, isProd } from "./utils/env.util";
+import { installExtensions } from "./utils/install-extensions.util";
 
-
-import BiguMain from './main/index';
-
+import BiguMain from "./main";
 
 // Temporary fix broken high-dpi scale factor on Windows (125% scaling)
 // info: https://github.com/electron/electron/issues/9691
@@ -23,11 +21,9 @@ if (process.platform === "win32") {
 }
 
 if (isProd()) {
-  const sourceMapSupport = require('source-map-support'); // eslint-disable-line global-require
+  const sourceMapSupport = require("source-map-support"); // eslint-disable-line global-require
   sourceMapSupport.install();
 }
-
-
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
@@ -45,10 +41,15 @@ app.on("activate", (e, hasVisibleWindows) => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready',  () => {
-
+app.on("ready", async () => {
+  if (
+    process.env.NODE_ENV === "development" ||
+    process.env.DEBUG_PROD === "true"
+  ) {
+    await installExtensions();
+  }
   // DANGER: Use wisely. This will delete their settings in local
-  settings.flush('DONE_FLUSH', { chart: false });
+  settings.flush("DONE_FLUSH", { chart: false });
   // and load the index.html of the app.
   let indexPath;
 

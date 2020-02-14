@@ -1,27 +1,27 @@
 // Libs
 import React from "react";
 import { render } from "react-dom";
-import { AppContainer } from 'react-hot-loader';
-import Root from './containers/Root';
+import { AppContainer } from "react-hot-loader";
+import Root from "./root";
 
 // Styles
 import "@/themes/App.global.scss";
 
 render(
   <AppContainer>
-  <Root/>
+    <Root />
   </AppContainer>,
-  document.getElementById('app'));
+  document.getElementById("app")
+);
 
-
-  if (module.hot) {
-    module.hot.accept('./containers/Root', () => {
-      const NextRoot = require('./containers/Root'); // eslint-disable-line global-require
-      render(
-        <AppContainer>
-          <NextRoot />
-        </AppContainer>,
-        document.getElementById('app')
-      );
-    });
-  }
+if (module.hot) {
+  module.hot.accept("./root", () => {
+    const NextRoot = require("./root"); // eslint-disable-line global-require
+    render(
+      <AppContainer>
+        <NextRoot />
+      </AppContainer>,
+      document.getElementById("app")
+    );
+  });
+}

@@ -20,7 +20,6 @@
     "no-undef": "warn",
     "no-undefined": "warn",
     "no-unused-vars": "warn",
-    "no-extra-parens": ["error", "all", { "ignoreJSX": "all" }],
     "no-constant-condition": "warn",
     "react/prop-types": "warn"
   },

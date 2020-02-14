@@ -1,12 +1,11 @@
-import { Menu } from 'electron';
-import darwinMenuBuilder from './darwin';
-import windowsMenuBuilder from './windows';
+import { Menu } from "electron";
+import darwinMenuBuilder from "./darwin";
+import windowsMenuBuilder from "./windows";
 
-import { isDev, isDebugProd } from '../../utils/env.util';
-import { isMacOS } from '../../utils/platform.util';
+import { isDev, isDebugProd } from "../../utils/env.util";
+import { isMacOS } from "../../utils/platform.util";
 
 class BiguMenu {
-
   constructor() {
     this.menu = null;
     this.template = null;
@@ -34,16 +33,16 @@ class BiguMenu {
 
   setupDevelopmentEnvironment() {
     this.window.openDevTools();
-    this.window.webContents.on('context-menu', (e, props) => {
+    this.window.webContents.on("context-menu", (e, props) => {
       const { x, y } = props;
-      Menu
-        .buildFromTemplate([{
-          label: 'Inspect element',
+      Menu.buildFromTemplate([
+        {
+          label: "Inspect element",
           click: () => {
             this.window.inspectElement(x, y);
           }
-        }])
-        .popup(this.window);
+        }
+      ]).popup(this.window);
     });
   }
 }

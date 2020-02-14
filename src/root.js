@@ -1,21 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import Routes from './routes/index';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { HashRouter } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
+import { store, history } from "./store";
+import Routes from "./routes";
 
-export default function Root({ store, history }) {
-  return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <Routes />
-      </ConnectedRouter>
-    </Provider>
-  );
+class Root extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <HashRouter>
+            <Routes />
+          </HashRouter>
+        </ConnectedRouter>
+      </Provider>
+    );
+  }
 }
 
-Root.propTypes = {
-  store: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  history: PropTypes.any // eslint-disable-line react/forbid-prop-types
-};
-
+export default Root;
