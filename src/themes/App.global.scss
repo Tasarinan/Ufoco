@@ -10,12 +10,6 @@ body {
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
   -webkit-app-region: drag;
-  background: transparent;
-  line-height: 1;
-  user-select: none;
-  cursor: default;
-  position: relative;
-  background: none;
 }
 
 *:focus {
@@ -63,4 +57,13 @@ body {
 
 .cursor-default {
   cursor: default;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
 }

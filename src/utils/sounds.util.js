@@ -1,15 +1,15 @@
-import { isMacOS } from './platform.util';
+import { isMacOS } from "./platform.util";
 
-import { currentPhase as getCurrentPhase } from '../selectors/rounds.selectors';
+import { currentPhase as getCurrentPhase } from "../selectors/rounds.selectors";
 import {
   library as getSoundLibrary,
   soundImmersionPhase as getImmersionSound,
   soundShortBreakPhase as getShortBreakSound,
-  soundLongBreakPhase as getLongBreakSound,
-} from '../selectors/sounds.selectors';
+  soundLongBreakPhase as getLongBreakSound
+} from "../selectors/sounds.selectors";
 
-import { Phases, Sounds } from '../constants/AppSettings';
-import{ ElectronSettingsPaths } from '../constants/ElectronSettings';
+import { Phases, Sounds } from "../constants/AppSettings";
+import { ElectronSettingsPaths } from "../constants/keypath_settings";
 
 export const createAudioTag = ({ id, src, title, soundType }) => {
   const audio = new Audio(src);
@@ -19,7 +19,7 @@ export const createAudioTag = ({ id, src, title, soundType }) => {
   return audio;
 };
 
-export const getCurrentSound = (state) => {
+export const getCurrentSound = state => {
   const currentPhase = getCurrentPhase(state);
 
   switch (currentPhase) {
@@ -38,39 +38,39 @@ export const getCurrentSound = (state) => {
   }
 };
 
-export const getDefaultSound = (state) => {
+export const getDefaultSound = state => {
   const currentPhase = getCurrentPhase(state);
 
   switch (currentPhase) {
     case Phases.IMMERSION: {
       return {
         key: ElectronSettingsPaths.IMMERSION_SOUND,
-        id: Sounds.TICK,
+        id: Sounds.TICK
       };
     }
     case Phases.LONG_BREAK: {
       return {
         key: ElectronSettingsPaths.LONG_BREAK_SOUND,
-        id: Sounds.TICK,
+        id: Sounds.TICK
       };
     }
     case Phases.SHORT_BREAK: {
       return {
         key: ElectronSettingsPaths.SHORT_BREAK_SOUND,
-        id: Sounds.TICK,
+        id: Sounds.TICK
       };
     }
     default: {
       return {
         key: ElectronSettingsPaths.IMMERSION_SOUND,
-        id: Sounds.TICK,
+        id: Sounds.TICK
       };
     }
   }
 };
 
-export const getTitleFromSrc = (src) => {
-  const split = isMacOS() ? src.split('/') : src.split('\\');
+export const getTitleFromSrc = src => {
+  const split = isMacOS() ? src.split("/") : src.split("\\");
   const last = split.length - 1;
   const title = split[last];
   return title;

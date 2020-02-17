@@ -1,7 +1,7 @@
 import path from "path";
-import { app, screen, BrowserWindow } from "electron";
+import { app, screen, BrowserWindow, ipcMain } from "electron";
 
-import { ElectronSettingsPaths } from "../constants/ElectronSettings";
+import { ElectronSettingsPaths } from "../constants/keypath_settings";
 
 import settings from "../utils/electron-settings.util";
 import { isMacOS, isLinux } from "../utils/platform.util";
@@ -10,6 +10,7 @@ import { setWindowSize } from "../utils/windows.util";
 import BiguMenu from "./menu";
 import BiguTray from "./tray";
 // import BiguUpdater from './updater';
+import { ON_CHANGE_COMPACT_MODE } from "../constants/ipc_channels";
 
 class BiguMain {
   constructor() {
@@ -73,6 +74,12 @@ class BiguMain {
     this.window.loadURL(this.path);
   }
 
+  setAppListeners() {
+    ipcMain.on(ON_CHANGE_COMPACT_MODE, (e, compact) =>
+      setWindowSize(this.window, compact)
+    );
+  }
+
   setWindowListeners() {
     const { MINIMIZE_TO_TRAY } = ElectronSettingsPaths;
 
@@ -94,6 +101,7 @@ class BiguMain {
   }
 
   setListeners() {
+    this.setAppListeners();
     this.setWindowListeners();
   }
 }

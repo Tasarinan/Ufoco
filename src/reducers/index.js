@@ -1,13 +1,11 @@
-import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
-import DateReducer from './date';
-import ItemReducer from './item'
+import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
+import appReducer from "./app_reduces";
 
 function createRootReducer(history) {
   return combineReducers({
     router: connectRouter(history),
-    date: DateReducer,
-    itemList: ItemReducer
+    app: appReducer
   });
 }
 
