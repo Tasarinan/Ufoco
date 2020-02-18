@@ -63,8 +63,8 @@ class BiguMain {
     const mainScreen = screen.getPrimaryDisplay();
     this.window = new BrowserWindow({
       ...this.windowConfiguration,
-      x: mainScreen.workArea.width - 300 - 20,
-      y: 40,
+      x: mainScreen.workArea.width - 500 - 20,
+      y: 50,
       show: false
     });
     setWindowSize(this.window, settings.get(COMPACT));

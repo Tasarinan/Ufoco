@@ -38,32 +38,3 @@ body {
 ::-webkit-scrollbar-thumb:vertical:active {
   background: rgba(0, 0, 0, 0.3);
 }
-
-.draggable {
-  -webkit-app-region: drag;
-}
-
-.non-draggable {
-  -webkit-app-region: no-drag;
-}
-
-.no-select {
-  -webkit-user-select: none;
-}
-
-.remove-focus:focus {
-  outline: none !important;
-}
-
-.cursor-default {
-  cursor: default;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-  cursor: pointer;
-}

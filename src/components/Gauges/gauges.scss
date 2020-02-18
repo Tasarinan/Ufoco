@@ -1,18 +1,18 @@
 .container {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
 }
 .progressbar {
   position: fixed;
-  z-index: -1;
+  z-index: 2;
 }
 
 .overlay {
   display: flex;
   flex-direction: row;
   position: fixed;
-  z-index: 2;
+  z-index: 5;
   height: 120px;
   width: 300px;
   margin-top: 10px;
@@ -52,6 +52,7 @@
 }
 
 .expandButton {
+  -webkit-app-region: no-drag;
   height: 10px;
   width: 60px;
   border-radius: 5px;

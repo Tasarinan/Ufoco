@@ -46,7 +46,7 @@ app.on("ready", async () => {
     process.env.NODE_ENV === "development" ||
     process.env.DEBUG_PROD === "true"
   ) {
-    await installExtensions();
+    //TODO await installExtensions();
   }
   // DANGER: Use wisely. This will delete their settings in local
   settings.flush("DONE_FLUSH", { chart: false });
