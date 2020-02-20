@@ -6,9 +6,9 @@ var repo = require("../../package.json");
 export const openNewWindow = link => shell.openExternal(link);
 
 export const setWindowSize = (win, compact) => {
-  const WIDTH = 400;
+  const WIDTH = 330;
   const HEIGHT = 800;
-  const COMPACT_WIDTH = 400;
+  const COMPACT_WIDTH = 330;
   const COMPACT_HEIGHT = 200;
 
   if (compact) {

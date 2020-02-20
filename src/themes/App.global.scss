@@ -6,10 +6,13 @@
 
 // Global styles
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
-  overflow-y: hidden;
   -webkit-app-region: drag;
+  line-height: 1;
+  user-select: none;
+  cursor: default;
+  position: relative;
+  background: none;
+  overflow-y: hidden;
 }
 
 *:focus {

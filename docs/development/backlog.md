@@ -1,27 +1,59 @@
 # UFOCO
 
-## Use story
+> Ver 0.1
 
-1.As a user I want to quickly tell foco my intent but expect foco understand my hinding meaning
+---
+
+- `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
+
+  - [ ] Agenda View shows all events
+  - [ ] Agenda View shows a Timetline for Today
+  - [ ] Agenda View shows current day on the menubar
+  - [ ] Agenda view shows next/previous/current day
+  - [ ] Agenda-View should always updated when it's shown
+
+* `Ongoing` As a user I want to be able to search for a event and display search result in the agenda view, that I can find task that I entered a while ago.
+
+  - [x] Filterbox
+  - [x] uses all important information: body, Parent node, date, etc.
+
+* `DONE` As a task planner I want to add due markers to a task, that I know when I have to finish them;
+
+* [x] Due Mark is recognised by the markdown theme and based on org-modes
+* [x] DEADLINE: <2013-08-24 Sa 11:00>
+* ~~[ ] Entry field allows to set date~~ this is just to ugly right now
+
+## DONE Search- and Entry-Box can both be open at the same time.
+
+- `Ongoing` As a user I want a focus view for today, that I can see today status
+
+  - [ ] focus View shows current running event status
+  - [`Done`] focus view shows today (month,year,weekday)
+  - [ ] focus view show simple statistic about today
+
+- `Ongoing` As a user I want to work as undisturb state when I work at focus
+  - [ ] focus view should force us working at undisturb state
+
+## Ver 0.2
+
+## TODO As a new Akiee user, I want a some help what to do next, that I don't to guess what features could be usefull to me.
+
+acceptance criteria:
+
+- [x] look at Atom and Scratch, when users have no file open (welcome screen)
+- [x] go away from comical style
+
+      1.As a user I want to quickly tell foco my intent but expect foco understand my hinding meaning
 
 - acceptance criteria:
+
   - []
   - ~~[ ] `right`/`left`/`space`/`shift`+`space` cycle through states~~
   - []] Shortcuts are added to `shortcuts.md`
 
-2.As a user I want to quickly get daily candidate tasks for next 8 hours
+    7.As a user I want to have status charts to review what I finished last
 
-3.As a user I want to get reminder for next task
-
-4.As a user I want to quickly make a note
-
-5.As a user I want to make me focus one task without disturb
-
-6.As a user I want to search all my intents before
-
-7.As a user I want to have status charts to review what I finished last
-
-8.As a User I want add/edit/delete the details of a intent what I wrote before.
+    8.As a User I want add/edit/delete the details of a intent what I wrote before.
 
 ## TODO As a User I want to syncronize my tasks via dropbox and similar services, that I can add tasks from every computer I have access to.
 
@@ -51,18 +83,6 @@ acceptance criteria
 - [ ] choose a DOING-date in the entry field
 - [ ] jumps (only) from TODO to DOING on the given date
 
-## TODO As a note keeper I want a agenda view for today, that I can see what I have to do today
-
-- [ ] Agenda View shows all tasks or Doings
-- [ ] Define Model, based on org-mode-parser-nodes
-- [ ] Agenda View shows a Timetable for Today
-- [ ] Agenda View is based on Org-Mode's
-- [ ] Toggle Button should be Bootstrap, for nice design
-- [ ] Editor should have focus after it is shown
-- [ ] There is a Menu entry for Agenda Views
-- [ ] There is a Shortcut for the Agenda View
-- [ ] Agenda-View should always updated when it's shown
-
 ## TODO As a user I want akie appearing suitable to my operating system, that it feels like a native app:
 
 acc:
@@ -72,17 +92,6 @@ acc:
 - [ ] Windows 8 Theme on Windows
 
 ## DONE As the user I want to see all my DOING's after livewookie is started, that I can begin with my work instantly.
-
-## DONE As a programmer I want to learn how to use mocha in node-webkit, to satisfy my personal quality needs.
-
-Aborted, because of problems between node-webkit and standard testing
-
-- [x] Install Mocha to the projecct
-- [ ] Write a view sample testcases
-- [x] Write user tests for existing features
-- [ ] Install the chrome-driver for node-webkit
-
-## DONE As a programmer I want to use a testing framework that works like racket, that I can easily transelate the knowledge I gained.
 
 ## DONE As lw developer I want to change the mini-code-edit base to fit my needs, that it is becoming my project and I can learn the things that I need are most valuable to me
 
@@ -185,8 +194,6 @@ acceptance criteria
 
 ## DONE As a user I want to order tasks without ranking yet in the GUI, that I can order them without using the editor
 
-## DONE As a developer I want to refactor Akiee's code, that I don't go insane and can add new features faster ;)
-
 - [x] Remove the dependencies of Ace-Editor for replacing/writing in the task file, instead replace/write in the ListOfNumber-Datastructure and replace the whole editor content.
 - ~~[ ] Remove "module"-pattern in app.js, this is not important in a node-webkit app?~~
 - ~~[ ] Create tests with PhantomJS for DOM-Manipulation~~
@@ -198,25 +205,3 @@ better visualize my work
 ## DONE As a experienced kanban user I want to have a Kanbanboard, that I can visualize my work.
 
 ## DONE As a user I want to know the project node of a task, that I know to which project this task belongs.
-
-## DONE As a user I want to be able to search for a task in a certain task view, that I can find task that I entered a while ago.
-
-acceptance criteria:
-
-- [x] Filterbox
-- [x] uses all important information: body, Parent node, date, etc.
-
-## DONE As a task planner I want to add due markers to a task, that I know when I have to finish them;
-
-- [x] Due Mark is recognised by the markdown theme and based on org-modes
-- [x] DEADLINE: <2013-08-24 Sa 11:00>
-- ~~[ ] Entry field allows to set date~~ this is just to ugly right now
-
-## DONE Search- and Entry-Box can both be open at the same time.
-
-## TODO As a new Akiee user, I want a some help what to do next, that I don't to guess what features could be usefull to me.
-
-acceptance criteria:
-
-- [x] look at Atom and Scratch, when users have no file open (welcome screen)
-- [x] go away from comical style
