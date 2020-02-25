@@ -3,4 +3,4 @@ https://github.com/mykter/TagTime-desktop.git
 http://rockiger.com/en/akiee
 https://github.com/desktop-assistant/desktop-assistant
 https://github.com/trevordmiller/hideaway.git
-
+https://github.com/krausekai/electron-web-blocker

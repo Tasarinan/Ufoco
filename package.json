@@ -69,6 +69,8 @@
     "electron-updater": "^4.1.2",
     "history": "^4.9.0",
     "moment": "^2.24.0",
+    "pouchdb-browser": "^7.2.1",
+    "pouchdb-find": "^7.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.8.6",

@@ -4,6 +4,15 @@
 
 ---
 
+- `Done` As a user I want UI appearing suitable to my operating system, that it feels like a native app:
+
+  - ~~electron based application~~
+  - ~~react + redux + pouchdb~~
+
+- `Done` As a user I want to store my data offline or online database
+
+  - ~~Use pouchdb +pouchdb find+leveldb~~
+
 - `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
 
   - [ ] Agenda View shows all events
@@ -12,29 +21,34 @@
   - [ ] Agenda view shows next/previous/current day
   - [ ] Agenda-View should always updated when it's shown
 
+- `Ongoing` every day, I can add a new stage where I know I should do best to finish them.
+
+  - [ ] Add button and create important info(during time, title, goal)
+  - [ ] Change title on the agenda view
+  - [ ] save stage on the database
+  - [ ] Due Mark is recognised by the markdown theme and based on org-modes
+
+- `Ongoing` As a user I want to have a focus view for today, that I can see today status
+
+  - [ ] focus View shows current running stage status
+  - ~~focus view shows today (month,day,week)~~
+  - [ ] focus view show simple statistic about today
+    - [ ] total done stages/remaining stages
+    - [ ] total done hours /remaining hours
+    - [ ] done ratio(remove done, delay, obsolete)
+
 * `Ongoing` As a user I want to be able to search for a event and display search result in the agenda view, that I can find task that I entered a while ago.
 
   - [x] Filterbox
   - [x] uses all important information: body, Parent node, date, etc.
 
-* `DONE` As a task planner I want to add due markers to a task, that I know when I have to finish them;
+> Ver 0.2
 
-* [x] Due Mark is recognised by the markdown theme and based on org-modes
-* [x] DEADLINE: <2013-08-24 Sa 11:00>
-* ~~[ ] Entry field allows to set date~~ this is just to ugly right now
+---
 
-## DONE Search- and Entry-Box can both be open at the same time.
+- `TODO` As a user I want to work as undisturb state when I work at focus
 
-- `Ongoing` As a user I want a focus view for today, that I can see today status
-
-  - [ ] focus View shows current running event status
-  - [`Done`] focus view shows today (month,year,weekday)
-  - [ ] focus view show simple statistic about today
-
-- `Ongoing` As a user I want to work as undisturb state when I work at focus
   - [ ] focus view should force us working at undisturb state
-
-## Ver 0.2
 
 ## TODO As a new Akiee user, I want a some help what to do next, that I don't to guess what features could be usefull to me.
 
@@ -82,14 +96,6 @@ acceptance criteria
 
 - [ ] choose a DOING-date in the entry field
 - [ ] jumps (only) from TODO to DOING on the given date
-
-## TODO As a user I want akie appearing suitable to my operating system, that it feels like a native app:
-
-acc:
-
-- [ ] Ubuntu Ambiance on Ubuntu
-- [ ] Some Mac Theme on MAC
-- [ ] Windows 8 Theme on Windows
 
 ## DONE As the user I want to see all my DOING's after livewookie is started, that I can begin with my work instantly.
 
