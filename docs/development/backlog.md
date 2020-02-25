@@ -13,6 +13,14 @@
 
   - ~~Use pouchdb +pouchdb find+leveldb~~
 
+- `Ongoing` every day, I can add a new stage where I know I should do best to finish them in specific time or later.
+
+  - [ ] create button to add a new stage
+    - [ ] stage general means achievement, spend hours and plan day and needed actions
+  - [ ] Change title on the agenda view
+  - [ ] save stage on the database
+  - [ ] Due Mark is recognised by the markdown theme and based on org-modes
+
 - `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
 
   - [ ] Agenda View shows all events
@@ -21,14 +29,7 @@
   - [ ] Agenda view shows next/previous/current day
   - [ ] Agenda-View should always updated when it's shown
 
-- `Ongoing` every day, I can add a new stage where I know I should do best to finish them.
-
-  - [ ] Add button and create important info(during time, title, goal)
-  - [ ] Change title on the agenda view
-  - [ ] save stage on the database
-  - [ ] Due Mark is recognised by the markdown theme and based on org-modes
-
-- `Ongoing` As a user I want to have a focus view for today, that I can see today status
+* `Ongoing` As a user I want to have a focus view for today, that I can see today status
 
   - [ ] focus View shows current running stage status
   - ~~focus view shows today (month,day,week)~~
@@ -37,7 +38,7 @@
     - [ ] total done hours /remaining hours
     - [ ] done ratio(remove done, delay, obsolete)
 
-* `Ongoing` As a user I want to be able to search for a event and display search result in the agenda view, that I can find task that I entered a while ago.
+- `Ongoing` As a user I want to be able to search for a event and display search result in the agenda view, that I can find task that I entered a while ago.
 
   - [x] Filterbox
   - [x] uses all important information: body, Parent node, date, etc.
