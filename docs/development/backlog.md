@@ -13,21 +13,22 @@
 
   - ~~Use pouchdb +pouchdb find+leveldb~~
 
-- `Ongoing` every day, I can add a new stage where I know I should do best to finish them in specific time or later.
-
-  - [ ] create button to add a new stage
-    - [ ] stage general means achievement, spend hours and plan day and needed actions
-  - [ ] Change title on the agenda view
-  - [ ] save stage on the database
-  - [ ] Due Mark is recognised by the markdown theme and based on org-modes
-
 - `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
 
-  - [ ] Agenda View shows all events
-  - [ ] Agenda View shows a Timetline for Today
+  - [ ] Agenda View group some items as a stage
+    - [ ] one stage is fixed 1 or 2 pomodoro timer
+  - ~~Agenda View displays all streak items based on Timetline style~~
   - [ ] Agenda View shows current day on the menubar
   - [ ] Agenda view shows next/previous/current day
   - [ ] Agenda-View should always updated when it's shown
+
+- `Ongoing` every day, I can get an streak item lists where I know I should do best to finish them in specific stage or later.
+
+  - [ ] create button to add a streak item
+    - [ ] streak general means achievement, spend hours and plan day and needed actions
+  - [ ] Change item label on the agenda view
+  - [ ] save item label on the database
+  - [ ] Due Mark is recognised by the markdown theme and based on org-modes
 
 * `Ongoing` As a user I want to have a focus view for today, that I can see today status
 
