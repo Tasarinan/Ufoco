@@ -13,7 +13,11 @@
 
   - ~~Use pouchdb +pouchdb find+leveldb~~
 
-- `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
+- `Done` As a user I want to stay organized for my daily affairs
+
+  - ~~Use pouchdb +pouchdb find+leveldb~~
+
+* `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
 
   - [ ] Agenda View group some items as a stage
     - [ ] one stage is fixed 1 or 2 pomodoro timer
@@ -22,7 +26,7 @@
   - [ ] Agenda view shows next/previous/current day
   - [ ] Agenda-View should always updated when it's shown
 
-- `Ongoing` every day, I can get an streak item lists where I know I should do best to finish them in specific stage or later.
+* `Ongoing` every day, I can get an streak item lists where I know I should do best to finish them in specific stage or later.
 
   - [ ] create button to add a streak item
     - [ ] streak general means achievement, spend hours and plan day and needed actions
@@ -30,16 +34,25 @@
   - [ ] save item label on the database
   - [ ] Due Mark is recognised by the markdown theme and based on org-modes
 
-* `Ongoing` As a user I want to have a focus view for today, that I can see today status
+- `Ongoing` As a user I want to have a focus view for today, that I can see today status
 
   - [ ] focus View shows current running stage status
   - ~~focus view shows today (month,day,week)~~
   - [ ] focus view show simple statistic about today
+
     - [ ] total done stages/remaining stages
     - [ ] total done hours /remaining hours
     - [ ] done ratio(remove done, delay, obsolete)
 
-- `Ongoing` As a user I want to be able to search for a event and display search result in the agenda view, that I can find task that I entered a while ago.
+- `Ongoing` As a user I want to stay working based on 20-20-20(25 break 5 minutes) from sunrise to sunset
+
+  - [ ] Automagically set the timer to schedule
+  - [ ] auto skip powersave period
+    - [ ] total done stages/remaining stages
+    - [ ] total done hours /remaining hours
+    - [ ] done ratio(remove done, delay, obsolete)
+
+* `Ongoing` As a user I want to be able to search for a event and display search result in the agenda view, that I can find task that I entered a while ago.
 
   - [x] Filterbox
   - [x] uses all important information: body, Parent node, date, etc.

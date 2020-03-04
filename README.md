@@ -1,25 +1,29 @@
 # [Ufoco](img/ufoco.png)
 
 ## What is it?
- Ufoco is not a simple word processor or note writer. It is built with web technologies but it is focused  on what you really matters now! It is so versatile that you'll have not problem using it for any scenario,but bascially I would like to recommand you use it as a memory flash card or problem domain score card.
 
-##  Project purpose
+What does ufoco mean? It's timer manager tool or todo list or work planner or others. I dont know. I only can tell you it is built with web technologies but it is focused on what you really matters now! It is so versatile that you'll have not problem using it for any scenario,but bascially I am appriciated if it can help you improve your efficency and to be a good sidekiff.
 
-During the past ten years, to help my work productivity and efficiency.  I have used many tools, like **Evernote**, typora, and Anki. but I still failed to improve my life and work. The most important reason is because I only collected them and did not take into account in my life. For sure some thime I did not understand these tools's spirit  and did not master them so I had to repeat to study and find them from the old trash box. After reading [this blog](https://www.jackkinsella.ie/articles/janki-method),I start to review why I have gone this wrong way. Maybe what I have pursued was not clear for me. Do I really need a text  or markdown editor? or Do I really need master all kinds of editor tool? or Do I really collect the different blog files ? No, We should only get what we wanted the best? "断舍理" is the good point. We need remove many features from our minds. 
-With this product, the user could make a flash card to help him improve memeory efficency,this improvement is not to be forced memory activity. it will be scheduled when you want to and when you like to.
-With this product, the user could make an list what he gonna do the next day or the next hour but dont care when he will done that and forget them. eveything will be scheduled by the program.
-This background alogrithm will have a behavior study from your previous behavior. 
+## Project purpose
 
-##  Motivation
+During the past ten years, to help my work productivity and efficiency. I have used many tools,these tools will help me from different domain, like **Evernote**, **typora**,**workflowy** can help me writting. Anki and [flash card](https://www.jackkinsella.ie/articles/janki-method) can help me improve memory. Pomodoro timer manager tool(dida tick) can help me manage time. but I still failed to improve my life and work. The most important reason is because I didnt understand what's really care about in my life. Could we ask me one question like Job steven? "if today is my last day, do we really need do this work?".For now only using a tool does not mean I can understand what should I do today or future.Maybe what I have pursued was not clear for me. Do I really need a tool to manage my self. No, We should manage ourself by staying organized, staying informed. We need better organized firstly.
+
+> **Staying Organized and Staying informed**
+
+- With this product, all things can be organized by machine and optimized by AI. all things can be informed at specific time by machine. What you should do is to execute this and complete this.
+- With this product, the user could make an list what he gonna do the next day or the next hour but dont care when he will done that and forget them. eveything will be scheduled by the program.
+- This background alogrithm will have a behavior study from your previous behavior.
+
+## Motivation
+
 The product philosophy of Ufoco is LESS equals MORE. It doesn’t matter where we put ours thoughts, ideas and to-dos down. What really counts is that we actually do that eventually - go back to my thoughts and work out some problems; continue my new idea and make it big; or just simply get everything listed done. The way how we put the jobs down should be as simple as possible. And this simple way, with your job is the LESS, which might bring your something MORE than you have imagined.
 
-
 ## Wishlist
+
 1.  **Floats** on your windows, Reachable anythime
 2.  **Dnymic** schedule the next task, not to let you annoyed.
-3.  **Nested list** and **FlashCard** support 
-4.  **Evernote** backed-up for content provider and storage. 
-
+3.  **Nested list** and **FlashCard** support
+4.  **Evernote** or **oneNote** backend support for content provider and storage.
 
 ## Features(for now)
 
@@ -33,7 +37,7 @@ The product philosophy of Ufoco is LESS equals MORE. It doesn’t matter where w
 
 5. **Save As HTML**: From the `File` menu you can select to save your current document as HTML or you can use the `CTRL + SHIFT + H` shortcut.
 
-6. **Integration**: You can upload your file to *Evernote*,*workflowy*,*github*,*wechat*
+6. **Integration**: You can upload your file to _Evernote_,_workflowy_,_github_,_wechat_
 
 7. **Customization**: Supports editor customized function like themes,font size etc
 8. Multiple document tabs management
@@ -53,8 +57,8 @@ The product philosophy of Ufoco is LESS equals MORE. It doesn’t matter where w
 22. Minimalist interface that let you focus on what matters : the content
 23. Update auto-check system (enable / disable in settings)
 
-
 ## Supported Platforms
+
 UFOCO is provided for 64-bit systems only, on OS X 10.9 and later, Windows 7 and later, Linux (Ubuntu 12.04 and later, Debian 8 and later).
 
 ## Setting Up and Running
@@ -78,7 +82,9 @@ The C++ code uses a lot of Chromium’s abstractions and types, so it’s recomm
 # JavaScript
 
 Write standard JavaScript style.
-## File names should be concatenated with - instead of _, e.g. file-name.js rather than file_name.js, because in github/atom module names are usually in the module-name form. This rule only applies to .js files.
+
+## File names should be concatenated with - instead of \_, e.g. file-name.js rather than file_name.js, because in github/atom module names are usually in the module-name form. This rule only applies to .js files.
+
 Use newer ES6/ES2015 syntax where appropriate
 const for requires and other constants
 let for defining variables
