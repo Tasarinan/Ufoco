@@ -8,7 +8,7 @@ What does ufoco mean? It's timer manager tool or todo list or work planner or ot
 
 During the past ten years, to help my work productivity and efficiency. I have used many tools,these tools will help me from different domain, like **Evernote**, **typora**,**workflowy** can help me writting. Anki and [flash card](https://www.jackkinsella.ie/articles/janki-method) can help me improve memory. Pomodoro timer manager tool(dida tick) can help me manage time. but I still failed to improve my life and work. The most important reason is because I didnt understand what's really care about in my life. Could we ask me one question like Job steven? "if today is my last day, do we really need do this work?".For now only using a tool does not mean I can understand what should I do today or future.Maybe what I have pursued was not clear for me. Do I really need a tool to manage my self. No, We should manage ourself by staying organized, staying informed. We need better organized firstly.
 
-> **Staying Organized and Staying informed**
+> **[Staying Organized](https://www.wikihow.com/Stay-Organized) and Staying informed**
 
 - With this product, all things can be organized by machine and optimized by AI. all things can be informed at specific time by machine. What you should do is to execute this and complete this.
 - With this product, the user could make an list what he gonna do the next day or the next hour but dont care when he will done that and forget them. eveything will be scheduled by the program.
@@ -64,38 +64,3 @@ UFOCO is provided for 64-bit systems only, on OS X 10.9 and later, Windows 7 and
 ## Setting Up and Running
 
 Right now getting UFOCO up and running should be as simple as installing [node](https://nodejs.org/) and then running `npm install` followed by either `npm run win` (if on Windows) or `npm run mac` if on OS X.
-
-## Coding Style
-
-These are the style guidelines for coding in **Ufoco**
-
-You can run npm run lint to show any style issues detected by cpplint and eslint.
-
-# C++ and Python
-
-For C++ and Python, we follow Chromium’s Coding Style. You can use clang-format to format the C++ code automatically. There is also a script script/cpplint.py to check whether all files conform.
-
-The Python version we are using now is Python 2.7.
-
-The C++ code uses a lot of Chromium’s abstractions and types, so it’s recommended to get acquainted with them. A good place to start is Chromium’s Important Abstractions and Data Structures document. The document mentions some special types, scoped types (that automatically release their memory when going out of scope), logging mechanisms etc.
-
-# JavaScript
-
-Write standard JavaScript style.
-
-## File names should be concatenated with - instead of \_, e.g. file-name.js rather than file_name.js, because in github/atom module names are usually in the module-name form. This rule only applies to .js files.
-
-Use newer ES6/ES2015 syntax where appropriate
-const for requires and other constants
-let for defining variables
-Arrow functions instead of function () { }
-Template literals instead of string concatenation using +
-Naming Things
-
-Electron APIs uses the same capitalization scheme as Node.js:
-
-When the module itself is a class like BrowserWindow, use CamelCase.
-When the module is a set of APIs, like globalShortcut, use mixedCase.
-When the API is a property of object, and it is complex enough to be in a separate chapter like win.webContents, use mixedCase.
-For other non-module APIs, use natural titles, like <webview> Tag or Process Object.
-When creating a new API, it is preferred to use getters and setters instead of jQuery’s one-function style. For example, .getText() and .setText(text) are preferred to .text([text]). There is a discussion on this.

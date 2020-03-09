@@ -142,7 +142,7 @@
     "webpack-merge": "^4.2.2"
   },
   "build": {
-    "productName": "Waffles",
+    "productName": "Sidekiff",
     "appId": "ufoco.tasarinan.github.io",
     "files": [
       "dist",

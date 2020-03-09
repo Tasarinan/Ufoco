@@ -13,9 +13,20 @@
 
   - ~~Use pouchdb +pouchdb find+leveldb~~
 
-- `Done` As a user I want to stay organized for my daily affairs
+- `Ongoing` As a user I want to stay organized for my daily affairs
 
-  - ~~Use pouchdb +pouchdb find+leveldb~~
+  - [ ] add a new item with priority support
+  - [ ] delete the exist item (if this exist item has only streak, remove streak also)
+  - [ ] edit the exist item for priority, title,streak,ship status,arranged stage
+  - [ ] group some items as today, others for ToBeDetermined
+
+- `Ongoing` As a user I want to use streak to motivate my consecutive affairs
+
+  - [] ~~
+
+- `Ongoing` As a user I want to use golf(important and urgency), stone(important but no urgency), sand(no important but urgency),beer(no important and no urgency) to priority my daily affairs
+
+  - [] ~~
 
 * `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
 
@@ -26,7 +37,7 @@
   - [ ] Agenda view shows next/previous/current day
   - [ ] Agenda-View should always updated when it's shown
 
-* `Ongoing` every day, I can get an streak item lists where I know I should do best to finish them in specific stage or later.
+* `Ongoing` every day, I can get an organized lists where I know I should do best to finish them in specific stage or later.
 
   - [ ] create button to add a streak item
     - [ ] streak general means achievement, spend hours and plan day and needed actions
@@ -57,6 +68,8 @@
   - [x] Filterbox
   - [x] uses all important information: body, Parent node, date, etc.
 
+- `Ongoing` As a user I want to have status charts to review what I finished last
+
 > Ver 0.2
 
 ---
@@ -65,31 +78,24 @@
 
   - [ ] focus view should force us working at undisturb state
 
-## TODO As a new Akiee user, I want a some help what to do next, that I don't to guess what features could be usefull to me.
+- `TODO` I want a some help what to do next, that I don't to guess what features could be usefull to me.
 
-acceptance criteria:
-
-- [x] look at Atom and Scratch, when users have no file open (welcome screen)
-- [x] go away from comical style
-
-      1.As a user I want to quickly tell foco my intent but expect foco understand my hinding meaning
-
-- acceptance criteria:
-
-  - []
-  - ~~[ ] `right`/`left`/`space`/`shift`+`space` cycle through states~~
-  - []] Shortcuts are added to `shortcuts.md`
-
-    7.As a user I want to have status charts to review what I finished last
-
-    8.As a User I want add/edit/delete the details of a intent what I wrote before.
-
-## TODO As a User I want to syncronize my tasks via dropbox and similar services, that I can add tasks from every computer I have access to.
+  - [ ] from the Scratch, when users have no file open (welcome screen)
+  - [ ] go away markdown style
+  - [ ] Shortcuts are added to `shortcuts.md`
 
 acceptance criteria:
 
 - [ ] reload all task if files is changed
 - [ ] Offer a file dialog to choose the path of the liveflow-file
+
+> Ver 0.3
+
+---
+
+- `TODO` As a user I want to quickly get daily organized affairs based on AI-analysised.
+
+- `TODO` As a User I want to syncronize my tasks via onenote and similar services, that I can add tasks from every computer I have access to.
 
 ## TODO As a user I want to keep notes (not tasks), that I want to keep for future reference, that I can remember important information.
 
@@ -198,15 +204,6 @@ acceptance criteria:
 - [x] User can change rank via gui - nothing fancy yet
 - [x] Right now tasks without RANK can't be sorted
 
-## DONE As a Linux user, I want Akiee to resemble Gnome 3's Adwaita theme, that I feel Akiee is good integrated in the operating system (Look out for GTK widget factory to view elements of Adwaita theme; "twf" at the cmd).
-
-acceptance criteria
-
-- [x] The menu bar of Akie should be user Gnome 3's Adwaita Colors in Ubuntu
-- [x] The font for the task view should be suitable
-- [x] The font for the editor should be suitable
-- [x] The menu bar should be fixed
-
 ## DONE As a new User I want to have a nice startpage, that I know what I need to do next and bond emotionally
 
 ## DONE Task-Change throws Error, if Task has an URL in it's headline
@@ -218,8 +215,6 @@ acceptance criteria
 - [x] Remove the dependencies of Ace-Editor for replacing/writing in the task file, instead replace/write in the ListOfNumber-Datastructure and replace the whole editor content.
 - ~~[ ] Remove "module"-pattern in app.js, this is not important in a node-webkit app?~~
 - ~~[ ] Create tests with PhantomJS for DOM-Manipulation~~
-
-## DONE As a personal kanban user I want to see an overview of all my task, that I
 
 better visualize my work
 

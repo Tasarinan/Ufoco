@@ -1,18 +1,41 @@
 # Coding Conventions
 
-We are following `feross/Standard`.
+We are trying to follow eslint and `feross/Standard`.
 
-## Callbacks in template literal of Styled components
+## File Name
 
-For shorthand, use `p` for `props`.
+- File names should be concatenated with - instead of \_, e.g. file-name.js rather than file_name.js
+- When the file(module) default exports one class, the file name default should same as class name and use CamelCase, but if the folder contains index.js,folder name should same as class name and use CamelCase.
+- 文件名的开头是大写字母。我们遵循一个原则：如果一个文件导出的是一个类，那么这个文件名就用大写开头。四个组件类文件导出都是类，所以都是大写字母开头。
 
-```js
-styled.div`
-  {p => p.theme.someStyleString}
-`;
-```
+## Component
 
-## Ref
+组件的私有方法都用 \_ 开头，所有事件监听的方法都用 handle 开头。把事件监听方法传给组件的时候，属性名用 on 开头。例如：
+
+<CommentInput
+  onSubmit={this.handleSubmitComment.bind(this)} />
+这样统一规范处理事件命名会给我们带来语义化组件的好处，监听（on）CommentInput 的 Submit 事件，并且交给 this 去处理（handle）。这种规范在多人协作的时候也会非常方便。
+
+另外，组件的内容编写顺序如下：
+
+static 开头的类属性，如 defaultProps、propTypes。
+构造函数，constructor。
+getter/setter（还不了解的同学可以暂时忽略）。
+组件生命周期。
+\_ 开头的私有方法。
+事件监听方法，handle*。
+render*开头的方法，有时候 render() 方法里面的内容会分开到不同函数里面进行，这些函数都以 render\* 开头。
+render() 方法。
+
+## Syntax
+
+Use newer ES6/ES2015 syntax where appropriate
+
+- const for requires and other constants
+- let for defining variables
+- Arrow functions instead of function () { }
+- Template literals instead of string concatenation using +
+- Ref
 
 All `ref` should be a call back and bind it to instance directly. So, it can be accessed without calling `refs`.
 
