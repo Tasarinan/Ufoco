@@ -6,9 +6,13 @@ We are trying to follow eslint and `feross/Standard`.
 
 - File names should be concatenated with - instead of \_, e.g. file-name.js rather than file_name.js
 - When the file(module) default exports one class, the file name default should same as class name and use CamelCase, but if the folder contains index.js,folder name should same as class name and use CamelCase.
-- 文件名的开头是大写字母。我们遵循一个原则：如果一个文件导出的是一个类，那么这个文件名就用大写开头。四个组件类文件导出都是类，所以都是大写字母开头。
+- 文件名的开头是大写字母。我们遵循一个原则：如果一个文件导出的是一个类，那么这个文件名就用大写开头。四个组件类文件导出都是类，所以都是大写字母开头，但是考虑到大部分 LINUX 文件系统中文件都是以小写命名，所以本程序开发还是以小写为主。
 
 ## Component
+
+- private method name start with \_\*\*
+- event sender listenning method name start with handle\*\*\*
+- event receiver listenning method name start with on\*\*\*
 
 组件的私有方法都用 \_ 开头，所有事件监听的方法都用 handle 开头。把事件监听方法传给组件的时候，属性名用 on 开头。例如：
 
@@ -26,6 +30,8 @@ getter/setter（还不了解的同学可以暂时忽略）。
 事件监听方法，handle*。
 render*开头的方法，有时候 render() 方法里面的内容会分开到不同函数里面进行，这些函数都以 render\* 开头。
 render() 方法。
+
+Smart or dumb component 分离。smart 组件尽量靠近上层，
 
 ## Syntax
 
