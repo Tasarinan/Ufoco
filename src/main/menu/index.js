@@ -5,7 +5,7 @@ import windowsMenuBuilder from "./windows";
 import { isDev, isDebugProd } from "../../utils/env.util";
 import { isMacOS } from "../../utils/platform.util";
 
-class BiguMenu {
+class MenuBuilder {
   constructor() {
     this.menu = null;
     this.template = null;
@@ -47,4 +47,4 @@ class BiguMenu {
   }
 }
 
-export default new BiguMenu();
+export default new MenuBuilder();

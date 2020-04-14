@@ -6,12 +6,16 @@
 
 - `Done` As a user I want UI appearing suitable to my operating system, that it feels like a native app:
 
-  - ~~electron based application~~
-  - ~~react + redux + pouchdb~~
+  - <font color=green>electron based application</font>
+  - <font color=green>react + redux</font>
 
-- `Done` As a user I want to store my data offline or online database
+- `Done` As a user I want to store my data offline database
 
-  - ~~Use pouchdb +pouchdb find+leveldb~~
+  - <font color=green>add password</font>
+
+- `Ongoing` As a user I want to store my data with security password
+
+  - ~~Use lowdb~~
 
 - `Ongoing` As a user I want to stay organized for my daily affairs
 

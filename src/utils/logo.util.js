@@ -1,5 +1,5 @@
-import macLogo from '../assets/images/blackLogo.png';
-import winLogo from '../assets/images/whiteLogo.png';
-import { isMacOS } from './platform.util';
+import macLogo from "../assets/icons/512.png";
+import winLogo from "../assets/icons/512.png";
+import { isMacOS } from "./platform.util";
 
-export const getLogo = () => isMacOS() ? macLogo : winLogo;
+export const getLogo = () => (isMacOS() ? macLogo : winLogo);

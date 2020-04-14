@@ -1,9 +1,9 @@
 import { remote, shell } from "electron";
-import settings from "electron-settings";
+import settings from "./electron-settings.util";
 
 var repo = require("../../package.json");
 
-export const openNewWindow = link => shell.openExternal(link);
+export const openNewWindow = (link) => shell.openExternal(link);
 
 export const setWindowSize = (win, compact) => {
   const WIDTH = 330;
@@ -17,14 +17,14 @@ export const setWindowSize = (win, compact) => {
     win.setAlwaysOnTop(true);
     win.setMinimumSize(COMPACT_WIDTH, COMPACT_HEIGHT);
     win.setSize(COMPACT_WIDTH, COMPACT_HEIGHT, true);
-    settings.set("system.compact", true);
+    settings.setCompact(true);
   } else {
     win.setResizable(true);
     win.setMaximizable(true);
     win.setAlwaysOnTop(false);
     win.setMinimumSize(WIDTH, HEIGHT);
     win.setSize(WIDTH, HEIGHT, true);
-    settings.set("system.compact", false);
+    settings.setCompact(false);
   }
 };
 

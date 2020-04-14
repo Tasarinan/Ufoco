@@ -7,11 +7,11 @@
 import path from "path";
 import url from "url";
 import { app } from "electron";
-import settings from "./utils/electron-settings.util";
+
 import { isDev, isProd } from "./utils/env.util";
 import { installExtensions } from "./utils/install-extensions.util";
 
-import BiguMain from "./main";
+import EdgeMain from "./main";
 
 // Temporary fix broken high-dpi scale factor on Windows (125% scaling)
 // info: https://github.com/electron/electron/issues/9691
@@ -48,8 +48,7 @@ app.on("ready", async () => {
   ) {
     //TODO await installExtensions();
   }
-  // DANGER: Use wisely. This will delete their settings in local
-  settings.flush("DONE_FLUSH", { chart: false });
+
   // and load the index.html of the app.
   let indexPath;
 
@@ -58,14 +57,14 @@ app.on("ready", async () => {
       protocol: "http:",
       host: "localhost:3100",
       pathname: "index.html",
-      slashes: true
+      slashes: true,
     });
   } else {
     indexPath = url.format({
       protocol: "file:",
       pathname: path.join(__dirname, "dist", "index.html"),
-      slashes: true
+      slashes: true,
     });
   }
-  Main = BiguMain.init(indexPath).window;
+  Main = EdgeMain.init(indexPath).window;
 });

@@ -1,18 +1,16 @@
 import path from "path";
 import { app, screen, BrowserWindow, ipcMain } from "electron";
 
-import { ElectronSettingsPaths } from "../constants/keypath_settings";
-
 import settings from "../utils/electron-settings.util";
 import { isMacOS, isLinux } from "../utils/platform.util";
 import { setWindowSize } from "../utils/windows.util";
 
-import BiguMenu from "./menu";
-import BiguTray from "./tray";
-// import BiguUpdater from './updater';
+import MenuBuilder from "./menu";
+import TrayBuilder from "./tray";
+import AppUpdater from "./updater";
 import { ON_CHANGE_COMPACT_MODE } from "../constants/ipc_channels";
 
-class BiguMain {
+class EdgeMain {
   constructor() {
     this.menu = null;
     this.path = null;
@@ -31,8 +29,8 @@ class BiguMain {
     alwaysOnTop: true,
     icon:
       isMacOS() || isLinux()
-        ? path.join(__dirname, "../assets/icons/mac/64x64.png")
-        : path.join(__dirname, "../assets/icons/windows/64x64.png")
+        ? path.join(__dirname, "../assets/icons/64.png")
+        : path.join(__dirname, "../assets/icons/64.png"),
   };
 
   init(appPath) {
@@ -47,27 +45,26 @@ class BiguMain {
   }
 
   createMenu() {
-    this.menu = BiguMenu.init(this.window);
+    this.menu = MenuBuilder.init(this.window);
   }
 
   createTray() {
-    this.tray = BiguTray.init(this.window);
+    this.tray = TrayBuilder.init(this.window);
   }
 
   createUpdater() {
-    // this.updater = BiguUpdater.init(this.window);
+    // this.updater = AppUpdater.init(this.window);
   }
 
   createMainWindow() {
-    const { COMPACT } = ElectronSettingsPaths;
     const mainScreen = screen.getPrimaryDisplay();
     this.window = new BrowserWindow({
       ...this.windowConfiguration,
       x: mainScreen.workArea.width - 500 - 20,
       y: 50,
-      show: false
+      show: false,
     });
-    setWindowSize(this.window, settings.get(COMPACT));
+    setWindowSize(this.window, settings.getCompact());
   }
 
   load() {
@@ -81,16 +78,14 @@ class BiguMain {
   }
 
   setWindowListeners() {
-    const { MINIMIZE_TO_TRAY } = ElectronSettingsPaths;
-
     this.window.on("ready-to-show", () => {
       if (!this.window) throw new Error('"Main Window" is not defined');
       this.window.show();
       this.window.focus();
     });
 
-    this.window.on("minimize", e => {
-      const minimizeToTray = settings.get(MINIMIZE_TO_TRAY);
+    this.window.on("minimize", (e) => {
+      const minimizeToTray = settings.minimizeToTray();
       e.preventDefault();
       if (minimizeToTray) this.window.hide();
     });
@@ -106,4 +101,4 @@ class BiguMain {
   }
 }
 
-export default new BiguMain();
+export default new EdgeMain();

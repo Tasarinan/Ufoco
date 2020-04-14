@@ -1,29 +1,27 @@
 import { ipcMain } from "electron";
 import { autoUpdater } from "electron-updater";
-import settings from "electron-settings";
+import settings from "../../utils/electron-settings.util";
 import path from "path";
 import {
   ON_ACCEPT_UPDATE,
   SEND_CHECKING_FOR_UPDATES,
   SEND_ERROR,
   SEND_NEEDS_UPDATE,
-  CHECK_FOR_UPDATES
+  CHECK_FOR_UPDATES,
 } from "../../constants/AppSettings";
-
-import { ElectronSettingsPaths } from "../../constants/keypath_settings";
 
 import { openReleaseNotes } from "../../utils/release-notes.util";
 import { isLinux } from "../../utils/platform.util";
 import { isDev } from "../../utils/env.util";
 
-class BiguUpdater {
+class AppUpdater {
   constructor() {
     this.version = null;
     this.window = null;
     this.shouldShowUpdateAlert = false;
   }
 
-  init = win => {
+  init = (win) => {
     if (isLinux()) return this;
     this.createLogger();
     this.window = win;
@@ -50,11 +48,10 @@ class BiguUpdater {
     this.notify(SEND_CHECKING_FOR_UPDATES);
   };
 
-  updateNotAvailable = info => {
-    const { SHOW_RELEASE_NOTES, VERSION } = ElectronSettingsPaths;
-    const showReleaseNotes = settings.get(SHOW_RELEASE_NOTES);
+  updateNotAvailable = (info) => {
+    const showReleaseNotes = settings.showReleaseNotes();
     this.version = info.version;
-    settings.set(VERSION, info.version);
+    settings.setVersion(info.version);
 
     // This flag prevents the alert to show up on the load everytime
     if (this.shouldShowUpdateAlert) this.notify(SEND_NEEDS_UPDATE, false);
@@ -63,15 +60,13 @@ class BiguUpdater {
     if (showReleaseNotes) openReleaseNotes(info.version);
   };
 
-  updateAvailable = info => {
+  updateAvailable = (info) => {
     this.notify(SEND_NEEDS_UPDATE, info.version);
   };
 
-  updateDownloaded = info => {
-    const { SHOW_RELEASE_NOTES, VERSION } = ElectronSettingsPaths;
+  updateDownloaded = (info) => {
     this.version = info.version;
-    settings.set(VERSION, info.version);
-    settings.set(SHOW_RELEASE_NOTES, true);
+    settings.setVersion(info.version);
     autoUpdater.quitAndInstall();
   };
 
@@ -98,4 +93,4 @@ class BiguUpdater {
   }
 }
 
-export default new BiguUpdater();
+export default new AppUpdater();

@@ -1,27 +1,47 @@
-import settings from 'electron-settings';
+import db from "../repositories/lowdbPersistence";
+
+if (!db.has("system")) {
+  db.set("system", {
+    version: "0.1",
+    productName: "UFOCO",
+    compact: true,
+    continuousMode: true,
+    minimizeToTray: true,
+    showTrayIcon: true,
+    showTimerByTray: true,
+    showReleaseNotes: true,
+  });
+}
 
 export default {
-  get(key, def) {
-    return settings.get(key, def);
+  getVersion() {
+    return db.get("system.version") || "0.1";
   },
-
-  set(key, value, def) {
-    return settings.set(key, value, def);
+  setVersion(value) {
+    return db.set("system.version", value);
   },
-
-  flush(token, opts = {}) {
-    const done = settings.get(token, false);
-    const local = settings.getAll();
-
-    if (!done) {
-      settings
-        .deleteAll()
-        .set(token, true);
-
-      Object.entries(opts).forEach(opt => {
-        const [key, restore] = opt;
-        if (restore === false) settings.set(key, local[key]);
-      });
-    }
-  }
+  getCompact() {
+    return db.get("system.compact");
+  },
+  setCompact(value) {
+    return db.set("system.compact", value);
+  },
+  showTrayIcon() {
+    return db.get("system.showTrayIcon") || true;
+  },
+  showTimerByTray() {
+    return db.get("system.showTimerByTray") || true;
+  },
+  showReleaseNotes() {
+    return db.get("system.showReleaseNotes") || true;
+  },
+  setShowReleaseNotes(value) {
+    return db.set("system.showReleaseNotes", value);
+  },
+  minimizeToTray() {
+    return db.get("system.minimizeToTray") || true;
+  },
+  getProductName() {
+    return db.get("system.productName") || "";
+  },
 };

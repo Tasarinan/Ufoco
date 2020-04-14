@@ -1,20 +1,18 @@
 import { Tray, Menu, ipcMain } from "electron";
-import settings from "electron-settings";
+import settings from "../../utils/electron-settings.util";
 
 import {
   DESTROY_TRAY_ICON,
   UPDATE_TRAY_TIMER,
   UPDATE_TRAY_ICON,
   Phases,
-  MediaControlTypes
+  MediaControlTypes,
 } from "../../constants/AppSettings";
-import { ElectronSettingsPaths } from "../../constants/keypath_settings";
 
 import { isLinux, isMacOS } from "../../utils/platform.util";
 import { base } from "../../utils/path.util";
-import repo from "../../../package.json";
 
-class BiguTray {
+class TrayBuilder {
   constructor() {
     this.menu = null;
     this.tray = null;
@@ -25,8 +23,7 @@ class BiguTray {
   }
 
   init(win) {
-    const { SHOW_TRAY_ICON } = ElectronSettingsPaths;
-    const showTrayIcon = settings.get(SHOW_TRAY_ICON);
+    const showTrayIcon = settings.showTrayIcon();
 
     this.window = win;
     this.setIcon();
@@ -43,34 +40,34 @@ class BiguTray {
   createMenu() {
     this.menu = Menu.buildFromTemplate([
       {
-        label: repo.productName,
-        click: () => this.window.show()
+        label: settings.getProductName(),
+        click: () => this.window.show(),
       },
       {
         label: "Pause",
         visible: false,
-        click: () => this.window.webContents.send(MediaControlTypes.PAUSE)
+        click: () => this.window.webContents.send(MediaControlTypes.PAUSE),
       },
       {
         label: "Resume",
-        click: () => this.window.webContents.send(MediaControlTypes.RESUME)
+        click: () => this.window.webContents.send(MediaControlTypes.RESUME),
       },
       {
         label: "Minimize to tray",
-        click: () => this.window.hide()
+        click: () => this.window.hide(),
       },
       { type: "separator" },
       {
         label: "Quit",
-        click: () => this.window.close()
-      }
+        click: () => this.window.close(),
+      },
     ]);
 
     this.pauseTrayItem = this.menu.items.find(
-      menuItem => menuItem.label === "Pause"
+      (menuItem) => menuItem.label === "Pause"
     );
     this.resumeTrayItem = this.menu.items.find(
-      menuItem => menuItem.label === "Resume"
+      (menuItem) => menuItem.label === "Resume"
     );
 
     ipcMain.on(MediaControlTypes.PAUSE, () => {
@@ -87,7 +84,7 @@ class BiguTray {
   createTray = () => {
     this.tray = new Tray(this.icon);
     this.tray.setContextMenu(this.menu);
-    this.tray.setToolTip(repo.productName);
+    this.tray.setToolTip(settings.getProductName());
 
     this.tray.on("double-click", () => this.window.show());
     ipcMain.on(UPDATE_TRAY_ICON, this.setTrayIcon);
@@ -97,13 +94,12 @@ class BiguTray {
   setIcon() {
     this.icon =
       isLinux() || isMacOS()
-        ? base("/assets/images/icon-mac.png")
-        : base("/assets/images/icon-windows.png");
+        ? base("/assets/icons/32.png")
+        : base("/assets/icons/32.png");
   }
 
   setTrayTitle = (e, time) => {
-    const { SHOW_TIMER_BY_TRAY } = ElectronSettingsPaths;
-    const showTimerByTray = settings.get(SHOW_TIMER_BY_TRAY);
+    const showTimerByTray = settings.showTimerByTray();
 
     if (!showTimerByTray) {
       this.tray.setTitle("");
@@ -116,23 +112,26 @@ class BiguTray {
 
   setTrayIcon = (e, currentPhase) => {
     switch (currentPhase) {
-      case Phases.IMMERSION: {
-        this.tray.setImage(base("/assets/images/icon-focus@2x.png"));
+      case Phases.UNDISTURBED: {
+        this.tray.setImage(base("/assets/icons/32_dnd.png"));
         break;
       }
-
+      case Phases.CONNECTED: {
+        this.tray.setImage(base("/assets/icons/32_net.png"));
+        break;
+      }
       case Phases.SHORT_BREAK: {
-        this.tray.setImage(base("/assets/images/icon-short@2x.png"));
+        this.tray.setImage(base("/assets/icons/32_sb.png"));
         break;
       }
 
       case Phases.LONG_BREAK: {
-        this.tray.setImage(base("/assets/images/icon-long@2x.png"));
+        this.tray.setImage(base("/assets/icons/32_lb.png"));
         break;
       }
 
       default: {
-        this.tray.setImage(base("/assets/images/icon-windows.png"));
+        this.tray.setImage(base("/assets/icons/32.png"));
         return null;
       }
     }
@@ -147,4 +146,4 @@ class BiguTray {
   };
 }
 
-export default new BiguTray();
+export default new TrayBuilder();
