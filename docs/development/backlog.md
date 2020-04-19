@@ -11,7 +11,7 @@
 
 - `Done` As a user I want to store my data offline database
 
-  - <font color=green>add password</font>
+  - <font color=green>select lowdb as database service</font>
 
 - `Ongoing` As a user I want to store my data with security password
 
