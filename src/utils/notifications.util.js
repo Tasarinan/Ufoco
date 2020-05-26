@@ -1,14 +1,13 @@
 /* eslint-disable import/prefer-default-export */
-import { remote } from 'electron';
-import settings from 'electron-settings';
-import { getLogo } from './logo.util';
+import { remote } from "electron";
+import settings from "electron-settings";
+import { getLogo } from "./logo.util";
 
-import { NotificationTypes, Phases } from '../constants/AppSettings';
-
+import { NotificationTypes, Phases } from "../constants/enums";
 
 export const triggerNotification = (phase) => {
   const notificationType = settings.get(
-    'system.notificationType',
+    "system.notificationType",
     NotificationTypes.PHASE_CHANGES_NO_WINDOW
   );
 
@@ -17,21 +16,25 @@ export const triggerNotification = (phase) => {
   const icon = getLogo();
 
   switch (phase) {
-    case Phases.IMMERSION:
-      title = 'Immersion phase over';
-      body = 'Time to take a short break';
+    case Phases.UNDISTURBED:
+      title = "Work done, Get your edge back";
+      body = "Time to take a short break";
+      break;
+    case Phases.CONNECTED:
+      title = "Work done, Get your edge back";
+      body = "Time to take a short break";
       break;
     case Phases.SHORT_BREAK:
-      title = 'Short break phase over';
-      body = 'Back to immersion work';
+      title = "Short break phase over";
+      body = "Back to work";
       break;
     case Phases.LONG_BREAK:
-      title = 'Long break phase over';
-      body = 'Back to immersion work!';
+      title = "Long break phase over";
+      body = "Back to work!";
       break;
     default: {
-      title = 'Thinking...';
-      body = 'What to do, what to do...';
+      title = "Thinking...";
+      body = "What to do, what to do...";
     }
   }
 

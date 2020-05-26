@@ -7,7 +7,7 @@ import {
   UPDATE_TRAY_ICON,
   Phases,
   MediaControlTypes,
-} from "../../constants/AppSettings";
+} from "../../constants/enums";
 
 import { isLinux, isMacOS } from "../../utils/platform.util";
 import { base } from "../../utils/path.util";

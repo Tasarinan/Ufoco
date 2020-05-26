@@ -4,11 +4,12 @@ import { app, screen, BrowserWindow, ipcMain } from "electron";
 import settings from "../utils/electron-settings.util";
 import { isMacOS, isLinux } from "../utils/platform.util";
 import { setWindowSize } from "../utils/windows.util";
+import { ViewSize } from "../constants/enums";
 
 import MenuBuilder from "./menu";
 import TrayBuilder from "./tray";
 import AppUpdater from "./updater";
-import { ON_CHANGE_COMPACT_MODE } from "../constants/ipc_channels";
+import { ON_CHANGE_WINDOW_SIZE } from "../constants/ipc_channels";
 
 class EdgeMain {
   constructor() {
@@ -64,7 +65,7 @@ class EdgeMain {
       y: 50,
       show: false,
     });
-    setWindowSize(this.window, settings.getCompact());
+    setWindowSize(this.window, ViewSize.COMPACT);
   }
 
   load() {
@@ -72,8 +73,8 @@ class EdgeMain {
   }
 
   setAppListeners() {
-    ipcMain.on(ON_CHANGE_COMPACT_MODE, (e, compact) =>
-      setWindowSize(this.window, compact)
+    ipcMain.on(ON_CHANGE_WINDOW_SIZE, (e, size) =>
+      setWindowSize(this.window, size)
     );
   }
 

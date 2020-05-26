@@ -2,7 +2,7 @@ import { shell, dialog } from "electron";
 import { autoUpdater } from "electron-updater";
 import settings from "../../utils/electron-settings.util";
 
-import { LOAD_SETTINGS } from "../../constants/AppSettings";
+import { LOAD_SETTINGS } from "../../constants/ipc_channels";
 
 import { openReleaseNotes } from "../../utils/release-notes.util";
 

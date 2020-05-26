@@ -1,28 +1,24 @@
-import { Phases } from '../constants/AppSettings';
+import { Phases } from "../constants/enums";
 
 export const getPhaseTime = (iwl, lbl, sbl, cp) => {
-  if (cp === Phases.IMMERSION) return iwl;
+  if (cp === Phases.UNDISTURBED) return iwl;
   if (cp === Phases.SHORT_BREAK) return sbl;
   if (cp === Phases.LONG_BREAK) return lbl;
   return 0;
 };
 
-export const hasReachedEnd = (currentPhase, currentRound, timer, totalRounds) => (
-  currentRound >= totalRounds &&
-  currentPhase >= 0 &&
-  timer <= 0
-);
+export const hasReachedEnd = (currentPhase, currentRound, timer, totalRounds) =>
+  currentRound >= totalRounds && currentPhase >= 0 && timer <= 0;
 
-export const hasReachedLastRound = (currentPhase, currentRound, totalRounds) => (
-  currentRound >= totalRounds && currentPhase >= 0
-);
+export const hasReachedLastRound = (currentPhase, currentRound, totalRounds) =>
+  currentRound >= totalRounds && currentPhase >= 0;
 
 export const twoDigits = (n) => {
   if (n < 10) return `0${n}`;
   return n;
 };
 
-export const getClockTime = duration => {
+export const getClockTime = (duration) => {
   // Get hours from milliseconds
   const hours = duration / (1000 * 60 * 60);
   const absoluteHours = Math.floor(hours);
@@ -41,4 +37,3 @@ export const getClockTime = duration => {
     seconds: absoluteSeconds,
   };
 };
-

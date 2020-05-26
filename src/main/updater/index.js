@@ -8,7 +8,7 @@ import {
   SEND_ERROR,
   SEND_NEEDS_UPDATE,
   CHECK_FOR_UPDATES,
-} from "../../constants/AppSettings";
+} from "../../constants/ipc_channels";
 
 import { openReleaseNotes } from "../../utils/release-notes.util";
 import { isLinux } from "../../utils/platform.util";

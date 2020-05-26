@@ -1,6 +1,6 @@
-# Build
+# Install
 
-We only support the stable version of Node.js. Current stable version is `v10.*.*`.
+First, fork the repo and clone to your local
 
 ## Development
 
@@ -19,7 +19,7 @@ npm run dev
 Open another terminal session and start the app
 
 ```sh
-npm run start-dev
+npm run start
 ```
 
 ## Production

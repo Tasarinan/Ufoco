@@ -13,12 +13,17 @@
 
   - <font color=green>select lowdb as database service</font>
 
-- `Ongoing` As a user I want to store my data with security password
+- `Done` As a user I want to store my data with security password
 
-  - ~~Use lowdb~~
+  - <font color=green>use password prevent invalid login</font>
+  - <font color=green>use cryto prevent invalid file access</font>
 
-- `Ongoing` As a user I want to stay organized for my daily affairs
+- `Ongoing` As a user I want to organize the present, record the past and plan for the future
 
+  - <font color=blue>use nested list to organize innovation ideas and problem solving steps</font>
+  - <font color=blue>use track keepers to record habbit or streak actions </font>
+  - <font color=blue>use Post-It notes(Bullet Journal) to plan year/month/week/daily events</font>
+  - <font color=blue>use icons to quickly mark events/actions status (done,delete, etc)</font>
   - [ ] add a new item with priority support
   - [ ] delete the exist item (if this exist item has only streak, remove streak also)
   - [ ] edit the exist item for priority, title,streak,ship status,arranged stage

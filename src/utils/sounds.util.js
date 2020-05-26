@@ -5,11 +5,10 @@ import {
   library as getSoundLibrary,
   soundImmersionPhase as getImmersionSound,
   soundShortBreakPhase as getShortBreakSound,
-  soundLongBreakPhase as getLongBreakSound
+  soundLongBreakPhase as getLongBreakSound,
 } from "../selectors/sounds.selectors";
 
-import { Phases, Sounds } from "../constants/AppSettings";
-import { ElectronSettingsPaths } from "../constants/keypath_settings";
+import { Phases, Sounds } from "../constants/enums";
 
 export const createAudioTag = ({ id, src, title, soundType }) => {
   const audio = new Audio(src);
@@ -19,7 +18,7 @@ export const createAudioTag = ({ id, src, title, soundType }) => {
   return audio;
 };
 
-export const getCurrentSound = state => {
+export const getCurrentSound = (state) => {
   const currentPhase = getCurrentPhase(state);
 
   switch (currentPhase) {
@@ -38,45 +37,45 @@ export const getCurrentSound = state => {
   }
 };
 
-export const getDefaultSound = state => {
+export const getDefaultSound = (state) => {
   const currentPhase = getCurrentPhase(state);
 
   switch (currentPhase) {
     case Phases.IMMERSION: {
       return {
         key: ElectronSettingsPaths.IMMERSION_SOUND,
-        id: Sounds.TICK
+        id: Sounds.TICK,
       };
     }
     case Phases.LONG_BREAK: {
       return {
         key: ElectronSettingsPaths.LONG_BREAK_SOUND,
-        id: Sounds.TICK
+        id: Sounds.TICK,
       };
     }
     case Phases.SHORT_BREAK: {
       return {
         key: ElectronSettingsPaths.SHORT_BREAK_SOUND,
-        id: Sounds.TICK
+        id: Sounds.TICK,
       };
     }
     default: {
       return {
         key: ElectronSettingsPaths.IMMERSION_SOUND,
-        id: Sounds.TICK
+        id: Sounds.TICK,
       };
     }
   }
 };
 
-export const getTitleFromSrc = src => {
+export const getTitleFromSrc = (src) => {
   const split = isMacOS() ? src.split("/") : src.split("\\");
   const last = split.length - 1;
   const title = split[last];
   return title;
 };
 
-export const pauseAllSounds = state => {
+export const pauseAllSounds = (state) => {
   const library = getSoundLibrary(state);
-  library.forEach(sound => sound.pause());
+  library.forEach((sound) => sound.pause());
 };
