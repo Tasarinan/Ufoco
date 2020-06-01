@@ -65,7 +65,7 @@ class EdgeMain {
       y: 50,
       show: false,
     });
-    setWindowSize(this.window, ViewSize.MINI);
+    setWindowSize(this.window, ViewSize.NORMAL);
   }
 
   load() {
