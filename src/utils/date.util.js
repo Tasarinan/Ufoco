@@ -1,4 +1,4 @@
-import moment, { Moment, MomentFormatSpecification } from "moment";
+import moment from "moment";
 
 const DAY_ONE_DATE_FORMAT = "DD MMMM YYYY [at 00:00:00 GMT]"; // E.g. "01 January 2019 at 00:00:00 GMT"
 const DATE_STRING_FORMAT = "LL"; // E.g. "January 1, 2019"

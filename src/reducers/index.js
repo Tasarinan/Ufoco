@@ -4,6 +4,7 @@ import appReducer from "./app_reducer";
 import authReducer from "./auth_reducer";
 import fileReducer from "./file_reducer";
 import buflReducer from "./bufl_reduce";
+import journalReducer from "./editor.reduce";
 
 function createRootReducer(history) {
   return combineReducers({
@@ -12,6 +13,7 @@ function createRootReducer(history) {
     auth: authReducer,
     file: fileReducer,
     bufl: buflReducer,
+    editor: journalReducer,
   });
 }
 
