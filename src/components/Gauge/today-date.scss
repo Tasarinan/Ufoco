@@ -1,0 +1,22 @@
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 40px 0;
+  font-size: 16px;
+  .calendar {
+    display: flex;
+    align-items: center;
+    color: #2fb8ec;
+    .day {
+      font-size: 44px;
+      font-weight: bold;
+    }
+    .my {
+      padding: 0 0 0 5px;
+      .month {
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.overlay-outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .overlay-inner {
+    background-color: #e2e2e2;
+    position: relative;
+    max-width: 90%;
+    max-height: 100%;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 1px 1px rgba(0, 0, 0, 0.18);
+  }
+
+  .overlay-close-button {
+    position: absolute;
+    right: 0;
+  }
+
+  .overlay-content {
+    padding: 2.5vw;
+
+    h1,
+    p:not(.file-dir):not(.banner-message) {
+      margin-bottom: 3.5vw;
+    }
+  }
+}

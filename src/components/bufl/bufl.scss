@@ -1,0 +1,166 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  font-style: inherit;
+  box-sizing: border-box;
+  min-height: 90vh;
+  border: 1px solid #d6d6d6;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style-type: none;
+}
+.list {
+  height: 900px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.optionButtons {
+  display: inline-block;
+}
+.minimize {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 15px;
+  position: relative;
+  align-items: center;
+  -webkit-app-region: no-drag;
+}
+.minimize:hover {
+  cursor: pointer;
+}
+.optionBullet {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #666;
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+  -webkit-app-region: no-drag;
+}
+.optionBullet:hover {
+  background-color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 0 5px #999;
+}
+.options {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: -35px;
+  text-align: center;
+  -webkit-app-region: no-drag;
+}
+
+.optionBullet:hover > .options,
+.optionBullet:hover > .triangleUp {
+  display: block;
+}
+.triangleUp {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #ccc;
+  position: absolute;
+  top: 7px;
+  left: -7px;
+  display: none;
+  z-index: 2;
+  -webkit-app-region: no-drag;
+}
+.dropdownMenu {
+  min-width: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  background-color: #ccc;
+  z-index: 2;
+}
+
+.dropdownMenu li:not(.divider) {
+  height: 30px;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 16px;
+  padding-bottom: 25px !important;
+}
+.divider {
+  border: 0.5px solid white;
+}
+.dropdownMenu li:not(.divider):not(.lineThrough):hover {
+  text-decoration: underline;
+  -webkit-app-region: no-drag;
+}
+.lineThrough {
+  text-decoration: line-through;
+}
+
+.lineThrough:hover {
+  text-decoration: line-through;
+}
+
+.completed {
+  color: grey;
+  text-decoration: line-through;
+}
+
+.completedParent {
+  color: grey;
+}
+
+.underline {
+  text-decoration: underline;
+}
+.vhide {
+  visibility: hidden;
+}
+.bold {
+  font-weight: bold;
+}
+
+input,
+input:focus {
+  background-color: #f6f6f6;
+  border: none;
+  outline: none;
+  resize: horizontal;
+  width: 90%;
+  display: inline-block;
+  -webkit-app-region: no-drag;
+}
+
+hr {
+  padding: 0;
+  margin: 0;
+}
+
+#fadeIn {
+  -webkit-animation: fadeInFromNone 0.5s ease-out;
+  -moz-animation: fadeInFromNone 0.5s ease-out;
+  -o-animation: fadeInFromNone 0.5s ease-out;
+  animation: fadeInFromNone 0.5s ease-out;
+}
+
+@-webkit-keyframes fadeInFromNone {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  100% {
+    height: 2em;
+    opacity: 1;
+  }
+}

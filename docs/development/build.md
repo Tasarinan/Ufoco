@@ -10,13 +10,7 @@ Install dependencies
 npm install
 ```
 
-Run `webpack-dev-server`
-
-```sh
-npm run dev
-```
-
-Open another terminal session and start the app
+start the app
 
 ```sh
 npm run start

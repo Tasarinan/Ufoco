@@ -1,0 +1,8 @@
+.app {
+  display: flex;
+  height: 400px;
+  width: 100px;
+  flex-direction: column;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}

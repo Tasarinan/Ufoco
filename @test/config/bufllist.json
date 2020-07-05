@@ -1,0 +1,44 @@
+{
+  "elements": [
+    {
+      "id": "0",
+      "name": "Example todo-list",
+      "collapsed": false,
+      "completed": false,
+      "items": [
+        {
+          "id": "2",
+          "name": "Sub Item",
+          "collapsed": false,
+          "completed": false,
+          "items": [
+            {
+              "id": "5",
+              "name": "Sub Sub Item",
+              "collapsed": false,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Sub Item 2",
+          "collapsed": false,
+          "completed": false
+        },
+        {
+          "id": "6",
+          "name": "Sub Item 3",
+          "collapsed": false,
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Example todo-list2",
+      "collapsed": false,
+      "completed": false
+    }
+  ]
+}
