@@ -1,8 +1,9 @@
 .app {
   display: flex;
-  height: 400px;
-  width: 100px;
   flex-direction: column;
   -webkit-user-select: none;
   -webkit-app-region: drag;
+  height: 100vh;
+  height: 100vh;
+  overflow: auto; // Scrollbar must be here instead of in <body> so it can be styled based on theme
 }

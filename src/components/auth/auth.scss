@@ -9,7 +9,7 @@
 .button {
   position: fixed;
   z-index: 20;
-  top: 50px;
+  top: 20px;
   left: 126px;
   height: 48px;
   width: 48px;
@@ -22,6 +22,7 @@
   border-radius: 50%;
   border: 0;
   font-size: 42px;
+  color: white;
   background: none;
   -webkit-app-region: no-drag;
 }
@@ -35,10 +36,10 @@
 .container {
   position: fixed;
   z-index: 9;
-  top: 130px;
+  top: 90px;
   left: 15px;
   width: 240px;
-  height: 80px;
+  height: 300px;
   border-radius: 0 0 25px 0;
   overflow: hidden;
   background: none;
@@ -54,10 +55,10 @@
   top: 0;
   right: 50%;
   width: 50%;
-  background: #ececec;
+  background: #e2e2e2;
   height: 0px;
   width: 0px;
-  border-radius: 30px;
+  border-radius: 10px;
   transition: all 0.4s ease-in-out;
   overflow: hidden;
   display: flex;
@@ -65,21 +66,21 @@
 
 .open {
   transition: all 0.4s ease-in-out;
-  height: 60px;
+  height: 160px;
   width: 90%;
   top: 0;
   right: 0;
-  -webkit-app-region: no-drag;
 }
 
 .form {
   box-sizing: border-box;
-  padding: 15px 10px;
+  padding: 5px 5px;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
+  flex-direction: column;
   opacity: 0;
 }
 
@@ -93,36 +94,30 @@
 
 .input {
   box-sizing: border-box;
-  padding: 2px 5px;
-  width: 70%;
-  height: 40px;
+  padding: 2px 2px;
+  width: 90%;
+  height: 30px;
   color: rgb(31, 6, 6);
   border-radius: 4px;
-  background: none;
+  background: white;
   border: 0;
 }
 
 .input:focus {
-  background: rgba(255, 255, 255, 0.02);
+  background: white;
   box-shadow: 0 0 3px 0 rgba(255, 255, 255, 0.3);
 }
 
 .submit {
-  /* height: 23px;
-  background: none;
-  color: white;
-  border-radius: 4px;
-  border: 0; */
-
-  height: 25px;
-  color: white;
+  height: 30px;
+  width: 80px;
   border: 0;
-  background: none;
-  border-radius: 12px;
+  background: white;
+  border-radius: 10px;
   font-family: inherit;
-  padding: 0 10px;
-  font-size: 12px;
+  padding: 0 5px;
   letter-spacing: 1px;
+  -webkit-app-region: no-drag;
 }
 
 .submit:hover {

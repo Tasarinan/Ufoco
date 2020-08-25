@@ -2,6 +2,9 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import appIcon from "../../../assets/icons/app-icon.png";
 import cx from "classnames";
+import { ipcRenderer } from "electron";
+import { ON_CHANGE_WINDOW_SIZE } from "../../../constants/ipc_channels";
+import { ViewSize } from "../../../constants/enums";
 // Styles
 import styles from "./register.scss";
 // Components
@@ -23,6 +26,9 @@ export default class Register extends PureComponent {
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleChangeEmailaddress = this.handleChangeEmailaddress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentWillMount() {
+    ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, ViewSize.LOCK);
   }
 
   handleChangeEmailaddress(e) {
@@ -73,14 +79,12 @@ export default class Register extends PureComponent {
     return (
       <React.Fragment>
         <div className={styles.menu}>
-          <img src={appIcon} alt="App icon" width={300} height={80} />
+          <img src={appIcon} alt="App icon" width={320} height={80} />
           <button
             className={styles.button}
             type="button"
             onClick={this.togglePrompt}
-          >
-            <i className="ri-user-add-fill ri-fw"></i>
-          </button>
+          ></button>
           <div className={containerClass}>
             <div className={modalClass}>
               <form className={formClass} onSubmit={this.handleSubmit}>

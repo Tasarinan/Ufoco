@@ -27,11 +27,11 @@ npm install
 Compile scripts
 
 ```sh
-npm run compile
+npm run build
 ```
 
 Pack the app
 
 ```sh
-npm run pack
+npm run package
 ```

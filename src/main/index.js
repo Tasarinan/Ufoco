@@ -65,7 +65,7 @@ class EdgeMain {
       y: 50,
       show: false,
     });
-    setWindowSize(this.window, ViewSize.COMPACT);
+    setWindowSize(this.window);
   }
 
   load() {

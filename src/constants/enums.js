@@ -14,8 +14,9 @@ export const Phases = {
 export const ViewSize = {
   AGENDA: 0,
   GAUGE: 1,
-  BOJU: 2,
-  FULLSCREEN: 3,
+  LOCK: 2,
+  MAXIMIZE: 3,
+  FULLSCREEN: 4,
 };
 
 export const NotificationTypes = {

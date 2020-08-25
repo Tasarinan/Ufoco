@@ -1,5 +1,5 @@
 // Variables
-@import "./Ant.vars.scss";
+@import "./variables.scss";
 
 // Example import .css
 //@import '~name_in_node_modules/dist/style.css';
@@ -13,7 +13,7 @@ body {
   cursor: default;
   position: relative;
   background: none;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 *:focus {

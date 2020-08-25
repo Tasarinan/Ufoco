@@ -10,6 +10,7 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const USER_LOGOUT = "USER_LOGOUT";
 
 //file_action
 export const CLEAR_FILE_STATE = "CLEAR_FILE_STATE";
@@ -24,3 +25,7 @@ export const SET_HASHED_PASSWORD = "SET_HASHED_PASSWORD";
 
 //bufl_action
 export const SET_BUFL_ELEMENTS = "SET_BUFL_ELEMENTS";
+
+//
+export const CLOSE_BANNER_ALERT = "CLOSE_BANNER_ALERT";
+export const OPEN_BANNER_ALERT = "OPEN_BANNER_ALERT";

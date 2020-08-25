@@ -5,13 +5,13 @@ import { Route, Redirect } from "react-router";
 const PrivateRoute = ({
   component: Component,
   isAuthenticated,
-  isLoading,
+  isInitialized,
   ...rest
 }) => (
   <Route
     {...rest}
     render={(props) => {
-      if (isLoading && !isAuthenticated) {
+      if (isInitialized && !isAuthenticated) {
         // not logged in so redirect to login page with the return url
         return (
           <Redirect
@@ -21,7 +21,7 @@ const PrivateRoute = ({
       }
 
       // check if loading before(new account needed)
-      if (!isLoading) {
+      if (!isInitialized) {
         // no account before so redirect to register page
         return (
           <Redirect
@@ -37,7 +37,7 @@ const PrivateRoute = ({
 
 PrivateRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  isInitialized: PropTypes.bool.isRequired,
 };
 
 export default PrivateRoute;

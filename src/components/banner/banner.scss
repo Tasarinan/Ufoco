@@ -3,17 +3,4 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-
-  svg {
-    margin-right: 8px;
-    line-height: 0;
-  }
-
-  &.banner-error {
-    color: #d23939;
-  }
-
-  &.banner-no-results {
-    color: #727272;
-  }
 }

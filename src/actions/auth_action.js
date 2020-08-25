@@ -1,4 +1,4 @@
-import prefRepository from "../repositories/prefRepository";
+import bujoRepository from "../repositories/bujoRepository";
 import { push } from "react-router-redux";
 import { ipcRenderer } from "electron";
 import {

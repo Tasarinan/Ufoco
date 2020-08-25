@@ -16,6 +16,9 @@ export const toggleCompactMode = () => (dispatch, getState) => {
   } = getState();
   ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, compact);
 };
+export const adjustWinSize = (winsize) => {
+  ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, winsize);
+};
 
 export const closeOverlay = () => {
   return {

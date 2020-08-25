@@ -20,6 +20,7 @@
     "no-undef": "warn",
     "no-undefined": "warn",
     "no-unused-vars": "warn",
+
     "no-constant-condition": "warn",
     "react/prop-types": "warn"
   },
