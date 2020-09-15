@@ -9,20 +9,33 @@
   - <font color=green>electron based application</font>
   - <font color=green>react + redux</font>
 
+- `Ongoing` As a programmer I want to use a testing framework
+
 - `Done` As a user I want to store my data offline database
 
   - <font color=green>select lowdb as database service</font>
+
+- `Done` As a user I want to keep data, that I want to keep for future reference, that I can remember important information.
+
+  - <font color=green>store data in file </font>
+
+- `Ongoing` As a user I want to restore the state right where I left it, that I can pick up my work where I left it.
+
+  - <font color=red>load recently change preference </font>
+  - <font color=red>locate today tasks</font>
 
 - `Done` As a user I want to store my data with security password
 
   - <font color=green>use password prevent invalid login</font>
   - <font color=green>use cryto prevent invalid file access</font>
 
+- `Ongoing` As a new User I want to have a nice startpage, that I know what I need to do next and bond emotionally
+
 - `Ongoing` As a user I want to organize the present, record the past and plan for the future
 
   - <font color=green>use nested list to organize innovation ideas and problem solving steps</font>
   - <font color=#ff99>use track keepers to record habbit or streak actions </font>
-  - <font color=green>use Post-It notes(Bullet Journal) to plan year/month/week/daily events</font>
+  - <font color=green>use Post-It notes to plan year/month/week/daily events</font>
   - <font color=green>use strickthrough line to quickly mark events/actions status (Completed)</font>
 
 * `Ongoing` As a user I want to use streak to motivate my consecutive affairs
@@ -105,11 +118,7 @@ acceptance criteria:
 
 - `TODO` As a User I want to syncronize my tasks via onenote and similar services, that I can add tasks from every computer I have access to.
 
-## TODO As a user I want to keep notes (not tasks), that I want to keep for future reference, that I can remember important information.
-
 ## TODO As a user I want to change the ranking/order of a task via drag and drop, that I can less cumberstone with ranking.
-
-## TODO AS a user I want that Akiee restores the state right where I left it, that I can pick up my work where I left it.
 
 ## TODO As a User I want to have an intelligent Entry-Box for the a new task, that I can add important meta information like due date, projecet, etc. easily.
 
@@ -159,8 +168,6 @@ AC:
 
 - [x] TODO and DONE are recognised by the markdown theme
 
-## DONE As a programmer I want to use a testing framework that works like racket, that I can easily transelate the knowledge I gained.
-
 ## DONE As lw developer I want to change the mini-code-edit base to fit my needs, that it is becoming my project and I can learn the things that I need are most valuable to me
 
     AC:
@@ -170,8 +177,6 @@ AC:
 ## DONE A a user I want to see my notes, when I open live wookiee, that I see my notes instantly. DEADLINE: <2013-08-24 Sa 11:00>
 
 ## DONE As a note keeper I want, that the editor area is focused after the start of livewookie, that I can start writing instantly.
-
-## DONE Find a better solution to the workaraund for the loading problem in main()
 
 ## DONE As a user I want to change the state of a task with a simple action, that I can easyly check my task without switching to the editor and breaking my flow.
 
@@ -212,8 +217,6 @@ acceptance criteria:
 - [x] User can change rank via gui - nothing fancy yet
 - [x] Right now tasks without RANK can't be sorted
 
-## DONE As a new User I want to have a nice startpage, that I know what I need to do next and bond emotionally
-
 ## DONE Task-Change throws Error, if Task has an URL in it's headline
 
 ## DONE As a User I want the buttons to represent the state of Akiee, that I what view I am seeing rigth now.
@@ -223,9 +226,3 @@ acceptance criteria:
 - [x] Remove the dependencies of Ace-Editor for replacing/writing in the task file, instead replace/write in the ListOfNumber-Datastructure and replace the whole editor content.
 - ~~[ ] Remove "module"-pattern in app.js, this is not important in a node-webkit app?~~
 - ~~[ ] Create tests with PhantomJS for DOM-Manipulation~~
-
-better visualize my work
-
-## DONE As a experienced kanban user I want to have a Kanbanboard, that I can visualize my work.
-
-## DONE As a user I want to know the project node of a task, that I know to which project this task belongs.

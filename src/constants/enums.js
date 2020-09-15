@@ -43,8 +43,8 @@ export const SoundTypes = {
 };
 
 export const Themes = {
-  DARK: "DARK",
-  LIGHT: "LIGHT",
+  DARK: "dark",
+  LIGHT: "light",
 };
 export const MediaControlTypes = {
   PAUSE: "PAUSE",

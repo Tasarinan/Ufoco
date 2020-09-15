@@ -1,8 +1,9 @@
 //app_action
-export const TOGGLE_COMPACT_MODE = "TOGGLE_COMPACT_MODE";
 export const ADD_CALENDAR_EVENT = "ADD_CALENDAR_EVENT";
 export const DEL_CALENDAR_EVENT = "DEL_CALENDAR_EVENT";
 export const SET_OVERLAY = "SET_OVERLAY";
+export const SET_THEME = "SET_THEME";
+
 //auth_action
 export const REGISTER_REQUEST = "REGISTER_REQUEST";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";

@@ -4,12 +4,12 @@ if (!db.has("system")) {
   db.set("system", {
     version: "0.1",
     productName: "UFOCO",
-    compact: true,
     continuousMode: true,
     minimizeToTray: true,
     showTrayIcon: true,
     showTimerByTray: true,
     showReleaseNotes: true,
+    theme: "light",
   });
 }
 
@@ -20,11 +20,11 @@ export default {
   setVersion(value) {
     return db.set("system.version", value);
   },
-  getCompact() {
-    return db.get("system.compact");
+  getTheme() {
+    return db.get("system.theme");
   },
-  setCompact(value) {
-    return db.set("system.compact", value);
+  setTheme(value) {
+    return db.set("system.theme", value);
   },
   showTrayIcon() {
     return db.get("system.showTrayIcon") || true;

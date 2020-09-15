@@ -5,7 +5,7 @@ import { AppContainer } from "react-hot-loader";
 import Root from "./root";
 
 // Styles
-import "./themes/app.global.scss";
+import "./assets/styles/styles.scss";
 
 render(
   <AppContainer>

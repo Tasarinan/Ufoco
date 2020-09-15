@@ -2,8 +2,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
-// Styles
-import styles from "./app.scss";
+const ThemeContext = React.createContext("light");
+
 // Components
 
 /**
@@ -14,7 +14,8 @@ import styles from "./app.scss";
  */
 export default class App extends PureComponent {
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    theme: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -22,7 +23,14 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { children } = this.props;
-    return <div className={styles.app}>{children}</div>;
+    const { children, theme } = this.props;
+    return (
+      <ThemeContext.Provider value={theme}>
+        {/* Everything below the "theme-*" div can be styled based on the theme */}
+        <div className={`theme-${theme}`}>
+          <div className="app">{children}</div>;
+        </div>
+      </ThemeContext.Provider>
+    );
   }
 }

@@ -1,5 +1,4 @@
 import { remote, shell } from "electron";
-import settings from "./electron-settings.util";
 
 var repo = require("../../package.json");
 import { ViewSize } from "../constants/enums";
@@ -22,7 +21,6 @@ export const setWindowSize = (win, size) => {
       win.setAlwaysOnTop(true);
       win.setMinimumSize(GAUGE_WIDTH, GAUGE_HEIGHT);
       win.setSize(GAUGE_WIDTH, GAUGE_HEIGHT, true);
-      settings.setCompact(true);
       break;
     }
     case ViewSize.AGENDA: {
@@ -31,7 +29,6 @@ export const setWindowSize = (win, size) => {
       win.setAlwaysOnTop(true);
       win.setMinimumSize(AGENDA_WIDTH, AGENDA_HEIGHT);
       win.setSize(AGENDA_WIDTH, AGENDA_HEIGHT, true);
-      settings.setCompact(false);
       break;
     }
     case ViewSize.LOCK: {
@@ -40,7 +37,6 @@ export const setWindowSize = (win, size) => {
       win.setAlwaysOnTop(true);
       win.setMinimumSize(LOCK_WIDTH, LOCK_HEIGHT);
       win.setSize(LOCK_WIDTH, LOCK_HEIGHT, true);
-      settings.setCompact(true);
       break;
     }
     case ViewSize.MAXIMIZE: {
@@ -49,12 +45,10 @@ export const setWindowSize = (win, size) => {
       } else {
         win.maximize();
       }
-      settings.setCompact(false);
       break;
     }
     case ViewSize.FULLSCREEN: {
       win.setFullScreen(!win.isFullScreen());
-      settings.setCompact(false);
       break;
     }
     default: {
@@ -64,7 +58,6 @@ export const setWindowSize = (win, size) => {
       win.setMinimumSize(WIDTH, HEIGHT);
       win.setSize(WIDTH, HEIGHT, true);
       win.center();
-      settings.setCompact(false);
     }
   }
 };

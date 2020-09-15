@@ -2,7 +2,7 @@ import React, { Fragment, Component } from "react";
 import { ipcRenderer } from "electron";
 import PropTypes from "prop-types";
 // Styles
-import styles from "./home.scss";
+//import styles from "./home.scss";
 import Bufl from "../bufl";
 import Editor from "../journal";
 import { SplitPane } from "react-collapse-pane";
@@ -13,7 +13,7 @@ export default class Home extends Component {
   render() {
     return (
       <Fragment>
-        <div className={styles.container}>
+        <div>
           <SplitPane
             split="vertical"
             collapseOptions={{

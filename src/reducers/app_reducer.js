@@ -1,21 +1,15 @@
-import { TOGGLE_COMPACT_MODE, SET_OVERLAY } from "../constants/action_types";
-
+import { SET_THEME } from "../constants/action_types";
+import settings from "../utils/electron-settings.util";
 const initialState = {
-  compact: false,
-  overlay: "none",
+  theme: settings.getTheme(),
 };
 export default (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_COMPACT_MODE: {
-      const { compact } = state;
-      return { ...state, compact: !compact };
+    case SET_THEME: {
+      const { theme } = action;
+      return { ...state, theme };
     }
-    case SET_OVERLAY: {
-      return {
-        ...state,
-        overlay: action.payload.overlay,
-      };
-    }
+
     default: {
       return state;
     }

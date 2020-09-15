@@ -20,20 +20,7 @@ export const adjustWinSize = (winsize) => {
   ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, winsize);
 };
 
-export const closeOverlay = () => {
-  return {
-    type: SET_OVERLAY,
-    payload: {
-      overlay: "none",
-    },
-  };
-};
-
-export const openOverlay = (overlay) => {
-  return {
-    type: SET_OVERLAY,
-    payload: {
-      overlay: overlay,
-    },
-  };
-};
+export const setTheme = (theme) => ({
+  type: SET_THEME,
+  theme,
+});

@@ -110,22 +110,11 @@ const config = {
           use: [assetsLoader],
         },
         {
-          test: /\.global|vars\.scss$/,
+          test: /\.scss$/,
           use: [
             sassHotLoader,
             MiniCssExtractPlugin.loader,
             cssLoader,
-            postCssLoader,
-            sassLoader,
-          ],
-        },
-        {
-          test: /\.scss$/,
-          exclude: /\.global|vars\.scss$/,
-          use: [
-            sassHotModuleLoader,
-            MiniCssExtractPlugin.loader,
-            cssModuleLoader,
             postCssLoader,
             sassLoader,
           ],
