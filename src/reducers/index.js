@@ -3,8 +3,8 @@ import { connectRouter } from "connected-react-router";
 import appReducer from "./app_reducer";
 import authReducer from "./auth_reducer";
 import fileReducer from "./file_reducer";
-import buflReducer from "./bufl_reduce";
-import journalReducer from "./editor.reduce";
+import itemReducer from "./item_reduce";
+import editorRducer from "./editor_reduce";
 
 function createRootReducer(history) {
   return combineReducers({
@@ -12,8 +12,8 @@ function createRootReducer(history) {
     app: appReducer,
     auth: authReducer,
     file: fileReducer,
-    bufl: buflReducer,
-    editor: journalReducer,
+    item: itemReducer,
+    editor: editorRducer,
   });
 }
 

@@ -1,4 +1,4 @@
-import bujoRepository from "../repositories/bujoRepository";
+import userRepository from "../repositories/userRepository";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   isAuthenticated: false,
-  isInitialized: bujoRepository.isInitialized(),
+  isInitialized: userRepository.isInitialized(),
   userStatus: "logout",
 };
 export default (state = initialState, action) => {
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        isLoading: true,
+        isInitialized: true,
         userStatus: "registered",
       };
     }

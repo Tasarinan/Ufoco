@@ -1,54 +1,34 @@
 import { remote, shell } from "electron";
 
 var repo = require("../../package.json");
-import { ViewSize } from "../constants/enums";
+import { ScreenSize } from "../constants/enums";
 export const openNewWindow = (link) => shell.openExternal(link);
 
 export const setWindowSize = (win, size) => {
-  const AGENDA_WIDTH = 330;
-  const AGENDA_HEIGHT = 900;
-  const GAUGE_WIDTH = 330;
-  const GAUGE_HEIGHT = 200;
+  const EXPAND_WIDTH = 330;
+  const EXPAND_HEIGHT = 900;
+  const NAV_WIDTH = 330;
+  const NAV_HEIGHT = 200;
   const LOCK_WIDTH = 330;
   const LOCK_HEIGHT = 500;
   const WIDTH = 1100;
   const HEIGHT = 900;
 
   switch (size) {
-    case ViewSize.GAUGE: {
+    case ScreenSize.NAV: {
       win.setResizable(false);
       win.setMaximizable(false);
       win.setAlwaysOnTop(true);
-      win.setMinimumSize(GAUGE_WIDTH, GAUGE_HEIGHT);
-      win.setSize(GAUGE_WIDTH, GAUGE_HEIGHT, true);
+      win.setMinimumSize(NAV_WIDTH, NAV_HEIGHT);
+      win.setSize(NAV_WIDTH, NAV_HEIGHT, true);
       break;
     }
-    case ViewSize.AGENDA: {
+    case ScreenSize.EXPAND: {
       win.setResizable(false);
       win.setMaximizable(false);
       win.setAlwaysOnTop(true);
-      win.setMinimumSize(AGENDA_WIDTH, AGENDA_HEIGHT);
-      win.setSize(AGENDA_WIDTH, AGENDA_HEIGHT, true);
-      break;
-    }
-    case ViewSize.LOCK: {
-      win.setResizable(false);
-      win.setMaximizable(false);
-      win.setAlwaysOnTop(true);
-      win.setMinimumSize(LOCK_WIDTH, LOCK_HEIGHT);
-      win.setSize(LOCK_WIDTH, LOCK_HEIGHT, true);
-      break;
-    }
-    case ViewSize.MAXIMIZE: {
-      if (win.isMaximized()) {
-        win.unmaximize();
-      } else {
-        win.maximize();
-      }
-      break;
-    }
-    case ViewSize.FULLSCREEN: {
-      win.setFullScreen(!win.isFullScreen());
+      win.setMinimumSize(EXPAND_WIDTH, EXPAND_HEIGHT);
+      win.setSize(EXPAND_WIDTH, EXPAND_HEIGHT, true);
       break;
     }
     default: {

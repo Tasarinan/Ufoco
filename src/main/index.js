@@ -4,7 +4,6 @@ import { app, screen, BrowserWindow, ipcMain } from "electron";
 import settings from "../utils/electron-settings.util";
 import { isMacOS, isLinux } from "../utils/platform.util";
 import { setWindowSize } from "../utils/windows.util";
-import { ViewSize } from "../constants/enums";
 
 import MenuBuilder from "./menu";
 import TrayBuilder from "./tray";
@@ -23,11 +22,12 @@ class EdgeMain {
   windowConfiguration = {
     frame: false,
     transparent: true,
-    minimizable: false,
-    maximizable: false,
-    resizeable: false,
-    fullscreenable: false,
+    minimizable: true,
+    maximizable: true,
+    resizeable: true,
+    fullscreenable: true,
     alwaysOnTop: true,
+    titleBarStyle: 'hidden',
     icon:
       isMacOS() || isLinux()
         ? path.join(__dirname, "../assets/icons/64.png")
@@ -64,6 +64,12 @@ class EdgeMain {
       x: mainScreen.workArea.width - 500 - 20,
       y: 50,
       show: false,
+      webPreferences: {
+        nodeIntegration: true,
+        enableRemoteModule: true,
+        nodeIntegrationInWorker: true,
+        webSecurity: false,
+      },
     });
     setWindowSize(this.window);
   }

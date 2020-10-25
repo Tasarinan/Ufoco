@@ -1,8 +1,6 @@
 //app_action
-export const ADD_CALENDAR_EVENT = "ADD_CALENDAR_EVENT";
-export const DEL_CALENDAR_EVENT = "DEL_CALENDAR_EVENT";
-export const SET_OVERLAY = "SET_OVERLAY";
 export const SET_THEME = "SET_THEME";
+export const TOGGLE_AGENDA_MODE = "TOGGLE_AGENDA_MODE";
 
 //auth_action
 export const REGISTER_REQUEST = "REGISTER_REQUEST";
@@ -24,9 +22,16 @@ export const ENCRYPT_SUCCESS = "ENCRYPT_SUCCESS";
 export const SET_FILE_EXISTS = "SET_FILE_EXISTS";
 export const SET_HASHED_PASSWORD = "SET_HASHED_PASSWORD";
 
-//bufl_action
-export const SET_BUFL_ELEMENTS = "SET_BUFL_ELEMENTS";
+//item_action
+export const ITEM_TOGGLE_COLLAPSE = "ITEM_TOGGLE_COLLAPSE";
+export const ITEM_TOGGLE_COMPLETE = "ITEM_TOGGLE_COMPLETE";
+export const ITEM_DELETE = "ITEM_DELETE";
+export const ITEM_ADD = "ITEM_ADD";
+export const ITEM_LEFT_INDENT = "ITEM_LEFT_INDENT";
+export const ITEM_RIGHT_INDENT = "ITEM_RIGHT_INDENT";
+export const ITEM_CHANGENAME = "ITEM_CHANGENAME";
+export const ITEM_MOVEUP = "ITEM_MOVEUP";
+export const ITEM_MOVEDOWN = "ITEM_MOVEDOWN";
+export const ITEM_LOAD_DATA = "ITEM_LOAD_DATA";
 
-//
-export const CLOSE_BANNER_ALERT = "CLOSE_BANNER_ALERT";
-export const OPEN_BANNER_ALERT = "OPEN_BANNER_ALERT";
+//editor_action

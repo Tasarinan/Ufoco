@@ -11,12 +11,9 @@ export const Phases = {
   LONG_BREAK: 3,
 };
 
-export const ViewSize = {
-  AGENDA: 0,
-  GAUGE: 1,
-  LOCK: 2,
-  MAXIMIZE: 3,
-  FULLSCREEN: 4,
+export const ScreenSize = {
+  NAV: 0,
+  EXPAND: 1,
 };
 
 export const NotificationTypes = {
@@ -25,7 +22,7 @@ export const NotificationTypes = {
 };
 
 export const Routes = {
-  HOME: "/",
+  ROOT: "/",
   CHARTS: "/charts",
   LIBRARY: "/library",
   SETTINGS: "/settings",

@@ -8,7 +8,6 @@ import {
   SET_HASHED_PASSWORD,
   SET_FILE_EXISTS,
 } from "../constants/action_types";
-import jsonData from "../../@test/config/bufllist.json";
 
 // initialize state
 const initialState = {
@@ -16,8 +15,6 @@ const initialState = {
   decryptStatus: "idle",
   encryptErrorMsg: "",
   encryptStatus: "idle",
-  entries: {},
-  elements: jsonData.elements,
   fileExists: false,
   hashedPassword: "",
 };
@@ -42,9 +39,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         decryptErrorMsg: "",
-        decryptStatus: "idle",
-        elements: action.payload.elements,
-        entries: action.payload.entries,
+        decryptStatus: "success",
       };
     }
     case ENCRYPT_IN_PROGRESS: {
@@ -63,9 +58,7 @@ export default function (state = initialState, action) {
     case ENCRYPT_SUCCESS: {
       return {
         ...state,
-        encryptStatus: "idle",
-        elements: action.payload.elements,
-        entries: action.payload.entries,
+        encryptStatus: "success",
       };
     }
     case SET_FILE_EXISTS: {

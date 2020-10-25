@@ -3,9 +3,10 @@ import path from "path";
 import crypto from "crypto";
 import fs from "fs";
 
-import bujoRepository from "../repositories/bujoRepository";
+import userRepository from "../repositories/userRepository";
 import { getUpdateDate, toFileNameDate } from "./date.util";
 export const FILE_NAME = "flow-bujo.txt";
+const FILE_DIR = remote.app.getPath("userData");
 const CIPHER = "aes-192-cbc";
 const PREF_DIR = remote.app.getPath("userData");
 const BACKUP_DIR = path.join(PREF_DIR, "backups");
@@ -21,7 +22,8 @@ const METADATA = {
  */
 export const getFlowBujoFilePath = () => {
   // Concatenate and return directory preference with file name
-  const fileDir = bujoRepository.getFilepath();
+  let fileDir = userRepository.getDatapath();
+  if (fileDir === "") fileDir = FILE_DIR;
   return path.resolve(fileDir, FILE_NAME);
 };
 
@@ -47,7 +49,7 @@ export const copyFile = (sourcePath, destinationPath) => {
  * Return
  */
 export const writeEncryptedFile = (filePath, hashedPassword, content) => {
-  const encryptedMode = bujoRepository.isPasswordProtection();
+  const encryptedMode = userRepository.getEncryptedMode();
   if (encryptedMode == true) {
     const cipher = crypto.createCipher(CIPHER, hashedPassword);
     const encrypted = Buffer.concat([
@@ -62,7 +64,7 @@ export const writeEncryptedFile = (filePath, hashedPassword, content) => {
 
 export const readEncryptedFile = (filePath, hashedPassword) => {
   const data = fs.readFileSync(filePath);
-  const encryptedMode = bujoRepository.isPasswordProtection();
+  const encryptedMode = userRepository.getEncryptedMode();
   if (encryptedMode == true) {
     const decipher = crypto.createDecipher(CIPHER, hashedPassword);
     const fileContent = Buffer.concat([

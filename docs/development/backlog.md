@@ -24,6 +24,12 @@
   - <font color=red>load recently change preference </font>
   - <font color=red>locate today tasks</font>
 
+- `Ongoing` As a user I want every change saved instantly, that I don't have to worry about forgetting them.
+
+  - <font color=red> Saving the notes after focus is lost</font>
+  - <font color=red> Saving should not interfere with the typing or other user actions</font>
+  - <font color=red> Saving should only be done, if there are any changes to the file</font>
+
 - `Done` As a user I want to store my data with security password
 
   - <font color=green>use password prevent invalid login</font>
@@ -38,7 +44,25 @@
   - <font color=green>use Post-It notes to plan year/month/week/daily events</font>
   - <font color=green>use strickthrough line to quickly mark events/actions status (Completed)</font>
 
-* `Ongoing` As a user I want to use streak to motivate my consecutive affairs
+- `Ongoing` As a user I want to use nest list to show our mind flow, that I can quickly navigate through them to organize innovation ideas and problem solving steps
+
+  - <font color=#ff99> support the following control command</font>
+
+    - <kbd>UP</kbd> & <kbd>DOWN</kbd>: navigate through tasks
+    - <kbd>CNTRL+UP</kbd> & <kbd>CNTRL+DOWN</kbd>: shuffle tasks
+    - <kbd>TAB</kbd>: right-indent
+    - <kbd>SHIFT</kbd> + <kbd>TAB</kbd>: left-indent
+    - <kbd>BACKSPACE</kbd>: Remove an empty task
+    - <kbd>ENTER</kbd>: New item
+    - Click on a bullet point to fold it
+    - Hover on a bullet point and click complete to complete it
+
+- `Ongoing` As a developer I want to reuse open source editor to fit my needs, that it is becoming my project and I can learn the things that I need are most valuable to me
+
+  - <font color=green>draft-js is more better than Quill, so select draft-js </font>
+  -
+
+- `Ongoing` As a user I want to use streak to motivate my consecutive affairs
 
   - [] ~~
 
@@ -135,48 +159,9 @@ acceptance criteria
 - [ ] choose a DOING-date in the entry field
 - [ ] jumps (only) from TODO to DOING on the given date
 
-## DONE As the user I want to see all my DOING's after livewookie is started, that I can begin with my work instantly.
-
-## DONE As lw developer I want to change the mini-code-edit base to fit my needs, that it is becoming my project and I can learn the things that I need are most valuable to me
-
-AC:
-
-- [x] Changing zepto.min.js to jquery.js - speed should not be in issue in the beginning
-- [x] removing unused files (angular, zepto ...)
-
-## DONE As a user I want to see my notes, when I open live wookiee, that I see my notes instantly.
-
-- [x] a standard org file ist loaded (liveflow.md)
-- [x] liveflow.org is located at ~/.livewookie/liveflow.md
-- [x] liveflow.org doesn't exists it should be created
-- [x] It is opened with the start of the program
-
-## DONE As a note keeper I want every change in my notes saved instantly, that I don't have to worry about forgetting them.
-
-- [x] Saving the notes after focus is lost
-- [x] Saving should not interfere with the typing or other user actions
-- [x] Saving should only be done, if there are any changes to the file
-
-## DONE As a note keeper I want to use markdown files as the basis for my list and outlines proper theme for my org file, that I can quickly navigate through them and use ace features for text movement
-
-- [x] use a markdown file as standard file instead of org-file
-- [x] Proper Styling for an markdown-file
-- [x] Open/Close on code folding via Keyboard (Alt-Shift-9/Alt-0)
-- [x] Move Parts of the Structure around via Keyboard, if it's folded (Alt-Up/-Down )
-
 ## DONE As a task planner I want to add state keywords to headings and list, that I can mark them as tasks
 
 - [x] TODO and DONE are recognised by the markdown theme
-
-## DONE As lw developer I want to change the mini-code-edit base to fit my needs, that it is becoming my project and I can learn the things that I need are most valuable to me
-
-    AC:
-    - [X] Changing zepto.min.js to jquery.js - speed should not be in issue in the beginning
-    - [X] removing unused files (angular, zepto ...)
-
-## DONE A a user I want to see my notes, when I open live wookiee, that I see my notes instantly. DEADLINE: <2013-08-24 Sa 11:00>
-
-## DONE As a note keeper I want, that the editor area is focused after the start of livewookie, that I can start writing instantly.
 
 ## DONE As a user I want to change the state of a task with a simple action, that I can easyly check my task without switching to the editor and breaking my flow.
 

@@ -1,13 +1,9 @@
-import Home from "./home";
+import MiniView from "./miniview";
 import { connect } from "react-redux";
-import { toggleCompactMode } from "../../actions/app_action";
-const mapStateToProps = state => ({
-  compact: state.app.compact,
-  overlay: state.app.overlay
+const mapStateToProps = (state) => ({
+  expandMode: state.app.expandMode,
 });
 
-const mapDispatchToProps = dispatch => ({
-  toggleCompactMode: () => dispatch(toggleCompactMode())
-});
+const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(MiniView);

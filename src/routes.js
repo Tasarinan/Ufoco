@@ -1,22 +1,24 @@
 import React from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch, Redirect, useLocation } from "react-router";
 
-import Home from "./components/home";
+import Admin from "./components/admin";
 import App from "./components/app";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
+import MiniView from "./components/miniview";
 
 const Routes = (props) => {
+  const { pathname } = useLocation();
   return (
     <App>
       <Switch>
-        <PrivateRoute exact path={"/"} component={Home} />
+        <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
+        <PrivateRoute exact path={"/"} component={MiniView} />
+        <PrivateRoute path="/admin" component={Admin} />
         <Route path={"/login"} component={Login} />
         <Route path={"/register"} component={Register} />
-        <Route
-          render={(props) => <div>{console.log(props)}404 - Not Found</div>}
-        />
+        <Redirect from="*" to="/" />
       </Switch>
     </App>
   );

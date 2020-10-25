@@ -1,23 +1,16 @@
 import { ipcRenderer } from "electron";
 import { push } from "react-router-redux";
 import { ON_CHANGE_WINDOW_SIZE } from "../constants/ipc_channels";
-import { TOGGLE_COMPACT_MODE, SET_OVERLAY } from "../constants/action_types";
-import { Routes, ViewSize } from "../constants/enums";
+import { Routes, ScreenSize } from "../constants/enums";
+import { SET_THEME, TOGGLE_AGENDA_MODE } from "../constants/action_types";
 
-export const goToHome = () => (dispatch) => {
-  dispatch(push(Routes.HOME));
-  ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, ViewSize.NORMAL);
-};
-
-export const toggleCompactMode = () => (dispatch, getState) => {
-  dispatch({ type: TOGGLE_COMPACT_MODE });
+export const toggleExpandMode = () => (dispatch, getState) => {
+  dispatch({ type: TOGGLE_AGENDA_MODE });
   const {
-    app: { compact },
+    app: { expandMode },
   } = getState();
-  ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, compact);
-};
-export const adjustWinSize = (winsize) => {
-  ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, winsize);
+  if (expandMode) ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, ScreenSize.EXPAND);
+  else ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, ScreenSize.NAV);
 };
 
 export const setTheme = (theme) => ({

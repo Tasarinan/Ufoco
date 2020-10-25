@@ -18,6 +18,7 @@ import {
   SET_HASHED_PASSWORD,
   SET_FILE_EXISTS,
 } from "../constants/action_types";
+import { loadItemData } from "./item_action";
 import { hashPassword } from "../utils/password.util";
 
 export const setDecryptInProgress = () => {
@@ -33,13 +34,9 @@ export const setDecryptError = (decryptErrorMsg) => {
     },
   };
 };
-export const setDecryptSuccess = (elements, entries) => {
+export const setDecryptSuccess = () => {
   return {
     type: DECRYPT_SUCCESS,
-    payload: {
-      elements,
-      entries,
-    },
   };
 };
 
@@ -49,13 +46,9 @@ export const setEncryptInProgress = () => {
   };
 };
 
-export const setEncryptSuccess = (elements, entries) => {
+export const setEncryptSuccess = () => {
   return {
     type: ENCRYPT_SUCCESS,
-    payload: {
-      elements,
-      entries,
-    },
   };
 };
 
@@ -111,8 +104,9 @@ export const decryptFile = (password) => (dispatch) => {
     data = performMigrations(data);
 
     // Load bullet flow journal entries and save password
-    const { elements, entries } = data;
-    dispatch(setDecryptSuccess(elements, entries));
+    const { elements } = data;
+    dispatch(setDecryptSuccess());
+    dispatch(loadItemData(elements));
     // createIndex(entries);
     // enableMenuItems();
     createBackup();
@@ -133,25 +127,26 @@ export const decryptFile = (password) => (dispatch) => {
  * Create new encrypted flowbullet Jonoral file and index with the provided password
  */
 export const createEncryptedFile = (password) => (dispatch) => {
-  const entries = {};
-  const elements = {};
+  const elements = [];
+
   const filePath = getFlowBujoFilePath();
+
   const content = {
     metadata: getMetadata(),
     elements,
-    entries,
   };
   dispatch(setEncryptInProgress());
   const hashedPassword = hashPassword(password);
   try {
     writeEncryptedFile(filePath, hashedPassword, JSON.stringify(content));
-    dispatch(setEncryptSuccess(elements, entries));
+    dispatch(setEncryptSuccess());
+    dispatch(loadItemData(elements));
     dispatch(setHashedPassword(hashedPassword));
     //TODO
     // createIndex(entries);
     //enableMenuItems();
   } catch (error) {
-    logger.error("Error creating encrypted diary file: ", err);
-    dispatch(setEncryptError(err.message));
+    logger.error("Error creating encrypted diary file: ", error);
+    dispatch(setEncryptError(error.message));
   }
 };

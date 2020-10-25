@@ -1,4 +1,4 @@
-import bujoRepository from "../repositories/bujoRepository";
+import userRepository from "../repositories/userRepository";
 import { push } from "react-router-redux";
 import { ipcRenderer } from "electron";
 import {
@@ -7,7 +7,7 @@ import {
   testFileExists,
 } from "./file_action";
 
-import { Routes, ViewSize } from "../constants/enums";
+import { Routes } from "../constants/enums";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -17,7 +17,6 @@ import {
   REGISTER_FAILURE,
 } from "../constants/action_types";
 import { ON_CHANGE_WINDOW_SIZE } from "../constants/ipc_channels";
-import { hashPassword } from "../utils/password.util";
 export const loginRequest = () => {
   return {
     type: LOGIN_REQUEST,
@@ -49,29 +48,29 @@ export const registerFailure = () => {
   };
 };
 
-export const register = (account, password) => (dispatch) => {
+export const register = (email, password, encryptedMode) => (dispatch) => {
   dispatch(registerRequest());
-  if (prefRepository.getAccount() === "") {
-    createEncryptedFile(password);
-    prefRepository.setHashPassword(hashPassword(password));
-    prefRepository.setAccount(account);
-    testFileExists();
+  if (userRepository.isInitialized() === false) {
+    dispatch(createEncryptedFile(password));
+    //prefRepository.setHashPassword(hashPassword(password));
+    userRepository.setUserEmail(email);
+    userRepository.setEncryptedMode(encryptedMode);
+    dispatch(testFileExists());
     dispatch(registerSuccess());
-    dispatch(push(Routes.HOME));
-    ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, ViewSize.NORMAL);
+    dispatch(push(Routes.ROOT));
+    //ipcRenderer.send(ON_CHANGE_WINDOW_SIZE);
   } else {
     dispatch(registerFailure());
   }
 };
 
-export const login = (password) => (dispatch) => {
+export const login = (email, password) => (dispatch) => {
   dispatch(loginRequest());
-  if (hashPassword(password) === prefRepository.getHashPassword()) {
-    if (decryptFile(password)) {
-      dispatch(loginSuccess());
-      dispatch(push("/"));
-      ipcRenderer.send(ON_CHANGE_WINDOW_SIZE, ViewSize.NORMAL);
-    }
+  if (email === userRepository.getUserEmail()) {
+    dispatch(decryptFile(password));
+    dispatch(loginSuccess());
+    dispatch(push(Routes.ROOT));
+    //ipcRenderer.send(ON_CHANGE_WINDOW_SIZE);
   } else {
     dispatch(loginFailure());
   }

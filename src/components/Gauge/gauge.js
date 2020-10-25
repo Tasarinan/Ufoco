@@ -1,33 +1,31 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import styles from "./gauges.scss";
 import Date from "./today-date";
 import Score from "./today-score";
-
 import ProgressBar from "./customizableProgressbar";
 
 export default class Gauge extends PureComponent {
-  static propTypes = { toggleCompactMode: PropTypes.func.isRequired };
+  static propTypes = { toggleExpandMode: PropTypes.func.isRequired };
 
   render() {
-    const { toggleCompactMode } = this.props;
+    const { toggleExpandMode } = this.props;
     return (
-      <div className={styles.container}>
-        <div className={styles.progressbar}>
+      <div className="gauge">
+        <div className="gauge-progressbar">
           <ProgressBar></ProgressBar>
         </div>
-        <div className={styles.overlay}>
-          <div className={styles.mask}></div>
-          <div className={styles.dateContainer}>
-            <div className={styles.date}>
+        <div className="gauge-overlay">
+          <div className="gauge-mask"></div>
+          <div className="gauge-dateContainer">
+            <div className="gauge-date">
               <Date />
             </div>
             <button
-              className={styles.expandButton}
-              onClick={toggleCompactMode}
+              className="gauge-expandButton"
+              onClick={toggleExpandMode}
             ></button>
           </div>
-          <div className={styles.right}>
+          <div className="gauge-right">
             <Score />
           </div>
         </div>

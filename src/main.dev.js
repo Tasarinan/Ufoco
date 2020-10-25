@@ -5,7 +5,7 @@
  *
  */
 import path from "path";
-import url from "url";
+import { format as formatUrl } from "url";
 import { app } from "electron";
 
 import { isDev, isProd } from "./utils/env.util";
@@ -51,20 +51,20 @@ app.on("ready", async () => {
 
   // and load the index.html of the app.
   let indexPath;
-
   if (isDev && process.argv.indexOf("--noDevServer") === -1) {
-    indexPath = url.format({
+    indexPath = formatUrl({
       protocol: "http:",
       host: "localhost:3100",
       pathname: "index.html",
       slashes: true,
     });
   } else {
-    indexPath = url.format({
+    indexPath = formatUrl({
       protocol: "file:",
       pathname: path.join(__dirname, "dist", "index.html"),
       slashes: true,
     });
   }
+ console.log("index"+indexPath);
   Main = EdgeMain.init(indexPath).window;
 });
