@@ -1,5 +1,5 @@
 import {
-  getFlowBujoFilePath,
+  getyebFilePath,
   getMetadata,
   writeEncryptedFile,
   fileExists,
@@ -17,9 +17,11 @@ import {
   ENCRYPT_ERROR,
   SET_HASHED_PASSWORD,
   SET_FILE_EXISTS,
+  LOAD_FILE_TO_ELES,
+  SAVE_ELES_TO_FILE,
 } from "../constants/action_types";
-import { loadItemData } from "./item_action";
 import { hashPassword } from "../utils/password.util";
+import { element } from "prop-types";
 
 export const setDecryptInProgress = () => {
   return {
@@ -79,11 +81,26 @@ export const setFileExists = (exists) => {
   };
 };
 
+export const saveElesToFile = () => {
+  return {
+    type: SAVE_ELES_TO_FILE,
+  };
+};
+
+export const loadFileToEles = (itemData) => {
+  return {
+    type: LOAD_FILE_TO_ELES,
+    payload: {
+      elements: itemData,
+    },
+  };
+};
+
 /**
  * Test whether a diary file exists at the path specified in the preferences
  */
 export const testFileExists = () => (dispatch) => {
-  const filePath = getFlowBujoFilePath();
+  const filePath = getyebFilePath();
   dispatch(setFileExists(fileExists(filePath)));
 };
 
@@ -91,7 +108,7 @@ export const testFileExists = () => (dispatch) => {
  * Read flow bullet journal  from disk
  */
 export const decryptFile = (password) => (dispatch) => {
-  const filePath = getFlowBujoFilePath();
+  const filePath = getyebFilePath();
   dispatch(setDecryptInProgress());
   const hashedPassword = hashPassword(password);
   try {
@@ -106,7 +123,7 @@ export const decryptFile = (password) => (dispatch) => {
     // Load bullet flow journal entries and save password
     const { elements } = data;
     dispatch(setDecryptSuccess());
-    dispatch(loadItemData(elements));
+    dispatch(loadFileToEles(elements));
     // createIndex(entries);
     // enableMenuItems();
     createBackup();
@@ -127,9 +144,15 @@ export const decryptFile = (password) => (dispatch) => {
  * Create new encrypted flowbullet Jonoral file and index with the provided password
  */
 export const createEncryptedFile = (password) => (dispatch) => {
-  const elements = [];
-
-  const filePath = getFlowBujoFilePath();
+  const elements = [
+    {
+      id: "root",
+      parentId: "",
+      name: "",
+      children: [],
+    },
+  ];
+  const filePath = getyebFilePath();
 
   const content = {
     metadata: getMetadata(),
@@ -140,7 +163,7 @@ export const createEncryptedFile = (password) => (dispatch) => {
   try {
     writeEncryptedFile(filePath, hashedPassword, JSON.stringify(content));
     dispatch(setEncryptSuccess());
-    dispatch(loadItemData(elements));
+    dispatch(loadFileToEles(elements));
     dispatch(setHashedPassword(hashedPassword));
     //TODO
     // createIndex(entries);
@@ -148,5 +171,31 @@ export const createEncryptedFile = (password) => (dispatch) => {
   } catch (error) {
     logger.error("Error creating encrypted diary file: ", error);
     dispatch(setEncryptError(error.message));
+  }
+};
+
+export const autoSaveDirtyData = () => (dispatch, getState) => {
+  const { hashedPassword } = getState().file;
+  const { elements } = getState().item;
+  dispatch(saveEncryptedFile(elements, hashedPassword));
+};
+/**
+ * save the element in the state. Then write the element to the
+ * encrypted  file and update the index
+ */
+export const saveEncryptedFile = (elements, hashedPassword) => (dispatch) => {
+  const filePath = getyebFilePath();
+  const fileContent = {
+    metadata: getMetadata(),
+    elements,
+  };
+  dispatch(setEncryptInProgress());
+  try {
+    writeEncryptedFile(filePath, hashedPassword, JSON.stringify(fileContent));
+    dispatch(setEncryptSuccess());
+    dispatch(saveElesToFile(elements));
+  } catch (err) {
+    logger.error("Error updating encrypted diary file: ", err);
+    dispatch(setEncryptError(err.message));
   }
 };

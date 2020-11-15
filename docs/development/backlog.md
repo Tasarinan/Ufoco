@@ -28,7 +28,7 @@
 
   - <font color=red> Saving the notes after focus is lost</font>
   - <font color=red> Saving should not interfere with the typing or other user actions</font>
-  - <font color=red> Saving should only be done, if there are any changes to the file</font>
+  - <font color=geen> Saving should only be done, if there are any changes to the file</font>
 
 - `Done` As a user I want to store my data with security password
 
@@ -48,8 +48,8 @@
 
   - <font color=#ff99> support the following control command</font>
 
-    - <kbd>UP</kbd> & <kbd>DOWN</kbd>: navigate through tasks
-    - <kbd>CNTRL+UP</kbd> & <kbd>CNTRL+DOWN</kbd>: shuffle tasks
+    - <kbd>UP</kbd> & <kbd>DOWN</kbd>: navigate through items
+    - <kbd>CNTRL+UP</kbd> & <kbd>CNTRL+DOWN</kbd>: shuffle items
     - <kbd>TAB</kbd>: right-indent
     - <kbd>SHIFT</kbd> + <kbd>TAB</kbd>: left-indent
     - <kbd>BACKSPACE</kbd>: Remove an empty task

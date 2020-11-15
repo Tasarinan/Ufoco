@@ -5,7 +5,7 @@ import fs from "fs";
 
 import userRepository from "../repositories/userRepository";
 import { getUpdateDate, toFileNameDate } from "./date.util";
-export const FILE_NAME = "flow-bujo.txt";
+export const FILE_NAME = "yeb.txt";
 const FILE_DIR = remote.app.getPath("userData");
 const CIPHER = "aes-192-cbc";
 const PREF_DIR = remote.app.getPath("userData");
@@ -20,7 +20,7 @@ const METADATA = {
 /**
  * Return path to flow bullet journal file (set in preferences)
  */
-export const getFlowBujoFilePath = () => {
+export const getyebFilePath = () => {
   // Concatenate and return directory preference with file name
   let fileDir = userRepository.getDatapath();
   if (fileDir === "") fileDir = FILE_DIR;
@@ -100,7 +100,7 @@ function createBackupDir(dir) {
  */
 function createBackupFile(dir) {
   const dateTime = toFileNameDate(getUpdateDate());
-  const diaryFilePath = getFlowBujoFilePath();
+  const diaryFilePath = getyebFilePath();
   const backupPath = path.join(dir, `backup-${dateTime}.txt`);
   copyFile(diaryFilePath, backupPath);
 }

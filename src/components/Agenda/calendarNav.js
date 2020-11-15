@@ -1,17 +1,16 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import styles from "./calendarNav.scss";
 
 export default class CalendarNav extends PureComponent {
-  static propTypes = { openOverlay: PropTypes.func.isRequired };
+  static propTypes = {};
   handleClickOnAddButton() {}
   render = () => {
     return (
-      <div className={styles.container}>
-        <button type="button" className={styles.leftnavbutton}></button>
+      <div className="agenda-calendar-nav">
+        <button type="button" className="agenda-calendar-nav-leftbtn"></button>
         <button
           type="button"
-          className={styles.addbutton}
+          className="agenda-calendar-nav-plusbtn"
           onClick={this.handleClickOnAddButton}
         >
           <svg
@@ -48,7 +47,7 @@ export default class CalendarNav extends PureComponent {
             </g>
           </svg>
         </button>
-        <button type="button" className={styles.rightnavbutton}></button>
+        <button type="button" className="agenda-calendar-nav-rightbtn"></button>
       </div>
     );
   };

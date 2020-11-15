@@ -22,16 +22,18 @@ export const ENCRYPT_SUCCESS = "ENCRYPT_SUCCESS";
 export const SET_FILE_EXISTS = "SET_FILE_EXISTS";
 export const SET_HASHED_PASSWORD = "SET_HASHED_PASSWORD";
 
+export const LOAD_FILE_TO_ELES = "LOAD_FILE_TO_ELES";
+export const SAVE_ELES_TO_FILE = "SAVE_ELES_TO_FILE";
+
 //item_action
 export const ITEM_TOGGLE_COLLAPSE = "ITEM_TOGGLE_COLLAPSE";
 export const ITEM_TOGGLE_COMPLETE = "ITEM_TOGGLE_COMPLETE";
 export const ITEM_DELETE = "ITEM_DELETE";
-export const ITEM_ADD = "ITEM_ADD";
-export const ITEM_LEFT_INDENT = "ITEM_LEFT_INDENT";
-export const ITEM_RIGHT_INDENT = "ITEM_RIGHT_INDENT";
+export const ITEM_INSERT = "ITEM_INSERT";
+export const ITEM_OUTDENT = "ITEM_OUTDENT";
+export const ITEM_INDENT = "ITEM_INDENT";
 export const ITEM_CHANGENAME = "ITEM_CHANGENAME";
 export const ITEM_MOVEUP = "ITEM_MOVEUP";
 export const ITEM_MOVEDOWN = "ITEM_MOVEDOWN";
-export const ITEM_LOAD_DATA = "ITEM_LOAD_DATA";
 
 //editor_action

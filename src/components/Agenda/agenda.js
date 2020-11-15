@@ -1,14 +1,12 @@
 import React from "react";
 import DayCalendar from "./dayCalendar";
 import CalendarNav from "./calendarNav";
-import styles from "./agenda.scss";
 import PropTypes from "prop-types";
 import moment from "moment";
 
 export default class Agenda extends React.Component {
   static propTypes = {
-    stages: PropTypes.array.isRequired,
-    openOverlay: PropTypes.func.isRequired
+    slots: PropTypes.array.isRequired,
   };
 
   timerID = 0;
@@ -46,12 +44,11 @@ export default class Agenda extends React.Component {
   }
 
   render = () => {
-    const { openOverlay } = this.props;
     return (
-      <div className={styles.container}>
-        <CalendarNav openOverlay={openOverlay} />
-        <div className={styles.agenda__calendar}>
-          <DayCalendar from={6} to={24} stages={this.props.stages} />
+      <div className="agenda">
+        <CalendarNav />
+        <div className="agenda-calendar">
+          <DayCalendar from={6} to={24} slots={this.props.slots} />
         </div>
       </div>
     );
@@ -59,9 +56,9 @@ export default class Agenda extends React.Component {
 }
 
 Agenda.defaultProps = {
-  stages: [
+  slots: [
     { start: 30, end: 90 },
     { start: 300, end: 360 },
-    { start: 400, end: 460 }
-  ]
+    { start: 400, end: 460 },
+  ],
 };

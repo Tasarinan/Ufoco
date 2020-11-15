@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import styles from "./divisors.scss";
 
 const Divisors = ({ startHour, totalMinutes, totalMinutesPerDivisor }) => {
   const totalDivisors = totalMinutes / totalMinutesPerDivisor;
@@ -10,11 +9,11 @@ const Divisors = ({ startHour, totalMinutes, totalMinutesPerDivisor }) => {
 
   for (let i = 1; i < totalDivisors; i += 1) {
     const positionStyle = {
-      top: `${i * totalMinutesPerDivisor}px`
+      top: `${i * totalMinutesPerDivisor}px`,
     };
 
     divisors.push(
-      <div key={i} style={positionStyle} className={styles.calendar__divisor} />
+      <div key={i} style={positionStyle} className="agenda-calendar-divisor" />
     );
   }
 
@@ -26,14 +25,14 @@ const Divisors = ({ startHour, totalMinutes, totalMinutesPerDivisor }) => {
       fontWeight:
         (i * totalMinutesPerTime) % totalMinutesPerDivisor === 0
           ? "bold"
-          : "regular"
+          : "regular",
     };
 
     times.push(
       <div
         key={i}
         style={positionStyle}
-        className={styles.calendar__divisor__time}
+        className="agenda-calendar-divisor-time"
       >
         {moment()
           .set("hour", startHour || 6)
@@ -54,7 +53,7 @@ const Divisors = ({ startHour, totalMinutes, totalMinutesPerDivisor }) => {
 Divisors.propTypes = {
   startHour: PropTypes.number,
   totalMinutes: PropTypes.number.isRequired,
-  totalMinutesPerDivisor: PropTypes.number.isRequired
+  totalMinutesPerDivisor: PropTypes.number.isRequired,
 };
 
 export default Divisors;
