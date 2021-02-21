@@ -4,49 +4,46 @@
 
 ---
 
-- `Done` As a user I want UI appearing suitable to my operating system, that it feels like a native app:
+- [x] As a user I want UI appearing suitable to my operating system, that it feels like a native app:
 
-  - <font color=green>electron based application</font>
-  - <font color=green>react + redux</font>
+  - [x] <font color=green>electron based application</font>
+  - [x] <font color=green>react + redux</font>
 
-- `Ongoing` As a programmer I want to use a testing framework
+- [x] As a user I want to store my data offline database
 
-- `Done` As a user I want to store my data offline database
+  - [x] <font color=green>select lowdb as database service</font>
 
-  - <font color=green>select lowdb as database service</font>
+- [x] As a developer I want to reuse open source editor to fit my needs, that it is becoming my project and I can learn the things that I need are most valuable to me
 
-- `Done` As a user I want to keep data, that I want to keep for future reference, that I can remember important information.
+  - [x] <font color=green>draft-js is more better than Quill, so select draft-js </font>
+  - [x] <font color=green>select dragfrail as a editor baseline. reuse draft-js-plugin framework </font>
 
-  - <font color=green>store data in file </font>
+- [x] As a user I want to keep data, that I want to keep for future reference, that I can remember important information.
 
-- `Ongoing` As a user I want to restore the state right where I left it, that I can pick up my work where I left it.
+  - [x] <font color=green>store data in file </font>
 
-  - <font color=red>load recently change preference </font>
-  - <font color=red>locate today tasks</font>
+- [x] As a user I want to store my data with security password
 
-- `Ongoing` As a user I want every change saved instantly, that I don't have to worry about forgetting them.
+  - [x] <font color=green>use password prevent invalid login</font>
+  - [x] <font color=green>use cryto prevent invalid file access</font>
 
-  - <font color=red> Saving the notes after focus is lost</font>
-  - <font color=red> Saving should not interfere with the typing or other user actions</font>
-  - <font color=geen> Saving should only be done, if there are any changes to the file</font>
+- [ ] As a user I want every change saved instantly, that I don't have to worry about forgetting them.
 
-- `Done` As a user I want to store my data with security password
+  - <font color=red> Saving data after focus is lost</font>
+  - <font color=red> Saving data should not interfere with the typing or other user actions</font>
+  - [x] <font color=geen> Saving data should be done every 10 seconds</font>
 
-  - <font color=green>use password prevent invalid login</font>
-  - <font color=green>use cryto prevent invalid file access</font>
-
-- `Ongoing` As a new User I want to have a nice startpage, that I know what I need to do next and bond emotionally
-
-- `Ongoing` As a user I want to organize the present, record the past and plan for the future
+- [ ] As a user I want to organize the present, record the past and plan for the future
 
   - <font color=green>use nested list to organize innovation ideas and problem solving steps</font>
   - <font color=#ff99>use track keepers to record habbit or streak actions </font>
-  - <font color=green>use Post-It notes to plan year/month/week/daily events</font>
-  - <font color=green>use strickthrough line to quickly mark events/actions status (Completed)</font>
+  - <font color=#ff99>use Post-It to record sticky notes --low priority</font>
+  - <font color=#ff99>use heatmap and charts to dispay weekly and monthly used hours</font>
+  - <font color=#ff99>use calendar to do daily plan: roll over, do it later, priority </font>
 
-- `Ongoing` As a user I want to use nest list to show our mind flow, that I can quickly navigate through them to organize innovation ideas and problem solving steps
+- [ ] As a user I want to use nest list to show our mind flow, that I can quickly navigate through them to organize innovation ideas and problem solving steps
 
-  - <font color=#ff99> support the following control command</font>
+  - [x] <font color=#ff99> support the following control command</font>
 
     - <kbd>UP</kbd> & <kbd>DOWN</kbd>: navigate through items
     - <kbd>CNTRL+UP</kbd> & <kbd>CNTRL+DOWN</kbd>: shuffle items
@@ -56,22 +53,35 @@
     - <kbd>ENTER</kbd>: New item
     - Click on a bullet point to fold it
     - Hover on a bullet point and click complete to complete it
+    - Hover on a bullet point and click Edit to jump to Edit page
 
-- `Ongoing` As a developer I want to reuse open source editor to fit my needs, that it is becoming my project and I can learn the things that I need are most valuable to me
+  - [ ] <font color=#ff99>navigate item based on focus</font>
 
-  - <font color=green>draft-js is more better than Quill, so select draft-js </font>
-  -
+- [x] As a user I want to have a tool bar in the GUI
 
-- `Ongoing` As a user I want to use streak to motivate my consecutive affairs
+  - <font color=#ff99>support window min,max close</font>
+  - <font color=#ff99>support lang flag --Low Priority</font>
+  - <font color=#ff99>support traffic light flag</font>
+  - <font color=#ff99>support tool button</font>
 
-  - [] ~~
+- [ ] As a user I want to have a markdown support editor based on draft-js
 
-* `Ongoing` As a user I want to use golf(important and urgency), stone(important but no urgency), sand(no important but urgency),beer(no important and no urgency) to priority my daily affairs
+  - <font color=#ff99>support full markdown lang</font>
 
-  - [ ] add a new item with priority support
-  - [ ] delete the exist item (if this exist item has only streak, remove streak also)
-  - [ ] edit the exist item for priority, title,streak,ship status,arranged stage
-  - [ ] group some items as today, others for ToBeDetermined
+- `Ongoing` every day, I can get an organized tasklet lists as daily plan where I know I should do best to finish them
+
+  - [ ] create button to add a streak item
+  - [ ] As a user I want to use streak to motivate my consecutive affairs
+  - [ ] streak general means achievement, spend hours and plan day and needed actions
+  - [ ] Change item label on the agenda view
+  - [ ] save item label on the database
+  - [ ] Due Mark is recognised by the markdown theme and based on org-modes
+  - [ ] As a user I want to use golf(important and urgency), stone(important but no urgency), sand(no important but urgency),beer(no important and no urgency) to priority my daily affairs
+
+    - [ ] add a new item with priority support
+    - [ ] delete the exist item (if this exist item has only streak, remove streak also)
+    - [ ] edit the exist item for priority, title,streak,ship status,arranged stage
+    - [ ] group some items as today, others for ToBeDetermined
 
 - `Ongoing` As a user I want a agenda view for today, that I can see what I have to do today
 
@@ -81,14 +91,6 @@
   - [ ] Agenda View shows current day on the menubar
   - [ ] Agenda view shows next/previous/current day
   - [ ] Agenda-View should always updated when it's shown
-
-- `Ongoing` every day, I can get an organized lists where I know I should do best to finish them in specific stage or later.
-
-  - [ ] create button to add a streak item
-    - [ ] streak general means achievement, spend hours and plan day and needed actions
-  - [ ] Change item label on the agenda view
-  - [ ] save item label on the database
-  - [ ] Due Mark is recognised by the markdown theme and based on org-modes
 
 * `Ongoing` As a user I want to have a focus view for today, that I can see today status
 
@@ -113,11 +115,17 @@
   - [x] Filterbox
   - [x] uses all important information: body, Parent node, date, etc.
 
-* `Ongoing` As a user I want to have status charts to review what I finished last
-
 > Ver 0.2
 
 ---
+
+- `Ongoing` As a new User I want to have a nice startpage, that I know what I need to do next and bond emotionally
+- `Ongoing` As a user I want to restore the state right where I left it, that I can pick up my work where I left it.
+
+  - <font color=red>load recently change preference </font>
+  - <font color=red>locate today tasks</font>
+
+- `Ongoing` As a programmer I want to use an existed react,redux and electrion testing framework
 
 - `TODO` As a user I want to work as undisturb state when I work at focus
 
@@ -201,13 +209,3 @@ acceptance criteria:
 - [x] A ranking should have only one task and a task should have one ranking only; not enforced, but GUI follow this rule
 - [x] User can change rank via gui - nothing fancy yet
 - [x] Right now tasks without RANK can't be sorted
-
-## DONE Task-Change throws Error, if Task has an URL in it's headline
-
-## DONE As a User I want the buttons to represent the state of Akiee, that I what view I am seeing rigth now.
-
-## DONE As a user I want to order tasks without ranking yet in the GUI, that I can order them without using the editor
-
-- [x] Remove the dependencies of Ace-Editor for replacing/writing in the task file, instead replace/write in the ListOfNumber-Datastructure and replace the whole editor content.
-- ~~[ ] Remove "module"-pattern in app.js, this is not important in a node-webkit app?~~
-- ~~[ ] Create tests with PhantomJS for DOM-Manipulation~~

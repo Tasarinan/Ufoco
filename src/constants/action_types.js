@@ -37,3 +37,4 @@ export const ITEM_MOVEUP = "ITEM_MOVEUP";
 export const ITEM_MOVEDOWN = "ITEM_MOVEDOWN";
 
 //editor_action
+export const FETCH_ELE_DETAIL = "FETCH_ELE_DETAIL";

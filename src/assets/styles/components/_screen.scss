@@ -1,0 +1,55 @@
+.admin {
+  position: fixed; /* most of this is to fix an svg filter glitch */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  flex-direction: column;
+  @include background-color("background");
+  border-radius: 10px 10px 10px 10px;
+
+  .editor {
+    width: 100%;
+  }
+  .mindflow {
+    width: 100%;
+  }
+
+  @media (max-width: $screen-tablet) {
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 2 * $spacing-abs-large;
+    overflow-y: auto;
+
+    .mindflow .editor {
+      min-height: 500px;
+    }
+  }
+
+  @media (min-width: $screen-tablet + 1px) {
+    justify-content: center;
+    padding: $spacing-rel-large;
+
+    .mindflow,
+    .editor {
+      height: 100%;
+    }
+    .mindflow .editor {
+      max-width: $editor-max-width;
+      margin-left: $spacing-rel-large;
+    }
+  }
+
+  @media (min-width: $screen-large) {
+    padding: $spacing-rel-medium;
+  }
+}
+
+.miniview {
+  position: fixed; /* most of this is to fix an svg filter glitch */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+}

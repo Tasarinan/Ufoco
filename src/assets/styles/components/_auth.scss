@@ -1,0 +1,28 @@
+.account-form {
+  box-sizing: border-box;
+  border-radius: 0 0 25px 0;
+}
+.account-form label,
+.account-form input {
+  margin: 0 0 0 $spacing-abs-small;
+}
+.account-form-check {
+  vertical-align: middle;
+}
+
+.help-block {
+  position: relative;
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 14px;
+  color: #f96868;
+}
+.account-form button {
+  text-align: center;
+  width: 50%;
+  margin: $spacing-abs-small 0 $spacing-abs-small $spacing-abs-small;
+}
+
+.account-form-header {
+  text-align: center;
+}

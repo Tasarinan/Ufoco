@@ -21,7 +21,6 @@ import {
   SAVE_ELES_TO_FILE,
 } from "../constants/action_types";
 import { hashPassword } from "../utils/password.util";
-import { element } from "prop-types";
 
 export const setDecryptInProgress = () => {
   return {

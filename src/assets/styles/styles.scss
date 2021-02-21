@@ -1,0 +1,30 @@
+// Style reset
+@import "../../../node_modules/minireset.css/minireset.min.css";
+// Example import .css
+//@import '~name_in_node_modules/dist/style.css';
+@import "~remixicon/fonts/remixicon.css";
+@import "~draft-js/dist/Draft.css";
+
+// Base
+@import "base/variables";
+@import "base/mixins";
+@import "base/text";
+
+// Elements
+@import "elements/form";
+@import "elements/input";
+@import "elements/scrollbar";
+
+// Components
+@import "components/app";
+@import "components/titlebar";
+//@import "components/calendar";
+@import "components/screen";
+@import "components/gauge";
+@import "components/agenda";
+@import "components/mindflow";
+@import "components/editor";
+//@import "components/overlay";
+@import "components/startpage";
+@import "components/auth";
+//@import "components/search";

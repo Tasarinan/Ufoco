@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+  top: 135px;
+  left: 0;
+  right: 0;
+  width: 330px;
+  border-radius: 10px 10px 10px 10px;
+  background: #94c6df;
+  height: 700px;
+}
+
+.agenda__calendar {
+  height: 660px;
+
+  position: relative;
+  overflow-y: scroll;
+  -webkit-app-region: no-drag;
+}
+
+.agenda__error {
+  background-color: #ff9494;
+  padding: 15px;
+  margin: 20px 0;
+  font-size: 12px;
+}
+.scrollTarget {
+  width: 100%;
+  height: 800px;
+}

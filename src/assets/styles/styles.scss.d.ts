@@ -1,0 +1,94 @@
+declare namespace StylesScssNamespace {
+  export interface IStylesScss {
+    'DraftEditor-editorContainer': string;
+    'DraftEditor-root': string;
+    'account-form': string;
+    'account-form-check': string;
+    'account-form-header': string;
+    addbutton: string;
+    admin: string;
+    agenda: string;
+    'agenda-calendar': string;
+    'agenda-calendar-divisor': string;
+    'agenda-calendar-divisor-time': string;
+    'agenda-calendar-nav': string;
+    'agenda-calendar-nav-leftbtn': string;
+    'agenda-calendar-nav-plusbtn': string;
+    'agenda-calendar-nav-rightbtn': string;
+    'agenda-calendar-timeslot': string;
+    'agenda-calendar-timeslot-headline': string;
+    'agenda-daycalendar': string;
+    app: string;
+    bold: string;
+    button: string;
+    'button-active': string;
+    'button-invisible': string;
+    'button-main': string;
+    completed: string;
+    completedParent: string;
+    divider: string;
+    dropdownMenu: string;
+    editor: string;
+    'editor-scrollable': string;
+    'editor-text-wrapper': string;
+    'editor-title-wrapper': string;
+    'editor-toolbar': string;
+    fadeIn: string;
+    fadeInFromNone: string;
+    'form-group': string;
+    gauge: string;
+    'gauge-date': string;
+    'gauge-dateContainer': string;
+    'gauge-expandButton': string;
+    'gauge-mask': string;
+    'gauge-overlay': string;
+    'gauge-progressbar': string;
+    'gauge-right': string;
+    'gauge-score': string;
+    'gauge-score-hour': string;
+    'gauge-score-items': string;
+    'gauge-score-percentage': string;
+    'gauge-today-calendar': string;
+    'gauge-today-date': string;
+    'gauge-today-day': string;
+    'gauge-today-my': string;
+    'help-block': string;
+    lineThrough: string;
+    mindflow: string;
+    minimize: string;
+    miniview: string;
+    'option-buttons': string;
+    optionBullet: string;
+    options: string;
+    'public-DraftEditorPlaceholder-inner': string;
+    'public-DraftStyleDefault-block': string;
+    'startpage-container': string;
+    'startpage-content': string;
+    'startpage-menu': string;
+    'text-faded': string;
+    'theme-dark': string;
+    'theme-light': string;
+    'title-bar': string;
+    'title-bar-WinControls': string;
+    'title-bar-closeIcon': string;
+    'title-bar-icons': string;
+    'title-bar-links': string;
+    'title-bar-maximizeIcon': string;
+    'title-bar-minimizeIcon': string;
+    'title-bar-restoreIcon': string;
+    'title-bar-searchInput': string;
+    'title-bar-traffic-light': string;
+    topbar_date: string;
+    triangleUp: string;
+    underline: string;
+    vhide: string;
+    'word-count': string;
+  }
+}
+
+declare const StylesScssModule: StylesScssNamespace.IStylesScss & {
+  /** WARNING: Only available when `css-loader` is used without `style-loader` or `mini-css-extract-plugin` */
+  locals: StylesScssNamespace.IStylesScss;
+};
+
+export = StylesScssModule;
