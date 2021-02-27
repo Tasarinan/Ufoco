@@ -1,8 +1,8 @@
 // Libs
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-const ThemeContext = React.createContext("light");
+const ThemeContext = React.createContext('light');
 
 // Components
 
@@ -28,7 +28,7 @@ export default class App extends PureComponent {
       <ThemeContext.Provider value={theme}>
         {/* Everything below the "theme-*" div can be styled based on the theme */}
         <div className={`theme-${theme}`}>
-          <div className="app">{children}</div>
+          <div className='app'>{children}</div>
         </div>
       </ThemeContext.Provider>
     );

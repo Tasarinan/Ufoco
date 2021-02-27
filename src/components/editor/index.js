@@ -1,7 +1,6 @@
-import MdEditor from "./editor";
-import { connect } from "react-redux";
-import { fetchDetail } from "../../actions/editor_action";
-
+import MdEditor from './editor';
+import { connect } from 'react-redux';
+import { fetchDetail } from '../../actions/editor_action';
 const mapStateToProps = (state) => ({
   enableSpellcheck: state.editor.enableSpellcheck,
   hideHeadline: state.editor.hideHeadline,

@@ -13,14 +13,8 @@
     "@babel/plugin-proposal-class-properties",
     "@babel/transform-runtime",
     "react-hot-loader/babel",
-    [
-      "babel-plugin-root-import",
 
-      {
-        "rootPathPrefix": "@",
-        "rootPathSuffix": "./src"
-      }
-    ]
+
   ],
   "env": {
     "development": {

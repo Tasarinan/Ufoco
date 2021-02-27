@@ -57,6 +57,7 @@
     "postpackage:all": "electron-builder build -mwl"
   },
   "dependencies": {
+    "@draft-js-plugins/alignment": "^4.1.0",
     "@draft-js-plugins/anchor": "^4.1.1",
     "@draft-js-plugins/buttons": "^4.1.0",
     "@draft-js-plugins/drag-n-drop": "^4.1.0",
@@ -66,6 +67,7 @@
     "@draft-js-plugins/image": "^4.1.0",
     "@draft-js-plugins/inline-toolbar": "^4.1.0",
     "@draft-js-plugins/resizeable": "^4.1.0",
+    "@draft-js-plugins/static-toolbar": "^4.1.0",
     "@draft-js-plugins/video": "^4.1.0",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",

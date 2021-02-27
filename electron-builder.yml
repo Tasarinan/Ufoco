@@ -1,0 +1,35 @@
+productName: "ElectronApp"
+appId: "com.example.app"
+files:
+  - "dist/"
+  - "node_modules/"
+  - "index.html"
+  - "main.js"
+  - "renderer.js"
+  - "package.json"
+directories:
+  buildResources: "resources"
+  output: "release"
+publish:
+  provider: "github"
+  owner: "electron-react-webpack-ts-boilerplate"
+  repo: "electron-react-webpack-ts-boilerplate"
+  private: false
+win:
+  target:
+    - "nsis"
+    - "msi"
+dmg:
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: "link"
+      path: "/Applications"
+linux:
+  target:
+    - "deb"
+    - "rpm"
+    - "AppImage"
+  category: "Development"
