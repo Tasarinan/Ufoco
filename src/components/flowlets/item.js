@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import { Link } from "react-router-dom";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import { Link } from 'react-router-dom';
 export default class Item extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -18,9 +18,13 @@ export default class Item extends PureComponent {
     outdentItem: PropTypes.func.isRequired,
     moveUpItem: PropTypes.func.isRequired,
     moveDownItem: PropTypes.func.isRequired,
+    focusNext: PropTypes.func.isRequired,
+    focusPrev: PropTypes.func.isRequired,
+    onFocus: PropTypes.bool.isRequired,
   };
   constructor(props) {
     super(props);
+    this.focusInput = React.createRef();
     this.state = {
       collapsed: this.props.collapsed,
     };
@@ -30,6 +34,12 @@ export default class Item extends PureComponent {
     this.handleDeleted = this.handleDeleted.bind(this);
     this.handleMoveUp = this.handleMoveUp.bind(this);
     this.handleMoveDown = this.handleMoveDown.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.onFocus === true) {
+      this.focusInput.current.focus();
+    }
   }
 
   handleToggleCollapse = () => {
@@ -44,31 +54,31 @@ export default class Item extends PureComponent {
     this.props.toggleItemComplete(this.props.id);
   };
   handleWhichKey = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       //prevents adding a <br> and calls the action
       e.preventDefault();
       this.props.insertItem(this.props.parentId, this.props.id);
-    } else if (e.key === "Tab") {
+    } else if (e.key === 'Tab') {
       // create a child when pressing Tab on item
       e.preventDefault();
       this.props.indentItem(this.props.parentId, this.props.id);
-    } else if (e.key === "Backspace") {
+    } else if (e.key === 'Backspace') {
       // deletes item when pressing Backspace on empty item
-      if (e.target.value === "") {
+      if (e.target.value === '') {
         this.props.deleteItem(this.props.id, this.props.parentId);
       }
-    } else if (e.shiftKey && e.key === "Tab") {
+    } else if (e.shiftKey && e.key === 'Tab') {
       // create a child when pressing Tab on item
       e.preventDefault();
       this.props.outdentItem(this.props.parentId, this.props.id);
-    } else if (e.key === 40) {
+    } else if (e.keyCode === 40) {
       e.preventDefault();
-      //  $scope.focusNext(siblingId);
+      this.props.focusNext(this.props.id);
     }
     //down arrow
-    else if (e.key === 38) {
+    else if (e.keyCode === 38) {
       e.preventDefault();
-      //$scope.focusPrev(siblingId);
+      this.props.focusPrev(this.props.id);
     }
     //up arrow
     else return false;
@@ -88,31 +98,28 @@ export default class Item extends PureComponent {
   };
   render() {
     const { collapsed } = this.state;
-    const collapsedClass = cx("minimize", {
-      ["vhide"]: !this.props.children,
+    const collapsedClass = cx('minimize', {
+      ['vhide']: !this.props.children,
     });
     const completedClass = cx({
-      ["lineThrough"]: this.props.completed,
+      ['lineThrough']: this.props.completed,
     });
     const inputClass = cx({
-      ["bold"]: this.props.children,
-      ["lineThrough"]: this.props.completed,
+      ['bold']: this.props.children,
+      ['lineThrough']: this.props.completed,
     });
-    const dropdownMenuClass = cx("options", "dropdownMenu");
+    const dropdownMenuClass = cx('options', 'dropdownMenu');
     return (
       <li>
-        <div id="fadeIn">
-          <div className="option-buttons">
+        <div id='fadeIn'>
+          <div className='option-buttons'>
             <div className={collapsedClass} onClick={this.handleToggleCollapse}>
-              {collapsed ? "+" : "-"}
+              {collapsed ? '+' : '-'}
             </div>
-            <div className="optionBullet">
-              <div className="triangleUp"></div>
+            <div className='optionBullet'>
+              <div className='triangleUp'></div>
               <ul className={dropdownMenuClass}>
-                <li
-                  onClick={this.handleMarkCompleted}
-                  className={completedClass}
-                >
+                <li onClick={this.handleMarkCompleted} className={completedClass}>
                   Complete
                 </li>
                 <li>
@@ -125,7 +132,8 @@ export default class Item extends PureComponent {
             </div>
           </div>
           <input
-            type="text"
+            type='text'
+            ref={this.focusInput}
             className={inputClass}
             value={this.props.name}
             onKeyDown={this.handleWhichKey}

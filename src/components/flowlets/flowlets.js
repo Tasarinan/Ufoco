@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 // Styles
-import Item from "./item";
+import Item from './item';
 
-export default class Mindflow extends PureComponent {
+export default class Flowlets extends PureComponent {
   /**
    * this is constructor description.
    * @param {object} props passed to component
@@ -11,7 +11,13 @@ export default class Mindflow extends PureComponent {
     super();
     // Used to stop after navigating away from this component.
     this.timer = 0;
+    this.flatid = [];
+    this.refs = null;
   }
+
+  state = {
+    cursor_pos: '',
+  };
 
   /**
    * called when component is mounted.
@@ -37,15 +43,46 @@ export default class Mindflow extends PureComponent {
     }, 3000);
   }
 
+  focusNext(siblingId) {
+    let index = this.flatid.indexOf(siblingId);
+    if (index < this.flatid.length - 1) {
+      while (index < this.flatid.length - 1) {
+        index++;
+        if (this.refs[this.flatid[index]].current !== null) {
+          //set focus and scroll to view
+          this.setState({ cursor_pos: this.flatid[index] });
+          break;
+        }
+      }
+    }
+  }
+
+  focusPrev(siblingId) {
+    let index = this.flatid.indexOf(siblingId);
+    if (index > 0) {
+      while (index > 0) {
+        index--;
+        if (this.refs[this.flatid[index]].current !== null) {
+          //set focus and scroll to view
+          this.setState({ cursor_pos: this.flatid[index] });
+          break;
+        }
+      }
+    }
+  }
+
   renderElements(idsToRender, elements) {
+    const { cursor_pos } = this.state;
     const elementsToRender = [];
     idsToRender.forEach((eleId) => {
       const element = elements.find((element) => element.id === eleId);
       if (element !== undefined) {
+        this.flatid.push(element.id);
         elementsToRender.push(
           <Item
             {...this.props}
             key={element.id}
+            ref={this.refs[element.id]}
             name={element.name}
             id={element.id}
             parentId={element.parentId}
@@ -57,10 +94,11 @@ export default class Mindflow extends PureComponent {
             addItem={this.props.addItem}
             deleteItem={this.props.deleteItem}
             addItemToParent={this.props.addItemToParent}
+            focusNext={this.focusNext.bind(this)}
+            focusPrev={this.focusPrev.bind(this)}
+            onFocus={cursor_pos === element.id ? true : false}
           >
-            {element.children.length
-              ? this.renderElements(element.children, elements)
-              : null}
+            {element.children.length ? this.renderElements(element.children, elements) : null}
           </Item>
         );
       }
@@ -70,16 +108,19 @@ export default class Mindflow extends PureComponent {
 
   render() {
     const { elements } = this.props;
+    this.flatid = [];
+    this.refs = elements.reduce((acc, value) => {
+      acc[value.id] = React.createRef();
+      return acc;
+    }, {});
     /* const rootElementsIds = elements
       .filter((element) => element.parentId === "")
       .map((element) => element.id);*/
-    const rootElement = elements.find((element) => element.id === "root");
+    const rootElement = elements.find((element) => element.id === 'root');
     // if (rootElement.children.length === 0) this.props.addItem();
     return (
-      <div className="mindflow">
-        {elements.length
-          ? this.renderElements(rootElement.children, elements)
-          : null}
+      <div className='flowlets'>
+        {elements.length ? this.renderElements(rootElement.children, elements) : null}
       </div>
     );
   }

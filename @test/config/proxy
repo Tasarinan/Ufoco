@@ -1,5 +1,0 @@
-npmrc:
-registry=https://registry.npm.taobao.org/
-ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
-proxy=http://87.254.212.120:8080/
-https-proxy=http://87.254.212.120:8080/

@@ -1,23 +1,15 @@
-import {
-  ContentState,
-  convertFromRaw,
-  convertToRaw,
-  EditorState,
-  RichUtils,
-} from "draft-js";
-import Editor, {
-  createEditorStateWithText,
-  composeDecorators,
-} from "@draft-js-plugins/editor";
-import createLinkPlugin from "@draft-js-plugins/anchor";
-import createToolbarPlugin from "@draft-js-plugins/static-toolbar";
-import createImagePlugin from "@draft-js-plugins/image";
-import createFocusPlugin from "@draft-js-plugins/focus";
-import createAlignmentPlugin from "@draft-js-plugins/alignment";
-import createVideoPlugin from "@draft-js-plugins/video";
-import createBlockDndPlugin from "@draft-js-plugins/drag-n-drop";
-import createDragNDropUploadPlugin from "@draft-js-plugins/drag-n-drop-upload";
-import createResizeablePlugin from "@draft-js-plugins/resizeable";
+import React, { PureComponent } from 'react';
+import { ContentState, convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
+import Editor, { createEditorStateWithText, composeDecorators } from '@draft-js-plugins/editor';
+import createLinkPlugin from '@draft-js-plugins/anchor';
+import createToolbarPlugin from '@draft-js-plugins/static-toolbar';
+import createImagePlugin from '@draft-js-plugins/image';
+import createFocusPlugin from '@draft-js-plugins/focus';
+import createAlignmentPlugin from '@draft-js-plugins/alignment';
+import createVideoPlugin from '@draft-js-plugins/video';
+import createBlockDndPlugin from '@draft-js-plugins/drag-n-drop';
+import createDragNDropUploadPlugin from '@draft-js-plugins/drag-n-drop-upload';
+import createResizeablePlugin from '@draft-js-plugins/resizeable';
 import {
   ItalicButton,
   BoldButton,
@@ -26,19 +18,20 @@ import {
   UnorderedListButton,
   OrderedListButton,
   BlockquoteButton,
-} from "@draft-js-plugins/buttons";
+} from '@draft-js-plugins/buttons';
 
-import debounce from "lodash.debounce";
-import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
-import { getUpdateDate, toLocaleWeekday } from "../../utils/date.util";
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import debounce from 'lodash.debounce';
+import { draftToMarkdown, markdownToDraft } from 'markdown-draft-js';
+import { getUpdateDate, toLocaleWeekday } from '../../utils/date.util';
+
+import PropTypes from 'prop-types';
 const AUTOSAVE_INTERVAL = 500;
 
-import "@draft-js-plugins/static-toolbar/lib/plugin.css";
-import "@draft-js-plugins/anchor/lib/plugin.css";
-import "@draft-js-plugins/alignment/lib/plugin.css";
-import "@draft-js-plugins/image/lib/plugin.css";
+import '@draft-js-plugins/static-toolbar/lib/plugin.css';
+import '@draft-js-plugins/anchor/lib/plugin.css';
+import '@draft-js-plugins/alignment/lib/plugin.css';
+import '@draft-js-plugins/image/lib/plugin.css';
+import MockUpload from './MockUpload';
 
 export default class MdEditor extends PureComponent {
   static propTypes = {
@@ -52,10 +45,10 @@ export default class MdEditor extends PureComponent {
     super(props);
     this.state = {
       textEditorState: EditorState.createWithContent(
-        convertFromRaw(markdownToDraft(this.props.note.body || ""))
+        convertFromRaw(markdownToDraft(this.props.note.body || ''))
       ),
       titleEditorState: EditorState.createWithContent(
-        ContentState.createFromText(this.props.note.headline || "")
+        ContentState.createFromText(this.props.note.headline || '')
       ),
     };
     const resizeablePlugin = createResizeablePlugin();
@@ -64,8 +57,8 @@ export default class MdEditor extends PureComponent {
     const blockDndPlugin = createBlockDndPlugin();
 
     const linkPlugin = createLinkPlugin({
-      placeholder: "https://…",
-      linkTarget: "_blank",
+      placeholder: 'https://…',
+      linkTarget: '_blank',
     });
 
     const decorators = composeDecorators(
@@ -111,23 +104,23 @@ export default class MdEditor extends PureComponent {
     console.log(id);
     this.props.fetchDetail(id);
     // Save entry before app is closed
-    window.addEventListener("unload", this.saveEntry);
+    window.addEventListener('unload', this.saveEntry);
   };
   componentWillUnmount = () => {
-    window.removeEventListener("unload", this.saveEntry);
+    window.removeEventListener('unload', this.saveEntry);
   };
 
   handleTextKeyCommand = (command, editorState) => {
     let newState;
-    if (command === "bold") {
-      newState = RichUtils.toggleInlineStyle(editorState, "BOLD");
-    } else if (command === "italic") {
-      newState = RichUtils.toggleInlineStyle(editorState, "ITALIC");
+    if (command === 'bold') {
+      newState = RichUtils.toggleInlineStyle(editorState, 'BOLD');
+    } else if (command === 'italic') {
+      newState = RichUtils.toggleInlineStyle(editorState, 'ITALIC');
     } else {
-      return "not-handled";
+      return 'not-handled';
     }
     this.onTextChange(newState);
-    return "handled";
+    return 'handled';
   };
   onTextChange = (textEditorState) => {
     this.setState({
@@ -137,11 +130,11 @@ export default class MdEditor extends PureComponent {
   };
   handleTitleKeyCommand = (command) => {
     // Move focus to text editor when enter key is pressed in title editor
-    if (command === "enter") {
+    if (command === 'enter') {
       this.textEditor.focus();
-      return "handled";
+      return 'handled';
     }
-    return "not-handled";
+    return 'not-handled';
   };
 
   onTitleChange = (titleEditorState) => {
@@ -151,7 +144,7 @@ export default class MdEditor extends PureComponent {
     this.saveEntryDebounced();
   };
   onFocus = (e) => {
-    if (e.target.className === "DraftEditor-root") {
+    if (e.target.className === 'DraftEditor-root') {
       this.editor.focus();
     }
   };
@@ -161,9 +154,7 @@ export default class MdEditor extends PureComponent {
     const { textEditorState, titleEditorState } = this.state;
 
     const title = titleEditorState.getCurrentContent().getPlainText();
-    const text = draftToMarkdown(
-      convertToRaw(textEditorState.getCurrentContent())
-    );
+    const text = draftToMarkdown(convertToRaw(textEditorState.getCurrentContent()));
     //  updateEntry(guidSelected, title.trim(), text.trim());
   };
 
@@ -173,22 +164,16 @@ export default class MdEditor extends PureComponent {
   render() {
     const { textEditorState, titleEditorState } = this.state;
     const { enableSpellcheck, hideHeadline } = this.props;
-    const {
-      Toolbar,
-      LinkButton,
-      AddImage,
-      AddVideo,
-      AlignmentTool,
-    } = this.PluginComponents;
+    const { Toolbar, LinkButton, AddImage, AddVideo, AlignmentTool } = this.PluginComponents;
 
     // Detect active inline/block styles
     const blockType = RichUtils.getCurrentBlockType(textEditorState);
-    const isOl = blockType === "ordered-list-item";
-    const isUl = blockType === "unordered-list-item";
+    const isOl = blockType === 'ordered-list-item';
+    const isUl = blockType === 'unordered-list-item';
     const weekdayDate = toLocaleWeekday(getUpdateDate());
     return (
-      <form className="editor">
-        <Toolbar className={editorStyles.editorToolbar}>
+      <form className='editor'>
+        <Toolbar className='editor-toolbar'>
           {(externalProps) => {
             return (
               <React.Fragment>
@@ -206,17 +191,17 @@ export default class MdEditor extends PureComponent {
             );
           }}
         </Toolbar>
-        <div className="editor-scrollable">
-          <p className="text-faded">{weekdayDate}</p>
+        <div className='editor-scrollable'>
+          <p className='text-faded'>{weekdayDate}</p>
           {!hideHeadline && (
-            <div className="editor-title-wrapper">
+            <div className='editor-title-wrapper'>
               <Editor
                 editorState={titleEditorState}
                 handleKeyCommand={this.handleTitleKeyCommand}
                 keyBindingFn={Editor.titleKeyBindingFn}
                 onBlur={this.saveEntry}
                 onChange={this.onTitleChange}
-                placeholder="add-a-title"
+                placeholder='add-a-title'
                 spellCheck={enableSpellcheck}
                 ref={(element) => {
                   this.editor = element;
@@ -224,7 +209,7 @@ export default class MdEditor extends PureComponent {
               />
             </div>
           )}
-          <div className="editor-text-wrapper">
+          <div className='editor-text-wrapper'>
             <Editor
               editorState={textEditorState}
               handleKeyCommand={this.handleTextKeyCommand}
@@ -233,7 +218,7 @@ export default class MdEditor extends PureComponent {
               ref={(textEditor) => {
                 this.textEditor = textEditor;
               }}
-              placeholder={"write-something…"}
+              placeholder={'write-something…'}
               plugins={this.plugins}
               spellCheck={enableSpellcheck}
             />

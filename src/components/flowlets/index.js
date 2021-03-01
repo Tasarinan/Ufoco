@@ -1,5 +1,5 @@
-import Mindflow from "./mindflow";
-import { connect } from "react-redux";
+import Flowlets from './flowlets';
+import { connect } from 'react-redux';
 import {
   toggleItemCollapse,
   toggleItemComplete,
@@ -10,8 +10,8 @@ import {
   outdentItem,
   moveUpItem,
   moveDownItem,
-} from "../../actions/item_action";
-import { autoSaveDirtyData } from "../../actions/file_action";
+} from '../../actions/item_action';
+import { autoSaveDirtyData } from '../../actions/file_action';
 
 const mapStateToProps = (state) => ({
   elements: state.item.elements,
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch) => ({
   autoSaveDirtyData: () => dispatch(autoSaveDirtyData()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Mindflow);
+export default connect(mapStateToProps, mapDispatchToProps)(Flowlets);

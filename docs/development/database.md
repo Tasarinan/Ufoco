@@ -13,12 +13,3 @@ If it deleted from out of the app, the app will try to create it again.
 
 ### Note
 
-| Attribute | type        | Note                                                         |
-| --------- | ----------- | ------------------------------------------------------------ |
-| meta      | Map<Any>    | Containing title, preview, todo status and other information |
-| content   | String      | Raw content string                                           |
-| tags      | Set<String> | Tag set. Tag is a string without space.                      |
-| folder    | String      | Path of note                                                 |
-| cratedAt  | Date        | Creation date                                                |
-| updatedAt | Date        | Last update date                                             |
-| rev       | String      | Rev key of pouchDB                                           |
