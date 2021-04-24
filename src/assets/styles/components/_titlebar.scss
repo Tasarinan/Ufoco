@@ -40,6 +40,30 @@
   width: 20%;
   height: $header-height;
 }
+.title-bar-flowListIcon {
+  background: url("../svgs/flow.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  width: 40px;
+  height: $header-height;
+}
+.title-bar-flowListIcon:hover{
+  filter: brightness(3.5);
+}
+
+.title-bar-taskListIcon{
+  background: url('../svgs/checklist.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  width: 40px;
+  height: $header-height;
+}
+.title-bar-taskListIcon:hover{
+  filter: brightness(3.5);
+}
+
 /*  search input Styles  */
 .title-bar-searchInput {
   box-sizing: border-box;

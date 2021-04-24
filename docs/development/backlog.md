@@ -55,7 +55,7 @@
     - Hover on a bullet point and click complete to complete it
     - Hover on a bullet point and click Edit to jump to Edit page
 
-  - [ ] <font color=#ff99>navigate item based on focus</font>
+  - [x] <font color=#ff99>navigate item based on focus</font>
 
 - [x] As a user I want to have a tool bar in the GUI
 

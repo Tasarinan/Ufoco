@@ -166,10 +166,6 @@ export default class MdEditor extends PureComponent {
     const { enableSpellcheck, hideHeadline } = this.props;
     const { Toolbar, LinkButton, AddImage, AddVideo, AlignmentTool } = this.PluginComponents;
 
-    // Detect active inline/block styles
-    const blockType = RichUtils.getCurrentBlockType(textEditorState);
-    const isOl = blockType === 'ordered-list-item';
-    const isUl = blockType === 'unordered-list-item';
     const weekdayDate = toLocaleWeekday(getUpdateDate());
     return (
       <form className='editor'>
@@ -191,24 +187,25 @@ export default class MdEditor extends PureComponent {
             );
           }}
         </Toolbar>
+
+        <p className='text-faded'>{weekdayDate}</p>
+        {!hideHeadline && (
+          <div className='editor-title-wrapper'>
+            <Editor
+              editorState={titleEditorState}
+              handleKeyCommand={this.handleTitleKeyCommand}
+              keyBindingFn={Editor.titleKeyBindingFn}
+              onBlur={this.saveEntry}
+              onChange={this.onTitleChange}
+              placeholder='add-a-title'
+              spellCheck={enableSpellcheck}
+              ref={(element) => {
+                this.editor = element;
+              }}
+            />
+          </div>
+        )}
         <div className='editor-scrollable'>
-          <p className='text-faded'>{weekdayDate}</p>
-          {!hideHeadline && (
-            <div className='editor-title-wrapper'>
-              <Editor
-                editorState={titleEditorState}
-                handleKeyCommand={this.handleTitleKeyCommand}
-                keyBindingFn={Editor.titleKeyBindingFn}
-                onBlur={this.saveEntry}
-                onChange={this.onTitleChange}
-                placeholder='add-a-title'
-                spellCheck={enableSpellcheck}
-                ref={(element) => {
-                  this.editor = element;
-                }}
-              />
-            </div>
-          )}
           <div className='editor-text-wrapper'>
             <Editor
               editorState={textEditorState}

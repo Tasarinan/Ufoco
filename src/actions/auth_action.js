@@ -1,13 +1,9 @@
-import userRepository from "../repositories/userRepository";
-import { push } from "react-router-redux";
-import { ipcRenderer } from "electron";
-import {
-  decryptFile,
-  createEncryptedFile,
-  testFileExists,
-} from "./file_action";
+import userRepository from '../repositories/userRepository';
+import { push } from 'react-router-redux';
+import { ipcRenderer } from 'electron';
+import { decryptFile, createEncryptedFile } from './file_action';
 
-import { Routes } from "../constants/enums";
+import { Routes } from '../constants/enums';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -15,8 +11,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
-} from "../constants/action_types";
-import { ON_CHANGE_WINDOW_SIZE } from "../constants/ipc_channels";
+} from '../constants/action_types';
 export const loginRequest = () => {
   return {
     type: LOGIN_REQUEST,
@@ -51,11 +46,10 @@ export const registerFailure = () => {
 export const register = (email, password, encryptedMode) => (dispatch) => {
   dispatch(registerRequest());
   if (userRepository.isInitialized() === false) {
-    dispatch(createEncryptedFile(password));
-    //prefRepository.setHashPassword(hashPassword(password));
+    userRepository.setPassword(password);
     userRepository.setUserEmail(email);
     userRepository.setEncryptedMode(encryptedMode);
-    dispatch(testFileExists());
+    dispatch(createEncryptedFile(password));
     dispatch(registerSuccess());
     dispatch(push(Routes.ROOT));
     //ipcRenderer.send(ON_CHANGE_WINDOW_SIZE);
@@ -66,7 +60,7 @@ export const register = (email, password, encryptedMode) => (dispatch) => {
 
 export const login = (email, password) => (dispatch) => {
   dispatch(loginRequest());
-  if (email === userRepository.getUserEmail()) {
+  if (email === userRepository.getUserEmail() && password == userRepository.getPassword()) {
     dispatch(decryptFile(password));
     dispatch(loginSuccess());
     dispatch(push(Routes.ROOT));

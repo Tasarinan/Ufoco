@@ -8,6 +8,8 @@ $editor-padding-large: 2 * $spacing-abs-large;
 	display: flex;
 	flex-direction: column;
 	border-radius: $border-radius-input;
+  height: inherit;
+  width: 100%;
 }
 
 .editor-scrollable {

@@ -1,15 +1,17 @@
-import { remote } from "electron";
-import path from "path";
-import crypto from "crypto";
-import fs from "fs";
+import { remote } from 'electron';
+import path from 'path';
+import crypto from 'crypto';
+import fs from 'fs';
 
-import userRepository from "../repositories/userRepository";
-import { getUpdateDate, toFileNameDate } from "./date.util";
-export const FILE_NAME = "yeb.txt";
-const FILE_DIR = remote.app.getPath("userData");
-const CIPHER = "aes-192-cbc";
-const PREF_DIR = remote.app.getPath("userData");
-const BACKUP_DIR = path.join(PREF_DIR, "backups");
+import userRepository from '../repositories/userRepository';
+import jotterStructureTemplate from '../repositories/structureTemplate';
+import { getUpdateDate, toFileNameDate } from './date.util';
+import { hashPassword } from './password.util';
+export const FILE_NAME = 'jotter.txt';
+const FILE_DIR = remote.app.getPath('userData');
+const CIPHER = 'aes-192-cbc';
+const PREF_DIR = remote.app.getPath('userData');
+const BACKUP_DIR = path.join(PREF_DIR, 'backups');
 const FILES_TO_KEEP = 50;
 
 const METADATA = {
@@ -20,11 +22,23 @@ const METADATA = {
 /**
  * Return path to flow bullet journal file (set in preferences)
  */
-export const getyebFilePath = () => {
+export const getJotterFilePath = () => {
   // Concatenate and return directory preference with file name
   let fileDir = userRepository.getDatapath();
-  if (fileDir === "") fileDir = FILE_DIR;
-  return path.resolve(fileDir, FILE_NAME);
+  if (fileDir === '') fileDir = FILE_DIR;
+  if (!fs.existsSync(fileDir)) {
+    fs.mkdirSync(fileDir);
+  }
+  return path.join(fileDir, FILE_NAME);
+};
+
+// Create a new blank flow
+export const createDefaultJotterStructure = (jotterFilePath) => {
+  if (!fileExists(jotterFilePath)) {
+    let newjotterStructure = JSON.stringify(jotterStructureTemplate);
+    writeEncryptedFile(jotterFilePath, newjotterStructure);
+  }
+  return newjotterStructure;
 };
 
 /**
@@ -48,29 +62,25 @@ export const copyFile = (sourcePath, destinationPath) => {
 /**
  * Return
  */
-export const writeEncryptedFile = (filePath, hashedPassword, content) => {
+export const writeEncryptedFile = (filePath, content) => {
   const encryptedMode = userRepository.getEncryptedMode();
+  const hashedPassword = hashPassword(userRepository.getPassword());
   if (encryptedMode == true) {
     const cipher = crypto.createCipher(CIPHER, hashedPassword);
-    const encrypted = Buffer.concat([
-      cipher.update(Buffer.from(content, "utf8")),
-      cipher.final(),
-    ]);
+    const encrypted = Buffer.concat([cipher.update(Buffer.from(content, 'utf8')), cipher.final()]);
     fs.writeFileSync(filePath, encrypted);
   } else {
     fs.writeFileSync(filePath, content);
   }
 };
 
-export const readEncryptedFile = (filePath, hashedPassword) => {
+export const readEncryptedFile = (filePath) => {
   const data = fs.readFileSync(filePath);
   const encryptedMode = userRepository.getEncryptedMode();
+  const hashedPassword = hashPassword(userRepository.getPassword());
   if (encryptedMode == true) {
     const decipher = crypto.createDecipher(CIPHER, hashedPassword);
-    const fileContent = Buffer.concat([
-      decipher.update(data),
-      decipher.final(),
-    ]);
+    const fileContent = Buffer.concat([decipher.update(data), decipher.final()]);
     return fileContent.toString();
   } else {
     return data.toString();
@@ -78,7 +88,7 @@ export const readEncryptedFile = (filePath, hashedPassword) => {
 };
 
 /**
- * Create a copy of the encrypted bullet flow jounrnal file and delete old backup files if necessary
+ * Create a copy of the encrypted jotter file and delete old backup files if necessary
  */
 export const createBackup = () => {
   createBackupDir(BACKUP_DIR);
@@ -96,13 +106,13 @@ function createBackupDir(dir) {
 }
 
 /**
- * Create a backup of the diary by copying the diary file to the backup directory
+ * Create a backup of the diary by copying the jotter file to the backup directory
  */
 function createBackupFile(dir) {
   const dateTime = toFileNameDate(getUpdateDate());
-  const diaryFilePath = getyebFilePath();
+  const jotterFilePath = getJotterFilePath();
   const backupPath = path.join(dir, `backup-${dateTime}.txt`);
-  copyFile(diaryFilePath, backupPath);
+  copyFile(jotterFilePath, backupPath);
 }
 
 /**
@@ -110,13 +120,9 @@ function createBackupFile(dir) {
  */
 function deleteOldBackupFiles(dir, filesToKeep) {
   const files = fs.readdirSync(dir);
-  const txtFiles = files.filter((fileName) => fileName.endsWith(".txt"));
+  const txtFiles = files.filter((fileName) => fileName.endsWith('.txt'));
   if (txtFiles.length > filesToKeep) {
-    for (
-      let fileIndex = 0;
-      fileIndex < txtFiles.length - filesToKeep;
-      fileIndex += 1
-    ) {
+    for (let fileIndex = 0; fileIndex < txtFiles.length - filesToKeep; fileIndex += 1) {
       const fileToDelete = path.join(BACKUP_DIR, txtFiles[fileIndex]);
       fs.unlinkSync(fileToDelete);
     }

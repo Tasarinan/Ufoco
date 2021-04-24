@@ -1,13 +1,14 @@
 import {
-  getyebFilePath,
+  getJotterFilePath,
   getMetadata,
   writeEncryptedFile,
   fileExists,
   readEncryptedFile,
   createBackup,
-} from "../utils/file.util";
-import { performMigrations } from "../utils/md.util";
-import logger from "electron-log";
+  createDefaultJotterStructure,
+} from '../utils/file.util';
+import { performMigrations } from '../utils/md.util';
+import logger from 'electron-log';
 import {
   DECRYPT_ERROR,
   DECRYPT_IN_PROGRESS,
@@ -19,8 +20,10 @@ import {
   SET_FILE_EXISTS,
   LOAD_FILE_TO_ELES,
   SAVE_ELES_TO_FILE,
-} from "../constants/action_types";
-import { hashPassword } from "../utils/password.util";
+  LOAD_TASKS_FROM_FILE,
+  SAVE_TASKS_TO_FILE,
+} from '../constants/action_types';
+import { hashPassword } from '../utils/password.util';
 
 export const setDecryptInProgress = () => {
   return {
@@ -62,24 +65,6 @@ export const setEncryptError = (encryptErrorMsg) => {
   };
 };
 
-export const setHashedPassword = (hashedPassword) => {
-  return {
-    type: SET_HASHED_PASSWORD,
-    payload: {
-      hashedPassword,
-    },
-  };
-};
-
-export const setFileExists = (exists) => {
-  return {
-    type: SET_FILE_EXISTS,
-    payload: {
-      fileExists: exists,
-    },
-  };
-};
-
 export const saveElesToFile = () => {
   return {
     type: SAVE_ELES_TO_FILE,
@@ -95,106 +80,132 @@ export const loadFileToEles = (itemData) => {
   };
 };
 
-/**
- * Test whether a diary file exists at the path specified in the preferences
- */
-export const testFileExists = () => (dispatch) => {
-  const filePath = getyebFilePath();
-  dispatch(setFileExists(fileExists(filePath)));
+export const LoadTasksFromFile = (taskletData) => {
+  return {
+    type: LOAD_TASKS_FROM_FILE,
+    payload: {
+      tasklets: taskletData,
+    },
+  };
 };
 
+export const saveTasksToFile = () => {
+  return {
+    type: SAVE_TASKS_TO_FILE,
+  };
+};
 /**
- * Read flow bullet journal  from disk
+ * Read jotter file from disk
+ * Check file exist or not
+ * if file exist, read content
+ * if file not  exist then check backup
+ * if backup exist then restore backup
+ * if backup not exist, then read default content
  */
 export const decryptFile = (password) => (dispatch) => {
-  const filePath = getyebFilePath();
+  const filePath = getJotterFilePath();
   dispatch(setDecryptInProgress());
-  const hashedPassword = hashPassword(password);
+  if (!fileExists(filePath)) {
+    //restore one default or backup
+    createDefaultJotterStructure();
+  }
+  // const hashedPassword = hashPassword(password);
   try {
-    const fileContent = readEncryptedFile(filePath, hashedPassword);
+    const fileContent = readEncryptedFile(filePath);
     let data = JSON.parse(fileContent);
     // On success: Save password
-    dispatch(setHashedPassword(hashedPassword));
+    // dispatch(setHashedPassword(hashedPassword));
 
     // Perform data migrations between app updates if necessary
     data = performMigrations(data);
 
     // Load bullet flow journal entries and save password
-    const { elements } = data;
+    const { elements, tasklets } = data;
     dispatch(setDecryptSuccess());
     dispatch(loadFileToEles(elements));
+    dispatch(LoadTasksFromFile(tasklets));
     // createIndex(entries);
     // enableMenuItems();
     createBackup();
   } catch (err) {
     // Error reading diary file
     let errorMsg;
-    if (err.message.endsWith("BAD_DECRYPT")) {
-      errorMsg = "wrong-password";
+    if (err.message.endsWith('BAD_DECRYPT')) {
+      errorMsg = 'wrong-password';
     } else {
-      errorMsg = `${"decryption-error"}: ${err.message}`;
+      errorMsg = `${'decryption-error'}: ${err.message}`;
     }
-    logger.error("Error decrypting diary file: ", err);
+    logger.error('Error decrypting diary file: ', err);
     dispatch(setDecryptError(errorMsg));
   }
 };
 
 /**
- * Create new encrypted flowbullet Jonoral file and index with the provided password
+ * Create new encrypted jotter  file in disk
+ * check if file is existed
+ * if file is existed, create a backup and replace a default
+ * if file is no existed, create a default
  */
 export const createEncryptedFile = (password) => (dispatch) => {
-  const elements = [
+  /*const elements = [
     {
-      id: "root",
-      parentId: "",
-      name: "",
+      id: 'root',
+      parentId: '',
+      name: '',
       children: [],
     },
   ];
-  const filePath = getyebFilePath();
-
   const content = {
     metadata: getMetadata(),
     elements,
-  };
+  };*/
+
+  const filePath = getJotterFilePath();
   dispatch(setEncryptInProgress());
-  const hashedPassword = hashPassword(password);
+  if (fileExists(filePath)) {
+    createBackup();
+  }
+  //const hashedPassword = hashPassword(password);
   try {
-    writeEncryptedFile(filePath, hashedPassword, JSON.stringify(content));
+    let data = createDefaultJotterStructure(filePath);
+    //writeEncryptedFile(filePath, hashedPassword, JSON.stringify(content));
     dispatch(setEncryptSuccess());
+    const { elements, tasklets } = data;
     dispatch(loadFileToEles(elements));
-    dispatch(setHashedPassword(hashedPassword));
+    dispatch(saveTasksToFile(tasklets));
+    //dispatch(setHashedPassword(hashedPassword));
     //TODO
     // createIndex(entries);
     //enableMenuItems();
   } catch (error) {
-    logger.error("Error creating encrypted diary file: ", error);
+    logger.error('Error creating encrypted diary file: ', error);
     dispatch(setEncryptError(error.message));
   }
 };
 
 export const autoSaveDirtyData = () => (dispatch, getState) => {
-  const { hashedPassword } = getState().file;
   const { elements } = getState().item;
-  dispatch(saveEncryptedFile(elements, hashedPassword));
+  const { tasklets } = getState().task;
+  dispatch(saveEncryptedFile(elements, tasklets));
 };
 /**
- * save the element in the state. Then write the element to the
- * encrypted  file and update the index
+ * save in the disk
+ * update index
  */
-export const saveEncryptedFile = (elements, hashedPassword) => (dispatch) => {
-  const filePath = getyebFilePath();
+export const saveEncryptedFile = (elements, tasklets) => (dispatch) => {
+  const filePath = getJotterFilePath();
   const fileContent = {
     metadata: getMetadata(),
     elements,
+    tasklets,
   };
   dispatch(setEncryptInProgress());
   try {
-    writeEncryptedFile(filePath, hashedPassword, JSON.stringify(fileContent));
+    writeEncryptedFile(filePath, JSON.stringify(fileContent));
     dispatch(setEncryptSuccess());
     dispatch(saveElesToFile(elements));
   } catch (err) {
-    logger.error("Error updating encrypted diary file: ", err);
+    logger.error('Error updating encrypted diary file: ', err);
     dispatch(setEncryptError(err.message));
   }
 };

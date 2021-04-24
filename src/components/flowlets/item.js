@@ -58,7 +58,11 @@ export default class Item extends PureComponent {
       //prevents adding a <br> and calls the action
       e.preventDefault();
       this.props.insertItem(this.props.parentId, this.props.id);
-    } else if (e.key === 'Tab') {
+    } else if (e.shiftKey && e.keyCode === 9) {
+      // create a child when pressing Tab on item
+      e.preventDefault();
+      this.props.outdentItem(this.props.parentId, this.props.id);
+    } else if (e.keyCode === 9) {
       // create a child when pressing Tab on item
       e.preventDefault();
       this.props.indentItem(this.props.parentId, this.props.id);
@@ -67,10 +71,6 @@ export default class Item extends PureComponent {
       if (e.target.value === '') {
         this.props.deleteItem(this.props.id, this.props.parentId);
       }
-    } else if (e.shiftKey && e.key === 'Tab') {
-      // create a child when pressing Tab on item
-      e.preventDefault();
-      this.props.outdentItem(this.props.parentId, this.props.id);
     } else if (e.keyCode === 40) {
       e.preventDefault();
       this.props.focusNext(this.props.id);

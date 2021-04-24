@@ -4,7 +4,8 @@ import { ipcRenderer } from 'electron';
 import PropTypes from 'prop-types';
 import TitleBar from '../titlebar';
 import Flowlets from '../flowlets';
-import Editor from '../editor';
+import TaskList from '../tasklet';
+import MdEditor from '../mdeditor';
 import { ON_CHANGE_WINDOW_SIZE } from '../../constants/ipc_channels';
 
 export default class Admin extends Component {
@@ -19,7 +20,8 @@ export default class Admin extends Component {
         <TitleBar />
         <Switch>
           <Route exact path={path} component={Flowlets} />
-          <Route path={`${path}/edit/:id?`} component={Editor} />
+          <Route exact path={`${path}/taskList`} component={TaskList} />
+          <Route path={`${path}/edit/:id?`} component={MdEditor} />
         </Switch>
       </div>
     );
