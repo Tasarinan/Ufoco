@@ -36,14 +36,10 @@ export default class Tasklet extends PureComponent {
   }
 
   render() {
-    const { id, hideComplete, isCompleted } = this.props;
+    const { id, hideComplete, isCompleted, isRecurring, isSuggested } = this.props;
     return (
       <div key={id}>
-        <div className='tasklet'>
-          <div className='optionBullet'>
-            <div className='triangleUp'></div>
-          </div>
-        </div>
+        {(!hideComplete || !isCompleted) && <div className='tasklet'>asfsdfasfas</div>}
       </div>
     );
   }
